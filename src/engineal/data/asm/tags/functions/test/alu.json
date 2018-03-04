@@ -1,0 +1,9 @@
+{
+    "values": [
+        "asm:test/alu/add_test",
+        "asm:test/alu/sub_test",
+        "asm:test/alu/mul_test",
+        "asm:test/alu/div_test",
+        "asm:test/alu/mod_test"
+    ]
+}
