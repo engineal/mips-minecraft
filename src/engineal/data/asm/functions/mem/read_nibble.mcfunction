@@ -17,4 +17,4 @@ execute at @e[name=mem_address] if block ~ ~ ~ minecraft:green_wool run scoreboa
 execute at @e[name=mem_address] if block ~ ~ ~ minecraft:red_wool run scoreboard players add value mem 14
 execute at @e[name=mem_address] if block ~ ~ ~ minecraft:black_wool run scoreboard players add value mem 15
 
-execute if score debug mem matches 1 run tellraw @p [{"text":"read nibble: "},{"score":{"name":"value","objective":"mem"}}]
+execute if score debug mem matches 2.. run tellraw @p [{"text":"read nibble: "},{"score":{"name":"value","objective":"mem"}}]

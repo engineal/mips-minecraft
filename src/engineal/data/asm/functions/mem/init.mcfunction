@@ -13,6 +13,6 @@ scoreboard players set 2^28 constants 268435456
 
 fill 0 0 0 32 64 7 minecraft:white_wool
 
-scoreboard players set debug mem 1
+scoreboard players set debug mem 2
 
 say mem initiated

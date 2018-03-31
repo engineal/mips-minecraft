@@ -31,4 +31,4 @@ execute if score address reg matches 29 run scoreboard players operation value r
 execute if score address reg matches 30 run scoreboard players operation value reg = $fp reg
 execute if score address reg matches 31 run scoreboard players operation value reg = $ra reg
 
-execute if score debug reg matches 1 run tellraw @p [{"text":"reg["},{"score":{"name":"address","objective":"reg"}},{"text":"]->"},{"score":{"name":"value","objective":"reg"}}]
+execute if score debug reg matches 1.. run tellraw @p [{"text":"reg["},{"score":{"name":"address","objective":"reg"}},{"text":"]->"},{"score":{"name":"value","objective":"reg"}}]
