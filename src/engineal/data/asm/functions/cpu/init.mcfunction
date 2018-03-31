@@ -25,4 +25,14 @@ scoreboard players set mem_write cpu_control 0
 scoreboard players set reg_dst cpu_control 0
 scoreboard players set reg_write cpu_control 0
 
+scoreboard objectives add constants dummy
+scoreboard players set 2^5 constants 32
+scoreboard players set 2^6 constants 64
+scoreboard players set 2^11 constants 2048
+scoreboard players set 2^16 constants 65536
+scoreboard players set 2^21 constants 2097152
+scoreboard players set 2^26 constants 67108864
+
+scoreboard players set debug cpu 1
+
 say cpu initiated

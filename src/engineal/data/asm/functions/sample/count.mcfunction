@@ -19,44 +19,44 @@
 #     syscall
 #
 # Hex:
-# 0: 0x20090000
-# 1: 0x200A000A
-# 2: 0x11490003
-# 3: 0x21290001
-# 4: 0xAC090080
-# 5: 0x08100002
-# 6: 0x2002000A
-# 7: 0x0000000C
+# 0x00: 0x20090000
+# 0x04: 0x200A000A
+# 0x08: 0x11490003
+# 0x0C: 0x21290001
+# 0x10: 0xAC090080
+# 0x14: 0x08100002
+# 0x18: 0x2002000A
+# 0x1C: 0x0000000C
 
 scoreboard players set address mem 0
 scoreboard players set value mem 537460736
 function asm:mem/write
 
-scoreboard players set address mem 1
+scoreboard players set address mem 4
 scoreboard players set value mem 537526282
 function asm:mem/write
 
-scoreboard players set address mem 2
+scoreboard players set address mem 8
 scoreboard players set value mem 289996803
 function asm:mem/write
 
-scoreboard players set address mem 3
+scoreboard players set address mem 12
 scoreboard players set value mem 556335105
 function asm:mem/write
 
-scoreboard players set address mem 4
+scoreboard players set address mem 16
 scoreboard players set value mem -1408696192
 function asm:mem/write
 
-scoreboard players set address mem 5
+scoreboard players set address mem 20
 scoreboard players set value mem 135266306
 function asm:mem/write
 
-scoreboard players set address mem 6
+scoreboard players set address mem 24
 scoreboard players set value mem 537001994
 function asm:mem/write
 
-scoreboard players set address mem 7
+scoreboard players set address mem 28
 scoreboard players set value mem 12
 function asm:mem/write
 
