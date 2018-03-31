@@ -10,7 +10,7 @@ This is still a WIP, and there is much left to finish.
 Minecraft 1.13
 
 ## Datapack Install
-Create a new world in creative mode (I prefer the void super-flat preset). Then copy `src/engineal` into the world's datapack directory. A world download may come eventually, along with a zip file release.
+Create a new world in creative mode (I prefer the void super-flat preset). Then copy `datapack/engineal` into the world's datapack directory. A world download may come eventually, along with a zip file release.
 
 **Caution: this datapack will replace blocks on load, so be careful if adding to an existing world!**
 
@@ -18,7 +18,7 @@ Create a new world in creative mode (I prefer the void super-flat preset). Then 
 This MIPS emulator should be able to run any binary compiled or assembled for the MIPS architecture. I've used the MIPS assembler by Alan J. Hogan (https://alanhogan.com/asu/assembler.php) with success. You should also be able to cross compile using gcc, although this is something I have yet to try.
 
 ## Loading MIPS binaries
-MIPS binaries can be loaded into the emulator's memory through Minecraft commands. The included `load_binary.py` Python script will convert MIPS binaries into a .mcfunction file, which you can then run in Minecraft to load the binary into memory.
+MIPS binaries can be loaded into the emulator's memory through Minecraft commands. The included `tools/load_binary.py` Python script will convert MIPS binaries into a .mcfunction file, which you can then run in Minecraft to load the binary into memory. This tool can be used to load any file into Minecraft's memory, but will be limited by the max command length.
 
 Currently, the processer starts executing code at address 0, so before loading any binaries, you might need to apply address offsets. The script allows you to specify the address that the binary will be loaded at, but will not adjust jmp instructions. This will change eventually upon introduction of virtual memory, which I have planned.
 

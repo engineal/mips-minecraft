@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Convert MIPS binary into .mcfunction."""
+"""Convert binary file into .mcfunction to load into Minecraft."""
 import argparse
 
 
@@ -19,11 +19,11 @@ def process_word(word, offset, byteorder):
 
 def main():
     """The main function."""
-    parser = argparse.ArgumentParser(description='Convert MIPS binary into .mcfunction.')
-    parser.add_argument('binary', help='The MIPS binary')
+    parser = argparse.ArgumentParser(description='Convert binary file into .mcfunction to load into Minecraft.')
+    parser.add_argument('binary', help='The binary file')
     parser.add_argument('-b', '--byteorder', choices=['big', 'little'], help='The byte order of the provided binary')
     parser.add_argument('-a', '--offset', help='The memory offset')
-    parser.add_argument('-o', '--file', help='The file to create for the .mcfunction')
+    parser.add_argument('-o', '--file', help='The .mcfunction file to create')
     args = parser.parse_args()
 
     offset = 0
@@ -33,6 +33,8 @@ def main():
     output_file = 'out.mcfunction'
     if args.file:
         output_file = args.file
+        if '.mcfunction' not in output_file:
+            output_file += '.mcfunction'
 
     byteorder = 'big'
     if args.byteorder:
