@@ -1,5 +1,5 @@
 # mips-minecraft
-A Minecraft datapack that creates a MIPS emulator in a Minecraft world. It currently emulates a single cycle, single core 32-bit MIPS R2000 processer. It can complete 1 instruction every Minecraft tick; if run from a repeating command block, will have a clock speed of 20Hz.
+A Minecraft datapack that creates a MIPS emulator in a Minecraft world. The goal of this project is to emulate a MIPS32 Release 6 processer. It can complete 1 instruction every Minecraft tick; if run from a repeating command block, will have a clock speed of 20Hz.
 
 This is still a WIP, and there is much left to finish.
 
