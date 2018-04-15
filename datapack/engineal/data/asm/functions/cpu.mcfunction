@@ -61,3 +61,6 @@ execute if score reg_dst cpu_control matches 0 run scoreboard players operation 
 execute if score reg_dst cpu_control matches 1 run scoreboard players operation address reg = rd cpu
 scoreboard players operation value reg = result cpu
 execute if score reg_write cpu_control matches 1 run function asm:reg/write
+
+# syscall
+execute if score opcode cpu matches 0 if score funct cpu matches 12 run function asm:syscall

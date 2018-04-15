@@ -9,11 +9,11 @@ scoreboard players set mem_write cpu_control 0
 scoreboard players set reg_dst cpu_control 0
 scoreboard players set reg_write cpu_control 0
 
-# r-type
+# special
 execute if score opcode cpu matches 0 run scoreboard players set reg_dst cpu_control 1
 execute if score opcode cpu matches 0 run scoreboard players set alu_op cpu_control 2
 execute if score opcode cpu matches 0 run scoreboard players set reg_write cpu_control 1
-execute if score debug cpu matches 1.. if score opcode cpu matches 0 run tellraw @p [{"text":"r-type "},{"score":{"name":"rd","objective":"cpu"}},{"text":", "},{"score":{"name":"rs","objective":"cpu"}},{"text":", "},{"score":{"name":"rt","objective":"cpu"}}]
+execute if score debug cpu matches 1.. if score opcode cpu matches 0 run tellraw @p [{"text":"special "},{"score":{"name":"rd","objective":"cpu"}},{"text":", "},{"score":{"name":"rs","objective":"cpu"}},{"text":", "},{"score":{"name":"rt","objective":"cpu"}}]
 
 #
 execute if score opcode cpu matches 1 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
@@ -105,6 +105,8 @@ execute if score alu_op cpu_control matches 0 run scoreboard players set operati
 execute if score alu_op cpu_control matches 1 run scoreboard players set operation alu 1
 execute if score alu_op cpu_control matches 2 if score funct cpu matches 16 run scoreboard players set operation alu 0
 execute if score alu_op cpu_control matches 2 if score funct cpu matches 18 run scoreboard players set operation alu 1
+execute if score alu_op cpu_control matches 2 if score funct cpu matches 24 if score shamt cpu matches 2 run scoreboard players set operation alu 2
+execute if score alu_op cpu_control matches 2 if score funct cpu matches 26 if score shamt cpu matches 2 run scoreboard players set operation alu 3
+execute if score alu_op cpu_control matches 2 if score funct cpu matches 26 if score shamt cpu matches 3 run scoreboard players set operation alu 4
 execute if score alu_op cpu_control matches 2 if score funct cpu matches 20 run scoreboard players set operation alu 5
 execute if score alu_op cpu_control matches 2 if score funct cpu matches 21 run scoreboard players set operation alu 6
-execute if score alu_op cpu_control matches 2 if score funct cpu matches 26 run scoreboard players set operation alu 7

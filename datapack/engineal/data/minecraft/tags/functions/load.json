@@ -3,6 +3,8 @@
         "asm:cpu/init",
         "asm:reg/init",
         "asm:alu/init",
-        "asm:mem/init"
+        "asm:mem/init",
+        "asm:syscall/init",
+        "asm:vga/init"
     ]
 }
