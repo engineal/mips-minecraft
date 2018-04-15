@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Convert binary file into .mcfunction to load into Minecraft."""
 import argparse
+import os
 
 
 def process_word(word, offset, byteorder):
@@ -48,8 +49,11 @@ def main():
             word = in_file.read(4)
             offset += 4
 
+    commands.append("tellraw @p {\"text\":\"Installed " + os.path.basename(args.binary) + "!\",\"color\":\"green\"}")
+
     with open(output_file, "w") as out_file:
         out_file.write('\n'.join(commands))
+        out_file.write('\n')
 
 
 if __name__ == "__main__":
