@@ -11,4 +11,4 @@
 # 000000
 # 000000
 
-fill 1 5 -10 5 5 -10 minecraft:white_wool
+execute at @e[name=char_pos] run fill ~1 ~5 ~ ~5 ~5 ~ minecraft:white_wool

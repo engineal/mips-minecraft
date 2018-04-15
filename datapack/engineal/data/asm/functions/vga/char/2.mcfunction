@@ -11,10 +11,10 @@
 # 000000
 # 000000
 
-fill 1 2 -10 5 2 -10 minecraft:white_wool
-setblock 4 3 -10 minecraft:white_wool
-setblock 3 4 -10 minecraft:white_wool
-setblock 2 5 -10 minecraft:white_wool
-setblock 5 7 -10 minecraft:white_wool
-fill 1 6 -10 1 7 -10 minecraft:white_wool
-fill 2 8 -10 4 8 -10 minecraft:white_wool
+execute at @e[name=char_pos] run fill ~1 ~2 ~ ~5 ~2 ~ minecraft:white_wool
+execute at @e[name=char_pos] run setblock ~4 ~3 ~ minecraft:white_wool
+execute at @e[name=char_pos] run setblock ~3 ~4 ~ minecraft:white_wool
+execute at @e[name=char_pos] run setblock ~2 ~5 ~ minecraft:white_wool
+execute at @e[name=char_pos] run setblock ~5 ~7 ~ minecraft:white_wool
+execute at @e[name=char_pos] run fill ~1 ~6 ~ ~1 ~7 ~ minecraft:white_wool
+execute at @e[name=char_pos] run fill ~2 ~8 ~ ~4 ~8 ~ minecraft:white_wool
