@@ -1,7 +1,0 @@
-{
-    "values": [
-        "asm:test/cpu_test",
-        "asm:test/mem_test",
-        "#asm:test/alu"
-    ]
-}

@@ -1,0 +1,1 @@
+execute if score running tick matches 1 run function asm:cpu

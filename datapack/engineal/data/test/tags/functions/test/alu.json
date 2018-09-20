@@ -1,0 +1,9 @@
+{
+    "values": [
+        "test:alu/add_test",
+        "test:alu/sub_test",
+        "test:alu/mul_test",
+        "test:alu/div_test",
+        "test:alu/mod_test"
+    ]
+}

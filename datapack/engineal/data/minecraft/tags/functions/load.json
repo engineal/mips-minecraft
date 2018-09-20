@@ -1,9 +1,11 @@
 {
     "values": [
+		"asm:tick/init",
         "asm:cpu/init",
         "asm:reg/init",
         "asm:alu/init",
         "asm:mem/init",
+		"asm:cop0/init",
         "asm:syscall/init",
         "asm:vga/init"
     ]

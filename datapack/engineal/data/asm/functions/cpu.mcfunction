@@ -63,4 +63,8 @@ scoreboard players operation value reg = result cpu
 execute if score reg_write cpu_control matches 1 run function asm:reg/write
 
 # syscall
+# TODO: remove run function asm:syscall once firmware can handle it
 execute if score opcode cpu matches 0 if score funct cpu matches 12 run function asm:syscall
+execute if score opcode cpu matches 0 if score funct cpu matches 12 run scoreboard players operation c0_vaddr cop0 = address mem
+execute if score opcode cpu matches 0 if score funct cpu matches 12 run scoreboard players operation c0_epc cop0 = pc cpu
+execute if score opcode cpu matches 0 if score funct cpu matches 12 run scoreboard players set pc cpu -2147483264
