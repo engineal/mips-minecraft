@@ -1,11 +1,52 @@
 #!/usr/bin/env python3
+import argparse
 from collections import namedtuple
 from functools import reduce
 from operator import mul
+from os import path
 
 Info = namedtuple('Info', 'start height')
 Point = namedtuple('Point', 'x y')
 Dimension = namedtuple('Dimension', 'width height')
+
+def read_file(file_name):
+    char_lines = [] # An array of arrays that contain the input lines, one array per character
+    with open(file_name) as f:
+        lines = []
+        for line in f.readlines():
+            if line.startswith('#') and len(lines) > 0:
+                char_lines.append(lines)
+                lines = []
+            lines.append(line)
+
+    for char in char_lines:
+        commands = create_commands(char)
+
+def create_commands(lines):
+    commands = []
+    data = []
+    for line in lines:
+        if line.startswith('#') or len(line) < 1:
+            commands.append(line)
+        else:
+            data.append(line)
+            commands.append(f"# {line}")
+    commands.append("")
+
+    mat = [[int(x) for x in list(line)] for line in data]
+    rectangles = find_rectangles(mat)
+
+    for coords, size in rectangles:
+        x = -coords.x
+        y = -coords.y
+        if area(size) == 1:
+            commands.append(f"execute at @e[name=char_pos] run setblock ~{x} ~{y} ~ minecraft:white_wool")
+        else:
+            x2 = 1 - (coords.x + size.width)
+            y2 = 1 - (coords.y + size.height)
+            commands.append(f"execute at @e[name=char_pos] run fill ~{x} ~{y} ~ ~{x2} ~{y2} ~ minecraft:white_wool")
+
+    return commands
 
 def find_rectangles(mat):
     rectangles = []
@@ -71,7 +112,51 @@ def max_rectangle_size(histogram):
 def area(size):
     return reduce(mul, size)
 
-find_rectangles([[1,0,0],
-                 [1,0,0],
-                 [0,0,1]])
+def main():
+    """The main function."""
+    parser = argparse.ArgumentParser(description='Convert font file into Minecraft commands.')
+    parser.add_argument('-f', '--file', help='The font file')
+    parser.add_argument('-w', '--write', help='The directory to create the .mcfunction files in')
+    args = parser.parse_args()
+
+    file_name = "font.txt"
+    if args.file:
+        file_name = args.file
+    if not path.isfile(file_name):
+        print(f"{file_name} must exist!")
+        exit(1)
+
+    output_dir = path.dirname(path.realpath(__file__))
+    if args.write:
+        output_dir = args.write
+    if not path.isdir(output_dir):
+        print(f"{output_dir} must be a directory!")
+        exit(1)
+
+    char_lines = [] # An array of arrays that contain the input lines, one array per character
+    with open(file_name) as f:
+        lines = []
+        for line in f.readlines():
+            if line.startswith('#') and len(lines) > 0:
+                char_lines.append(lines)
+                lines = []
+            lines.append(line.rstrip())
+        char_lines.append(lines)
+
+    if len(char_lines) != 96:
+        print("The font file should have 95 ASCII characters defined!")
+        exit(1)
+
+    for char, lines in enumerate(char_lines):
+        commands = create_commands(lines)
+
+        char = char + 0x20
+        output_file = path.join(output_dir, f"{char:x}.mcfunction")
+        with open(output_file, "w") as out_file:
+            out_file.write('\n'.join(commands))
+            out_file.write('\n')
+
+
+if __name__ == "__main__":
+    main()
 
