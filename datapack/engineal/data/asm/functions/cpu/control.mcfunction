@@ -74,7 +74,7 @@ execute if score opcode cpu matches 14 run tellraw @p [{"text":"xori not impleme
 execute if score opcode cpu matches 15 run tellraw @p [{"text":"lui not implemented!","color":"red"}]
 
 # cop0
-execute if score opcode cpu matches 16 run tellraw @p [{"text":"cop0 not implemented!","color":"red"}]
+execute if score debug cpu matches 1.. if score opcode cpu matches 16 run tellraw @p [{"text":"cop0"}]
 
 #
 execute if score opcode cpu matches 17..31 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]

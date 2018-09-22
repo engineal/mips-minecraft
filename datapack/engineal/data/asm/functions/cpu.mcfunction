@@ -45,6 +45,9 @@ execute if score jump cpu_control matches 1 run scoreboard players operation pc 
 execute if score jump cpu_control matches 1 run scoreboard players operation pc cpu += tmp_val cpu
 scoreboard players reset tmp_val cpu
 
+# cop0
+execute if score opcode cpu matches 16 run function asm:cop0
+
 execute if score debug cpu matches 2.. run tellraw @p [{"text":"MEM"}]
 
 # Memory operation
@@ -67,4 +70,5 @@ execute if score reg_write cpu_control matches 1 run function asm:reg/write
 execute if score opcode cpu matches 0 if score funct cpu matches 12 run function asm:syscall
 execute if score opcode cpu matches 0 if score funct cpu matches 12 run scoreboard players operation c0_vaddr cop0 = address mem
 execute if score opcode cpu matches 0 if score funct cpu matches 12 run scoreboard players operation c0_epc cop0 = pc cpu
+execute if score opcode cpu matches 0 if score funct cpu matches 12 run scoreboard players remove c0_epc cop0 4
 execute if score opcode cpu matches 0 if score funct cpu matches 12 run scoreboard players set pc cpu -2147483264
