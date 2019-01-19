@@ -1,4 +1,4 @@
-summon minecraft:armor_stand 0 0 -10 {CustomName:"\"char_pos\"",NoGravity:true}
+summon minecraft:armor_stand 5 11 -10 {CustomName:"\"char_pos\"",NoGravity:true}
 
 function asm:vga/char/clear
 scoreboard players operation char vga = $a0 reg

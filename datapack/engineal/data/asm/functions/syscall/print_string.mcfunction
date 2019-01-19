@@ -1,5 +1,5 @@
 execute unless entity @e[name=char_pos] run tellraw @p [{"text":"syscall print_string "},{"score":{"name":"$a0","objective":"reg"}}]
-execute unless entity @e[name=char_pos] run summon minecraft:armor_stand 100 0 -10 {CustomName:"\"char_pos\"",NoGravity:true}
+execute unless entity @e[name=char_pos] run summon minecraft:armor_stand 100 11 -10 {CustomName:"\"char_pos\"",NoGravity:true}
 function asm:vga/char/clear
 
 scoreboard players operation address mem = $a0 reg

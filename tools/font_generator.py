@@ -9,19 +9,6 @@ Info = namedtuple('Info', 'start height')
 Point = namedtuple('Point', 'x y')
 Dimension = namedtuple('Dimension', 'width height')
 
-def read_file(file_name):
-    char_lines = [] # An array of arrays that contain the input lines, one array per character
-    with open(file_name) as f:
-        lines = []
-        for line in f.readlines():
-            if line.startswith('#') and len(lines) > 0:
-                char_lines.append(lines)
-                lines = []
-            lines.append(line)
-
-    for char in char_lines:
-        commands = create_commands(char)
-
 def create_commands(lines):
     commands = []
     data = []
