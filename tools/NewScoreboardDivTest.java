@@ -10,37 +10,44 @@ import java.util.Arrays;
  * and how to fix it.
  */
 public class NewScoreboardDivTest {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         long oldFailed = 0;
         long newFailed = 0;
 
         TestMethod oldMethod = (instruction, shift, mask) -> {
             int result = instruction;
             result /= Math.pow(2, shift);
-            result %= mask;
+            result %= mask + 1;
             if (instruction < 0) {
-                instruction += mask - 1;
+                result += mask;
             }
             return result;
         };
 
-        TestMethod newMethod = (instruction, shift, mask) -> Math.floorMod(Math.floorDiv(instruction, Math.pow(2, shift)), mask);
+        TestMethod newMethod = (instruction, shift, mask) -> Math.floorMod(Math.floorDiv(instruction, (int) Math.pow(2, shift)), mask + 1);
 
-        TestMethod correctMethod = (instruction, shift, mask) -> (instruction >> shift) & mask;
+        TestMethod correctMethod = (instruction, shift, mask) -> (instruction >>> shift) & mask;
 
-        for (int i = 0; i > -1000; i--) {
+        for (int i = -10; i < 0; i++) {
             Instruction oldI = new Instruction(i, oldMethod);
             Instruction newI = new Instruction(i, newMethod);
             Instruction correctI = new Instruction(i, correctMethod);
-            if (!oldI.equals(correctI)) {
-                oldFailed++;
-            }
-            if (!newI.equals(correctI)) {
-                newFailed++;
+            if (Stream.of(oldI, newI, correctI).distinct().count() > 1) {
+                System.out.println(i);
+                System.out.println("Correct: " + correctI);
+                if (!oldI.equals(correctI)) {
+                    oldFailed++;
+                    System.out.println("Old:     " + oldI);
+                }
+                if (!newI.equals(correctI)) {
+                    newFailed++;
+                    System.out.println("New:     " + newI);
+                }
+                System.out.println();
             }
         }
 
-        System.out.println(passed + " passed, " + failed + " failed");
+        System.out.println(oldFailed + " old failed, " + newFailed + " new failed");
     }
 
     private static int maskForNBits(int n) {
@@ -83,21 +90,42 @@ public class NewScoreboardDivTest {
             this.address = testMethod.calculate(instruction, 0, maskForNBits(28));
         }
 
-        public boolean equals(Instruction o) {
-            if (!Arrays.equals(nibbles, o.nibbles)) return false;
-            if (opcode != o.opcode) return false;
-            if (rs != o.rs) return false;
-            if (rt != o.rt) return false;
-            if (rd != o.rd) return false;
-            if (shamt != o.shamt) return false;
-            if (funct != o.funct) return false;
-            if (immediate != o.immediate) return false;
-            if (address != o.address) return false;
-            return true;
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Instruction)) return false;
+            Instruction that = (Instruction) o;
+            return opcode == that.opcode &&
+                    rs == that.rs &&
+                    rt == that.rt &&
+                    rd == that.rd &&
+                    shamt == that.shamt &&
+                    funct == that.funct &&
+                    immediate == that.immediate &&
+                    address == that.address &&
+                    Arrays.equals(nibbles, that.nibbles);
         }
 
+        @Override
+        public int hashCode() {
+            int result = Objects.hash(opcode, rs, rt, rd, shamt, funct, immediate, address);
+            result = 31 * result + Arrays.hashCode(nibbles);
+            return result;
+        }
+
+        @Override
         public String toString() {
-            return Arrays.toString(nibbles);
+            return "Instruction{" +
+                    "nibbles=" + Arrays.toString(nibbles) +
+                    ", opcode=" + opcode +
+                    ", rs=" + rs +
+                    ", rt=" + rt +
+                    ", rd=" + rd +
+                    ", shamt=" + shamt +
+                    ", funct=" + funct +
+                    ", immediate=" + immediate +
+                    ", address=" + address +
+                    '}';
         }
     }
 }

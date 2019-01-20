@@ -1,7 +1,5 @@
 function asm:mem/select
 scoreboard players operation tmp_value mem = value mem
-scoreboard players set complement mem 0
-execute if score value mem matches ..-1 run scoreboard players set complement mem 1
 scoreboard players set carry mem 0
 execute if score value mem matches ..-1 run scoreboard players set carry mem 1
 
@@ -54,7 +52,6 @@ function asm:mem/write_nibble
 
 scoreboard players operation value mem = tmp_value mem
 scoreboard players reset tmp_value mem
-scoreboard players reset complement mem
 scoreboard players reset carry mem
 kill @e[name=mem_address]
 
