@@ -9,6 +9,6 @@ execute unless score value mem matches 0 run function asm:vga/char
 
 execute at @e[name=char_pos] run teleport @e[name=char_pos] ~-6 ~ ~
 scoreboard players add $a0 reg 1
-execute unless score value mem matches 0 run function asm:syscall/print_string
+execute unless score value mem matches 0 run function asm:cpu/special/syscall/print_string
 
 kill @e[name=char_pos]

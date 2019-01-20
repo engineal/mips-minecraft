@@ -1,5 +1,7 @@
-scoreboard players set reg_write cpu_control 1
+execute if score debug cpu matches 1.. run tellraw @p [{"text":"mfc0 "},{"score":{"name":"rt","objective":"cpu"}},{"text":", "},{"score":{"name":"rd","objective":"cpu"}}]
 
+# Read register from cop0
+scoreboard players set result cpu 0
 execute if score rd cpu matches 0 run scoreboard players operation result cpu = c0_index cop0
 execute if score rd cpu matches 1 run scoreboard players operation result cpu = c0_random cop0
 execute if score rd cpu matches 2 run scoreboard players operation result cpu = c0_entrylo cop0
@@ -10,4 +12,7 @@ execute if score rd cpu matches 12 run scoreboard players operation result cpu =
 execute if score rd cpu matches 13 run scoreboard players operation result cpu = c0_cause cop0
 execute if score rd cpu matches 14 run scoreboard players operation result cpu = c0_epc cop0
 
-execute if score debug cpu matches 1.. run tellraw @p [{"text":"mfc0 "},{"score":{"name":"rt","objective":"cpu"}},{"text":", "},{"score":{"name":"rd","objective":"cpu"}}]
+# Save result to rt register
+scoreboard players operation address reg = rt cpu
+scoreboard players operation value reg = result cpu
+function asm:reg/write

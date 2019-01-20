@@ -1,74 +1,32 @@
-execute if score debug cpu matches 2.. run tellraw @p [{"text":"IF"}]
-
 # Read instruction from memory
 scoreboard players operation address mem = pc cpu
 scoreboard players add pc cpu 4
 function asm:mem/read
 scoreboard players operation instruction cpu = value mem
 
-execute if score debug cpu matches 2.. run tellraw @p [{"text":"ID"}]
-
-# Parse instruction and set control bits
+# Parse instruction
 function asm:cpu/parse_instruction
-function asm:cpu/control
 
-# Read registers
-scoreboard players operation address reg = rs cpu
-function asm:reg/read
-scoreboard players operation reg1 cpu = value reg
-
-scoreboard players operation address reg = rt cpu
-function asm:reg/read
-scoreboard players operation reg2 cpu = value reg
-
-execute if score debug cpu matches 2.. run tellraw @p [{"text":"EX"}]
-
-# ALU operation
-scoreboard players operation value1 alu = reg1 cpu
-execute if score alu_src cpu_control matches 0 run scoreboard players operation value2 alu = reg2 cpu
-execute if score alu_src cpu_control matches 1 run scoreboard players operation value2 alu = immediate cpu
-function asm:alu
-scoreboard players operation result cpu = result alu
-
-# Branch
-scoreboard players operation tmp_val cpu = immediate cpu
-scoreboard players operation tmp_val cpu *= 2^2 constants
-execute if score branch cpu_control matches 1 if score result cpu matches 0 run scoreboard players operation pc cpu += tmp_val cpu
-scoreboard players reset tmp_val cpu
-
-# Jump
-scoreboard players operation tmp_val cpu = address cpu
-scoreboard players operation tmp_val cpu *= 2^2 constants
-execute if score jump cpu_control matches 1 run scoreboard players operation pc cpu /= 2^28 constants
-execute if score jump cpu_control matches 1 run scoreboard players operation pc cpu %= 2^4 constants
-execute if score jump cpu_control matches 1 run scoreboard players operation pc cpu *= 2^28 constants
-execute if score jump cpu_control matches 1 run scoreboard players operation pc cpu += tmp_val cpu
-scoreboard players reset tmp_val cpu
-
-# cop0
-execute if score opcode cpu matches 16 run function asm:cop0
-
-execute if score debug cpu matches 2.. run tellraw @p [{"text":"MEM"}]
-
-# Memory operation
-scoreboard players operation address mem = result cpu
-scoreboard players operation value mem = reg2 cpu
-execute if score mem_read cpu_control matches 1 run function asm:mem/read
-execute if score mem_to_reg cpu_control matches 1 run scoreboard players operation result cpu = value mem
-execute if score mem_write cpu_control matches 1 run function asm:mem/write
-
-execute if score debug cpu matches 2.. run tellraw @p [{"text":"WB"}]
-
-# Store register
-execute if score reg_dst cpu_control matches 0 run scoreboard players operation address reg = rt cpu
-execute if score reg_dst cpu_control matches 1 run scoreboard players operation address reg = rd cpu
-scoreboard players operation value reg = result cpu
-execute if score reg_write cpu_control matches 1 run function asm:reg/write
-
-# syscall
-# TODO: remove run function asm:syscall once firmware can handle it
-execute if score opcode cpu matches 0 if score funct cpu matches 12 run function asm:syscall
-execute if score opcode cpu matches 0 if score funct cpu matches 12 run scoreboard players operation c0_vaddr cop0 = address mem
-execute if score opcode cpu matches 0 if score funct cpu matches 12 run scoreboard players operation c0_epc cop0 = pc cpu
-execute if score opcode cpu matches 0 if score funct cpu matches 12 run scoreboard players remove c0_epc cop0 4
-execute if score opcode cpu matches 0 if score funct cpu matches 12 run scoreboard players set pc cpu -2147483264
+# Run instruction
+execute if score opcode cpu matches 0 run function asm:cpu/special
+execute if score opcode cpu matches 1 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
+execute if score opcode cpu matches 2 run function asm:cpu/j
+execute if score opcode cpu matches 3 run tellraw @p [{"text":"jal not implemented!","color":"red"}]
+execute if score opcode cpu matches 4 run function asm:cpu/beq
+execute if score opcode cpu matches 5 run tellraw @p [{"text":"bne not implemented!","color":"red"}]
+execute if score opcode cpu matches 6 run tellraw @p [{"text":"blez not implemented!","color":"red"}]
+execute if score opcode cpu matches 7 run tellraw @p [{"text":"bgtz not implemented!","color":"red"}]
+execute if score opcode cpu matches 8 run function asm:cpu/addi
+execute if score opcode cpu matches 9 run function asm:cpu/addiu
+execute if score opcode cpu matches 10 run tellraw @p [{"text":"slti not implemented!","color":"red"}]
+execute if score opcode cpu matches 11 run tellraw @p [{"text":"sltiu not implemented!","color":"red"}]
+execute if score opcode cpu matches 12 run tellraw @p [{"text":"andi not implemented!","color":"red"}]
+execute if score opcode cpu matches 13 run tellraw @p [{"text":"ori not implemented!","color":"red"}]
+execute if score opcode cpu matches 14 run tellraw @p [{"text":"xori not implemented!","color":"red"}]
+execute if score opcode cpu matches 15 run tellraw @p [{"text":"lui not implemented!","color":"red"}]
+execute if score opcode cpu matches 16 run function asm:cpu/cop0
+execute if score opcode cpu matches 17..34 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
+execute if score opcode cpu matches 35 run function asm:cpu/lw
+execute if score opcode cpu matches 36..42 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
+execute if score opcode cpu matches 43 run function asm:cpu/sw
+execute if score opcode cpu matches 44.. run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]

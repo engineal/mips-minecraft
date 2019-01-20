@@ -1,3 +1,9 @@
+# The scoreboard division and mod operations changed in 1.13.1, which broke the way I was bit-shifting scoreboard values
+# for negative values.
+# https://minecraft.gamepedia.com/1.13.1#Changes
+# This means I no longer need the complement logic, but See NewScoreboardDivTest.java for the instructions that broke
+# TODO: evaluate and fix the broken instructions
+
 # 2's complement
 execute if score complement mem matches 1 run scoreboard players add value mem 15
 execute if score carry mem matches 1 run scoreboard players add value mem 1
