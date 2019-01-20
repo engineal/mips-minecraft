@@ -6,7 +6,7 @@ main: li   $t1, 0             # temp var counter for loop
       li   $v0, 1             # syscall is print_int
 Loop: beq  $t2, $t1, Exit     # at 10 we go to Exit, defined below
       addi $t1, $t1, 1        # increment counter
-      sw   $t1, 127($zero)    # store counter in memory
+      sw   $t1, 128($zero)    # store counter in memory
       add  $a0, $t1, $zero    # print counter
       syscall
       j Loop                  # jumps back to the top of loop
