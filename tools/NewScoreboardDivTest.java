@@ -1,6 +1,7 @@
 import java.lang.Integer;
 import java.lang.Math;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * The scoreboard division and mod operations changed in 1.13.1, which broke the way I was bit-shifting scoreboard values

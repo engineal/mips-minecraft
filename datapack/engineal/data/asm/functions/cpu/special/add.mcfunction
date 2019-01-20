@@ -19,4 +19,4 @@ scoreboard players operation result cpu = result alu
 # Store register
 scoreboard players operation address reg = rd cpu
 scoreboard players operation value reg = result cpu
-run function asm:reg/write
+function asm:reg/write

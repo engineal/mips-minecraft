@@ -1,8 +1,3 @@
-execute if score carry mem matches 1 run scoreboard players add value mem 1
-scoreboard players set carry mem 0
-execute if score value mem matches 16.. run scoreboard players set carry mem 1
-execute if score value mem matches 16.. run scoreboard players remove value mem 16
-
 execute at @e[name=mem_address] if score value mem matches 0 run setblock ~ ~ ~ minecraft:white_wool
 execute at @e[name=mem_address] if score value mem matches 1 run setblock ~ ~ ~ minecraft:orange_wool
 execute at @e[name=mem_address] if score value mem matches 2 run setblock ~ ~ ~ minecraft:magenta_wool
