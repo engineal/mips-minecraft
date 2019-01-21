@@ -10,7 +10,7 @@ execute if score $v0 reg matches 10 run function asm:cpu/special/syscall/exit
 execute if score $v0 reg matches 11 run function asm:cpu/special/syscall/print_char
 execute if score $v0 reg matches 12.. run tellraw @p [{"score":{"name":"$v0","objective":"reg"},"color":"red"},{"text":" is not a valid syscall!","color":"red"}]
 
-#scoreboard players operation c0_vaddr cop0 = address mem
-#scoreboard players operation c0_epc cop0 = pc cpu
-#scoreboard players remove c0_epc cop0 4
-#scoreboard players set pc cpu -2147483264
+scoreboard players operation c0_vaddr cop0 = address mem
+scoreboard players operation c0_epc cop0 = pc cpu
+scoreboard players remove c0_epc cop0 4
+scoreboard players set pc cpu -2147483264

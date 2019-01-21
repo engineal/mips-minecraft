@@ -10,10 +10,9 @@ function asm:reg/read
 scoreboard players operation reg2 cpu = value reg
 
 # ALU operation
-scoreboard players set operation alu 1
 scoreboard players operation value1 alu = reg1 cpu
 scoreboard players operation value2 alu = reg2 cpu
-function asm:alu
+function asm:alu/sub
 scoreboard players operation result cpu = result alu
 
 # Branch

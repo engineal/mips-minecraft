@@ -5,10 +5,9 @@ scoreboard players operation address reg = rs cpu
 function asm:reg/read
 
 # add value of rs register to immediate
-scoreboard players set operation alu 0
 scoreboard players operation value1 alu = value reg
 scoreboard players operation value2 alu = immediate cpu
-function asm:alu
+function asm:alu/add
 
 # Save result to rt register
 scoreboard players operation address reg = rt cpu
