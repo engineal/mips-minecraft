@@ -20,9 +20,9 @@ execute if score opcode cpu matches 8 run function asm:cpu/addi
 execute if score opcode cpu matches 9 run function asm:cpu/addiu
 execute if score opcode cpu matches 10 run tellraw @p [{"text":"slti not implemented!","color":"red"}]
 execute if score opcode cpu matches 11 run tellraw @p [{"text":"sltiu not implemented!","color":"red"}]
-execute if score opcode cpu matches 12 run tellraw @p [{"text":"andi not implemented!","color":"red"}]
-execute if score opcode cpu matches 13 run tellraw @p [{"text":"ori not implemented!","color":"red"}]
-execute if score opcode cpu matches 14 run tellraw @p [{"text":"xori not implemented!","color":"red"}]
+execute if score opcode cpu matches 12 run function asm:cpu/andi
+execute if score opcode cpu matches 13 run function asm:cpu/ori
+execute if score opcode cpu matches 14 run function asm:cpu/xori
 execute if score opcode cpu matches 15 run tellraw @p [{"text":"lui not implemented!","color":"red"}]
 execute if score opcode cpu matches 16 run function asm:cpu/cop0
 execute if score opcode cpu matches 17..34 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]

@@ -3,21 +3,17 @@ execute if score debug cpu matches 1.. run tellraw @p [{"text":"lw "},{"score":{
 # Read registers
 scoreboard players operation address reg = rs cpu
 function asm:reg/read
-scoreboard players operation reg1 cpu = value reg
 
 # ALU operation
-scoreboard players operation value1 alu = reg1 cpu
+scoreboard players operation value1 alu = value reg
 scoreboard players operation value2 alu = immediate cpu
 function asm:alu/add
-scoreboard players operation result cpu = result alu
 
 # Memory operation
-scoreboard players operation address mem = result cpu
-scoreboard players operation value mem = reg2 cpu
+scoreboard players operation address mem = result alu
 function asm:mem/read
-scoreboard players operation result cpu = value mem
 
 # Store register
 scoreboard players operation address reg = rt cpu
-scoreboard players operation value reg = result cpu
+scoreboard players operation value reg = value mem
 function asm:reg/write

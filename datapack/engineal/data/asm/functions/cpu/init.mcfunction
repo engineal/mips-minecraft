@@ -9,9 +9,6 @@ scoreboard players set shamt cpu 0
 scoreboard players set funct cpu 0
 scoreboard players set immediate cpu 0
 scoreboard players set address cpu 0
-scoreboard players set reg1 cpu 0
-scoreboard players set reg2 cpu 0
-scoreboard players set result cpu 0
 
 function asm:cpu/cop0/init
 
