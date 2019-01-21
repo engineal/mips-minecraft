@@ -1,5 +1,5 @@
 # mips-minecraft
-A Minecraft datapack that creates a MIPS emulator in a Minecraft world. The goal of this project is to emulate a MIPS32 Release 6 processer. It can complete 1 instruction every Minecraft tick; if run from a repeating command block, will have a clock speed of 20Hz.
+A Minecraft datapack that creates a MIPS emulator in a Minecraft world. The goal of this project is to emulate a MIPS32 Release 6 processer. It can execute at least 1 instruction every Minecraft tick, resulting in a base clock speed of 20Hz. It can now also be overclocked to execute more than 1 instruction per tick, but care has to be taken so that we don't exceed the maxCommandChainLength gamerule. Depending on what your computer can handle, with the default maxCommandChainLength of 65,536 it can probably be overclocked with a x64 multiplier, giving us a clock speed of 1.28 kHz.
 
 This is still a WIP, and there is much left to finish.
 
@@ -7,7 +7,7 @@ This is still a WIP, and there is much left to finish.
 @engineal
 
 ### Requirements
-Minecraft 1.13
+Minecraft 1.13.2
 
 ## Datapack Install
 Create a new world in creative mode (I prefer the void super-flat preset). Then copy `datapack/engineal` into the world's datapack directory. A world download may come eventually, along with a zip file release.
@@ -23,7 +23,7 @@ MIPS binaries can be loaded into the emulator's memory through Minecraft command
 Currently, the processer starts executing code at address 0, so before loading any binaries, you might need to apply address offsets. The script allows you to specify the address that the binary will be loaded at, but will not adjust jmp instructions. This will change eventually upon introduction of virtual memory, which I have planned.
 
 ## Running the emulator
-The emulator can be stepped with the `function asm:cpu` command. To run a program, place that command in a repeating command block. The `reload` command will reset the emulator.
+The emulator can be stepped with the `function asm:cpu` command. To run a program, set the tick score for player running to 1 using `scoreboard players set running tick 1`. The `reload` command will reset the emulator.
 
 To debug either the emulator or your binary, you can set emulator debug levels for each component through the scoreboard:
 * `scoreboard players debug cpu set <level>` (0-2)
@@ -38,7 +38,6 @@ To debug either the emulator or your binary, you can set emulator debug levels f
 * Display
 * Floating-point accelerator
 * Multi-core GPU
-* Potentally
 
 #### Software
 * Emulator firmware
