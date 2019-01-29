@@ -11,10 +11,10 @@ function asm:cpu/parse_instruction
 execute if score opcode cpu matches 0 run function asm:cpu/special
 execute if score opcode cpu matches 1 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
 execute if score opcode cpu matches 2 run function asm:cpu/j
-execute if score opcode cpu matches 3 run tellraw @p [{"text":"jal not implemented!","color":"red"}]
+execute if score opcode cpu matches 3 run function asm:cpu/jal
 execute if score opcode cpu matches 4 run function asm:cpu/beq
-execute if score opcode cpu matches 5 run tellraw @p [{"text":"bne not implemented!","color":"red"}]
-execute if score opcode cpu matches 6 run tellraw @p [{"text":"blez not implemented!","color":"red"}]
+execute if score opcode cpu matches 5 run function asm:cpu/bne
+execute if score opcode cpu matches 6 run function asm:cpu/blez
 execute if score opcode cpu matches 7 run function asm:cpu/bgtz
 execute if score opcode cpu matches 8 run function asm:cpu/addi
 execute if score opcode cpu matches 9 run function asm:cpu/addiu
