@@ -9,11 +9,8 @@ scoreboard players operation address reg = rt cpu
 function asm:reg/read
 scoreboard players operation value2 alu = value reg
 
-# ALU operation
-function asm:alu/sub
-
 # Branch
 scoreboard players operation tmp_val cpu = immediate cpu
 scoreboard players operation tmp_val cpu *= 2^2 constants
-execute if score result alu matches 0 run scoreboard players operation pc cpu += tmp_val cpu
+execute if score value1 alu = value2 alu run scoreboard players operation pc cpu += tmp_val cpu
 scoreboard players reset tmp_val cpu
