@@ -14,7 +14,7 @@ def process_word(word, offset):
     commands = list()
     commands.append("scoreboard players set address mem {0:d}".format(offset))
     commands.append("scoreboard players set value mem {0:d}".format(word))
-    commands.append("function asm:mem/write".format(offset))
+    commands.append("function hardware:mem/write".format(offset))
     return commands
 
 

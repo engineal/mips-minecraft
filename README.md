@@ -25,7 +25,7 @@ MIPS binaries can be loaded into the emulator's memory through Minecraft command
 Currently, the processer starts executing code at address 0, so before loading any binaries, you might need to apply address offsets. The script allows you to specify the address that the binary will be loaded at, but will not relocate memory addresses yet.
 
 ## Running the emulator
-The emulator can be stepped with the `function asm:cpu` command. To run a program, set the tick score for player running to 1 using `scoreboard players set running tick 1`. The `reload` command will reset the emulator.
+The emulator can be stepped with the `function hardware:cpu` command. To run a program, set the tick score for player running to 1 using `scoreboard players set running tick 1`. The `reload` command will reset the emulator.
 
 To debug either the emulator or your binary, you can set emulator debug levels for each component through the scoreboard:
 * `scoreboard players debug cpu set <level>` (0-1)
