@@ -4,13 +4,10 @@ execute if score debug cpu matches 1.. run tellraw @p [{"text":"lw "},{"score":{
 scoreboard players operation address reg = rs cpu
 function hardware:reg/read
 
-# ALU operation
-scoreboard players operation value1 alu = value reg
-scoreboard players operation value2 alu = immediate cpu
-function hardware:alu/add
+# Calculate memory offset
+scoreboard players operation address mem = value reg
+scoreboard players operation address mem += immediate reg
 
-# Memory operation
-scoreboard players operation address mem = result alu
 function hardware:mem/read
 
 # Store register
