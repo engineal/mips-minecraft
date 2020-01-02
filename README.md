@@ -7,7 +7,7 @@ This is still a work in progress, and there is much left to finish.
 @engineal
 
 ### Requirements
-Minecraft 1.13.2
+Minecraft 1.13.2 or newer
 
 ## Datapack Install
 Create a new world in creative mode (I prefer the void super-flat preset). Then copy `datapack/engineal` into the world's datapack directory. A world download may come eventually, along with a zip file release.
