@@ -14,7 +14,8 @@ scoreboard players operation y mem /= 2^2 constants
 scoreboard players operation y mem %= 2^8 constants
 
 scoreboard players operation z mem = address mem
-scoreboard players operation z mem %= 2^1 constants
+scoreboard players operation z mem %= 2^2 constants
+scoreboard players operation z mem *= 2^1 constants
 execute if score kernel mem matches 1 run scoreboard players add z mem 16
 
 summon minecraft:armor_stand 0 0 0 {CustomName:"\"mem_address\"",NoGravity:true}

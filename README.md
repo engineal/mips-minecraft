@@ -28,10 +28,10 @@ Currently, the processer starts executing code at address 0, so before loading a
 The emulator can be stepped with the `function hardware:cpu` command. To run a program, set the tick score for player running to 1 using `scoreboard players set running tick 1`. The `reload` command will reset the emulator.
 
 To debug either the emulator or your binary, you can set emulator debug levels for each component through the scoreboard:
-* `scoreboard players debug cpu set <level>` (0-1)
-* `scoreboard players debug alu set <level>` (0-1)
-* `scoreboard players debug mem set <level>` (0-2)
-* `scoreboard players debug reg set <level>` (0-1)
+* `scoreboard players set debug cpu <level>` (0-1)
+* `scoreboard players set debug alu <level>` (0-1)
+* `scoreboard players set debug mem <level>` (0-2)
+* `scoreboard players set debug reg <level>` (0-1)
 
 ## Planned features
 #### Hardware
