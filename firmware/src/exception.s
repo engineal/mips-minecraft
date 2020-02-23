@@ -7,7 +7,7 @@
                             # Don't need to save $k0/k1
 
     mfc0  $k0, $13          # Move Cause into $k0
- 
+
     srl   $a0, $k0, 2       # Extract ExcCode field
     andi  $a0, $a0, 0xf
 
@@ -22,9 +22,9 @@ done:
     addiu $k0, $k0, 4       # Do not re-execute
                             # faulting instruction
     mtc0  $k0, $14          # EPC
- 
+
     mtc0  $0, $13           # Clear Cause register
- 
+
     mfc0  $k0, $12          # Fix Status register
     andi  $k0, $k0, 0xfffd  # Clear EXL bit
     ori   $k0, $k0, 0x1     # Enable interrupts
@@ -42,4 +42,3 @@ print_excp:
 .data
 save0: .word 0
 save1: .word 0
-

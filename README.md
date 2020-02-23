@@ -1,5 +1,5 @@
 # mips-minecraft
-A Minecraft datapack that creates a MIPS emulator in a Minecraft world. The goal of this project is to emulate a MIPS32 Release 6 processer. It can execute at least 1 instruction every Minecraft tick, resulting in a base clock speed of 20Hz. It can now also be overclocked to execute more than 1 instruction per tick, but care has to be taken so that we don't exceed the maxCommandChainLength gamerule. Depending on what your computer can handle, with the default maxCommandChainLength of 65,536 it can probably be overclocked with a x64 multiplier, giving us a clock speed of 1.28 kHz.
+A Minecraft datapack that creates a MIPS emulator in a Minecraft world. The goal of this project is to emulate a MIPS32 Release 6 processor. It can execute at least 1 instruction every Minecraft tick, resulting in a base clock speed of 20Hz. It can now also be overclocked to execute more than 1 instruction per tick, but care has to be taken so that we don't exceed the maxCommandChainLength gamerule. Depending on what your computer can handle, with the default maxCommandChainLength of 65,536 it can probably be overclocked with a x64 multiplier, giving us a clock speed of 1.28 kHz.
 
 This is still a work in progress, and there is much left to finish.
 
@@ -7,35 +7,40 @@ This is still a work in progress, and there is much left to finish.
 @engineal
 
 ### Requirements
-Minecraft 1.13.2 or newer
+Minecraft 1.15.2 or newer
 
 ## Datapack Install
-Create a new world in creative mode (I prefer the void super-flat preset). Then copy `datapack/engineal` into the world's datapack directory. A world download may come eventually, along with a zip file release.
+Create a new world in creative mode (I prefer the void super-flat preset). Then copy `datapack/mips32r6` into the world's datapack directory. A world download may come eventually, along with a zip file release.
 
 **Caution: this datapack will replace blocks on load, so be careful if adding to an existing world!**
 
 ## Compiling and assembling code
-This MIPS emulator should be able to run any binary created for the MIPS architecture, although keep in mind this project is very much still a WIP. I've used the following toolchains to cross-compile for the MIPS architecture: https://codescape.mips.com/components/toolchain/2018.09-03/index.html.
+This MIPS emulator should be able to run any binary created for the MIPS architecture, although keep in mind this project is very much still a WIP. I've used the following toolchains to cross-compile for the MIPS architecture: https://codescape.mips.com/components/toolchain/2019.09-01/index.html.
 
-Example: `mips-img-elf-gcc -mips32r6 -c exception.s`
+Example commands:
+* Assemble code: `as exception.s -o exception.o -mips32r6`
+* Or: `mips-mti-elf-gcc exception.s -mips32r6 -c`
+* Link code: `ld exception.o -o exception.bin --oformat=binary`
+* Combined: `mips-mti-elf-gcc exception.s -o exception.bin -Xlinker --oformat=binary`
+* Extract binary from object file: `objcopy -O binary exception.o exception.bin`
 
 ## Loading MIPS binaries
 MIPS binaries can be loaded into the emulator's memory through Minecraft commands. The included `tools/load_binary` Python script will convert MIPS binaries into a .mcfunction file, which you can then run in Minecraft to load the binary into memory.
 
-Currently, the processer starts executing code at address 0, so before loading any binaries, you might need to apply address offsets. The script allows you to specify the address that the binary will be loaded at, but will not relocate memory addresses yet.
+Currently, the processor starts executing code at ROM address 0, so before loading any binaries, you might need to apply address offsets. The script allows you to specify the address that the binary will be loaded at, but will not relocate memory addresses yet.
 
 ## Running the emulator
-The emulator can be stepped with the `function hardware:cpu` command. To run a program, set the tick score for player running to 1 using `scoreboard players set running tick 1`. The `reload` command will reset the emulator.
+The emulator can be stepped with the `function mips32r6:cpu` command. To run a program, set the mips32r6_tick score for player running to 1 using `scoreboard players set running mips32r6_tick 1`. The `reload` command will reset the emulator.
 
 To debug either the emulator or your binary, you can set emulator debug levels for each component through the scoreboard:
-* `scoreboard players set debug cpu <level>` (0-1)
-* `scoreboard players set debug alu <level>` (0-1)
-* `scoreboard players set debug mem <level>` (0-2)
-* `scoreboard players set debug reg <level>` (0-1)
+* `scoreboard players set debug mips32r6_cpu <level>` (0-1)
+* `scoreboard players set debug mips32r6_alu <level>` (0-1)
+* `scoreboard players set debug mips32r6_mem <level>` (0-4)
+* `scoreboard players set debug mips32r6_reg <level>` (0-1)
 
 ## Planned features
 #### Hardware
-* Virtual memory
+* Virtual memory (in-progress)
 * Permanent storage
 * Proper text mode display
 * IO (such as buttons)
@@ -44,14 +49,41 @@ To debug either the emulator or your binary, you can set emulator debug levels f
 * "Speakers"
 
 #### Software
-* Emulator firmware
+* Firmware
 * Bootloader
 * Basic OS
+
+## Custom Hardware
+The MIPS processor uses memory mapped I/O to communicate with other hardware components.
+
+To create your own custom hardware that can communicate with this emulator:
+
+1. Create a new minecraft datapack: https://minecraft.gamepedia.com/Data_pack.
+
+   Note: you'll want to make sure you create a new namespace for your component's functions. If you use the mips32r6 namespace or a namespace used by another datapack, you risk colliding with existing functions and something might break.
+
+
+2. If your hardware will handle read requests, create a new function to handle memory read requests.
+
+   1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to a range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
+   2. This function should write the data to the `value mips32r6_mem` scoreboard value.
+   3. Tag your read function in the mips32r6:read tag by including your read function in a file with this path: `data/mips32r6/tags/functions/read.json`.
+
+
+3. If your hardware will handle write requests, create a new function to handle memory write requests.
+
+  1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to a range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
+  2. This function should read the data to write from the `value mips32r6_mem` scoreboard value.
+  3. Tag your write function in the mips32r6:write tag by including your write function in a file with this path: `data/mips32r6/tags/functions/write.json`.
+
+
+Take a look at the ram, rom, and vga hardware components in this repo for an example.
+
 
 ## License
 #### MIT License
 
-Copyright (c) 2018 Aaron Lucia
+Copyright (c) 2020 Aaron Lucia
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -70,4 +102,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-

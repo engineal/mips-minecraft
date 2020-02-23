@@ -1,0 +1,36 @@
+scoreboard objectives add mips32r6_reg dummy
+scoreboard players set address mips32r6_reg 0
+scoreboard players set value mips32r6_reg 0
+scoreboard players set $at mips32r6_reg 0
+scoreboard players set $v0 mips32r6_reg 0
+scoreboard players set $v1 mips32r6_reg 0
+scoreboard players set $a0 mips32r6_reg 0
+scoreboard players set $a1 mips32r6_reg 0
+scoreboard players set $a2 mips32r6_reg 0
+scoreboard players set $a3 mips32r6_reg 0
+scoreboard players set $t0 mips32r6_reg 0
+scoreboard players set $t1 mips32r6_reg 0
+scoreboard players set $t2 mips32r6_reg 0
+scoreboard players set $t3 mips32r6_reg 0
+scoreboard players set $t4 mips32r6_reg 0
+scoreboard players set $t5 mips32r6_reg 0
+scoreboard players set $t6 mips32r6_reg 0
+scoreboard players set $t7 mips32r6_reg 0
+scoreboard players set $s0 mips32r6_reg 0
+scoreboard players set $s1 mips32r6_reg 0
+scoreboard players set $s2 mips32r6_reg 0
+scoreboard players set $s3 mips32r6_reg 0
+scoreboard players set $s4 mips32r6_reg 0
+scoreboard players set $s5 mips32r6_reg 0
+scoreboard players set $s6 mips32r6_reg 0
+scoreboard players set $s7 mips32r6_reg 0
+scoreboard players set $t8 mips32r6_reg 0
+scoreboard players set $t9 mips32r6_reg 0
+scoreboard players set $k0 mips32r6_reg 0
+scoreboard players set $k1 mips32r6_reg 0
+scoreboard players set $gp mips32r6_reg 0
+scoreboard players set $sp mips32r6_reg 0
+scoreboard players set $fp mips32r6_reg 0
+scoreboard players set $ra mips32r6_reg 0
+
+scoreboard players set debug mips32r6_reg 0

@@ -1,0 +1,33 @@
+execute if score address mips32r6_reg matches 1 run scoreboard players operation $at mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 2 run scoreboard players operation $v0 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 3 run scoreboard players operation $v1 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 4 run scoreboard players operation $a0 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 5 run scoreboard players operation $a1 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 6 run scoreboard players operation $a2 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 7 run scoreboard players operation $a3 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 8 run scoreboard players operation $t0 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 9 run scoreboard players operation $t1 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 10 run scoreboard players operation $t2 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 11 run scoreboard players operation $t3 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 12 run scoreboard players operation $t4 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 13 run scoreboard players operation $t5 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 14 run scoreboard players operation $t6 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 15 run scoreboard players operation $t7 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 16 run scoreboard players operation $s0 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 17 run scoreboard players operation $s1 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 18 run scoreboard players operation $s2 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 19 run scoreboard players operation $s3 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 10 run scoreboard players operation $s4 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 21 run scoreboard players operation $s5 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 22 run scoreboard players operation $s6 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 23 run scoreboard players operation $s7 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 24 run scoreboard players operation $t8 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 25 run scoreboard players operation $t9 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 26 run scoreboard players operation $k0 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 27 run scoreboard players operation $k1 mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 28 run scoreboard players operation $gp mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 29 run scoreboard players operation $sp mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 30 run scoreboard players operation $fp mips32r6_reg = value mips32r6_reg
+execute if score address mips32r6_reg matches 31 run scoreboard players operation $ra mips32r6_reg = value mips32r6_reg
+
+execute if score debug mips32r6_reg matches 1.. run tellraw @p [{"text":"mips32r6_reg["},{"score":{"name":"address","objective":"mips32r6_reg"}},{"text":"]<-"},{"score":{"name":"value","objective":"mips32r6_reg"}}]
