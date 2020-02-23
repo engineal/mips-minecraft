@@ -1,6 +1,6 @@
-scoreboard objectives add mem dummy
-scoreboard players set address mem 0
-scoreboard players set physical_address mem 0
-scoreboard players set value mem 0
+scoreboard objectives add mips32r6_mem dummy
+scoreboard players set address mips32r6_mem 0
+scoreboard players set physical_address mips32r6_mem 0
+scoreboard players set value mips32r6_mem 0
 
-scoreboard players set debug mem 0
+scoreboard players set debug mips32r6_mem 0

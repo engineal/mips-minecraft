@@ -88,8 +88,8 @@ class CommandGenerator:
             if value & 0x80000000:
                 value = -0x100000000 + value
 
-            commands.append(f"scoreboard players set address mem {address:d}")
-            commands.append(f"scoreboard players set value mem {value:d}")
+            commands.append(f"scoreboard players set address mips32r6_mem {address:d}")
+            commands.append(f"scoreboard players set value mips32r6_mem {value:d}")
             commands.append(f"function mips32r6:mem/write")
 
         return commands

@@ -1,4 +1,4 @@
-scoreboard players operation result alu = value1 alu
-scoreboard players operation result alu *= value2 alu
+scoreboard players operation result mips32r6_alu = value1 mips32r6_alu
+scoreboard players operation result mips32r6_alu *= value2 mips32r6_alu
 
-execute if score debug alu matches 1.. run tellraw @p [{"score":{"name":"value1","objective":"alu"}},{"text":"*"},{"score":{"name":"value2","objective":"alu"}},{"text":"="},{"score":{"name":"result","objective":"alu"}}]
+execute if score debug mips32r6_alu matches 1.. run tellraw @p [{"score":{"name":"value1","objective":"mips32r6_alu"}},{"text":"*"},{"score":{"name":"value2","objective":"mips32r6_alu"}},{"text":"="},{"score":{"name":"result","objective":"mips32r6_alu"}}]

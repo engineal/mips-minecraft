@@ -30,13 +30,13 @@ MIPS binaries can be loaded into the emulator's memory through Minecraft command
 Currently, the processor starts executing code at ROM address 0, so before loading any binaries, you might need to apply address offsets. The script allows you to specify the address that the binary will be loaded at, but will not relocate memory addresses yet.
 
 ## Running the emulator
-The emulator can be stepped with the `function mips32r6:cpu` command. To run a program, set the tick score for player running to 1 using `scoreboard players set running tick 1`. The `reload` command will reset the emulator.
+The emulator can be stepped with the `function mips32r6:cpu` command. To run a program, set the mips32r6_tick score for player running to 1 using `scoreboard players set running mips32r6_tick 1`. The `reload` command will reset the emulator.
 
 To debug either the emulator or your binary, you can set emulator debug levels for each component through the scoreboard:
-* `scoreboard players set debug cpu <level>` (0-1)
-* `scoreboard players set debug alu <level>` (0-1)
-* `scoreboard players set debug mem <level>` (0-4)
-* `scoreboard players set debug reg <level>` (0-1)
+* `scoreboard players set debug mips32r6_cpu <level>` (0-1)
+* `scoreboard players set debug mips32r6_alu <level>` (0-1)
+* `scoreboard players set debug mips32r6_mem <level>` (0-4)
+* `scoreboard players set debug mips32r6_reg <level>` (0-1)
 
 ## Planned features
 #### Hardware
@@ -65,20 +65,20 @@ To create your own custom hardware that can communicate with this emulator:
 
 2. If your hardware will handle read requests, create a new function to handle memory read requests.
 
-   1. This function should read the physical address from the `physical_address mem` scoreboard value. Your function should only respond to a range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
-   2. This function should write the data to the `value mem` scoreboard value.
+   1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to a range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
+   2. This function should write the data to the `value mips32r6_mem` scoreboard value.
    3. Tag your read function in the mips32r6:read tag by including your read function in a file with this path: `data/mips32r6/tags/functions/read.json`.
 
 
 3. If your hardware will handle write requests, create a new function to handle memory write requests.
 
-  1. This function should read the physical address from the `physical_address mem` scoreboard value. Your function should only respond to a range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
-  2. This function should read the data to write from the `value mem` scoreboard value.
+  1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to a range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
+  2. This function should read the data to write from the `value mips32r6_mem` scoreboard value.
   3. Tag your write function in the mips32r6:write tag by including your write function in a file with this path: `data/mips32r6/tags/functions/write.json`.
 
 
 Take a look at the ram, rom, and vga hardware components in this repo for an example.
- 
+
 
 ## License
 #### MIT License
