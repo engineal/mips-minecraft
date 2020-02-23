@@ -55,4 +55,4 @@ scoreboard players operation value mem = tmp_value mem
 scoreboard players reset tmp_value mem
 execute at @e[name=mem_address] run teleport @e[name=mem_address] ~ ~ ~-7
 
-execute if score debug mem matches 2.. run tellraw @p [{"text":"write word: "},{"score":{"name":"value","objective":"mem"}}]
+execute if score debug mem matches 3.. run tellraw @p [{"text":"write word: "},{"score":{"name":"value","objective":"mem"}}]

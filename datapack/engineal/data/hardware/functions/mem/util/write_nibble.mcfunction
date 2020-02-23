@@ -20,4 +20,4 @@ execute at @e[name=mem_address] if score value mem matches 13 run setblock ~ ~ ~
 execute at @e[name=mem_address] if score value mem matches 14 run setblock ~ ~ ~ minecraft:red_wool
 execute at @e[name=mem_address] if score value mem matches 15 run setblock ~ ~ ~ minecraft:black_wool
 
-execute if score debug mem matches 2.. run tellraw @p [{"text":"write nibble: "},{"score":{"name":"value","objective":"mem"}}]
+execute if score debug mem matches 4.. run tellraw @p [{"text":"write nibble: "},{"score":{"name":"value","objective":"mem"}}]

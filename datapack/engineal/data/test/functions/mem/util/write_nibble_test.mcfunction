@@ -116,5 +116,5 @@ execute unless block 0 0 0 minecraft:black_wool run tellraw @p [{"text":"Expecte
 
 kill @e[name=mem_address]
 
-execute if score passed test matches 1.. run tellraw @p [{"score":{"name":"passed","objective":"test"},"color":"green"},{"text":" test(s) in write_nibble_test passed!","color":"green"}]
-execute if score failed test matches 1.. run tellraw @p [{"score":{"name":"failed","objective":"test"},"color":"red"},{"text":" test(s) in write_nibble_test failed!","color":"red"}]
+execute if score passed test matches 1.. run tellraw @p [{"score":{"name":"passed","objective":"test"},"color":"green"},{"text":" test(s) in test:mem/util/write_nibble_test passed!","color":"green"}]
+execute if score failed test matches 1.. run tellraw @p [{"score":{"name":"failed","objective":"test"},"color":"red"},{"text":" test(s) in test:mem/util/write_nibble_test failed!","color":"red"}]

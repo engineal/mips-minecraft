@@ -47,5 +47,5 @@ execute unless blocks 0 0 0 0 0 7 0 1 0 all run tellraw @p [{"text":"Expected bl
 
 kill @e[name=mem_address]
 
-execute if score passed test matches 1.. run tellraw @p [{"score":{"name":"passed","objective":"test"},"color":"green"},{"text":" test(s) in write_word_test passed!","color":"green"}]
-execute if score failed test matches 1.. run tellraw @p [{"score":{"name":"failed","objective":"test"},"color":"red"},{"text":" test(s) in write_word_test failed!","color":"red"}]
+execute if score passed test matches 1.. run tellraw @p [{"score":{"name":"passed","objective":"test"},"color":"green"},{"text":" test(s) in test:mem/util/write_word_test passed!","color":"green"}]
+execute if score failed test matches 1.. run tellraw @p [{"score":{"name":"failed","objective":"test"},"color":"red"},{"text":" test(s) in test:mem/util/write_word_test failed!","color":"red"}]

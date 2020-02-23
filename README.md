@@ -7,7 +7,7 @@ This is still a work in progress, and there is much left to finish.
 @engineal
 
 ### Requirements
-Minecraft 1.13.2 or newer
+Minecraft 1.15.2 or newer
 
 ## Datapack Install
 Create a new world in creative mode (I prefer the void super-flat preset). Then copy `datapack/engineal` into the world's datapack directory. A world download may come eventually, along with a zip file release.
@@ -35,7 +35,7 @@ The emulator can be stepped with the `function hardware:cpu` command. To run a p
 To debug either the emulator or your binary, you can set emulator debug levels for each component through the scoreboard:
 * `scoreboard players set debug cpu <level>` (0-1)
 * `scoreboard players set debug alu <level>` (0-1)
-* `scoreboard players set debug mem <level>` (0-2)
+* `scoreboard players set debug mem <level>` (0-4)
 * `scoreboard players set debug reg <level>` (0-1)
 
 ## Planned features

@@ -116,5 +116,5 @@ execute unless score value mem matches 15 run tellraw @p [{"text":"Actual value:
 
 kill @e[name=mem_address]
 
-execute if score passed test matches 1.. run tellraw @p [{"score":{"name":"passed","objective":"test"},"color":"green"},{"text":" test(s) in read_nibble_test passed!","color":"green"}]
-execute if score failed test matches 1.. run tellraw @p [{"score":{"name":"failed","objective":"test"},"color":"red"},{"text":" test(s) in read_nibble_test failed!","color":"red"}]
+execute if score passed test matches 1.. run tellraw @p [{"score":{"name":"passed","objective":"test"},"color":"green"},{"text":" test(s) in test:mem/util/read_nibble_test passed!","color":"green"}]
+execute if score failed test matches 1.. run tellraw @p [{"score":{"name":"failed","objective":"test"},"color":"red"},{"text":" test(s) in test:mem/util/read_nibble_test failed!","color":"red"}]
