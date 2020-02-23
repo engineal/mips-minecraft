@@ -8,5 +8,3 @@ scoreboard players set c0_entryhi cop0 0
 scoreboard players set c0_status cop0 0
 scoreboard players set c0_cause cop0 0
 scoreboard players set c0_epc cop0 0
-
-say cop0 initiated

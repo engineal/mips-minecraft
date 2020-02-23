@@ -1,12 +1,10 @@
 {
     "values": [
         "mips32r6:constants",
-        "mips32r6:tick/init",
-        "mips32r6:cpu/init",
-        "mips32r6:reg/init",
-        "mips32r6:alu/init",
-        "mips32r6:mem/init",
-        "mips32r6:vga/init",
+        "mips32r6:init",
+        "ram:init",
+        "rom:init",
+        "vga:init",
         "test:init"
     ]
 }

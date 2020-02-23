@@ -1,9 +1,0 @@
-{
-    "values": [
-        "#test:mem/rom",
-        "#test:mem/util",
-        "test:mem/read_test",
-        "test:mem/tlb_test",
-        "test:mem/write_test"
-    ]
-}

@@ -7,9 +7,7 @@
 # Translate virtual address to physical address
 function mips32r6:mem/tlb
 
-# Translate physical address to device address
-function mips32r6:mem/map_device
-
-execute if score device mem matches 0 run tellraw @p [{"text":"Writing to ROM is not supported!"}]
+# Perform write
+function #mips32r6:write
 
 execute if score debug mem matches 1.. run tellraw @p [{"text":"mem["},{"score":{"name":"address","objective":"mem"}},{"text":"]<"},{"score":{"name":"value","objective":"mem"}}]

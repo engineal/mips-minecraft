@@ -13,5 +13,3 @@ scoreboard players set address cpu 0
 function mips32r6:cpu/cop0/init
 
 scoreboard players set debug cpu 1
-
-say cpu initiated

@@ -33,4 +33,4 @@ scoreboard players set 2^29 constants 536870912
 scoreboard players set 2^30 constants 1073741824
 scoreboard players set 2^31 constants -2147483648
 
-say constants initiated
+say constants initialized

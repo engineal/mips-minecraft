@@ -1,0 +1,9 @@
+{
+    "values": [
+        "test:mips32r6/alu/add_test",
+        "test:mips32r6/alu/sub_test",
+        "test:mips32r6/alu/mul_test",
+        "test:mips32r6/alu/div_test",
+        "test:mips32r6/alu/mod_test"
+    ]
+}

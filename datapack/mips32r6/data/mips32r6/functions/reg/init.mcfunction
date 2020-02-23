@@ -34,5 +34,3 @@ scoreboard players set $fp reg 0
 scoreboard players set $ra reg 0
 
 scoreboard players set debug reg 0
-
-say reg initiated

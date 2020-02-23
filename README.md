@@ -53,6 +53,33 @@ To debug either the emulator or your binary, you can set emulator debug levels f
 * Bootloader
 * Basic OS
 
+## Custom Hardware
+The MIPS processor uses memory mapped I/O to communicate with other hardware components.
+
+To create your own custom hardware that can communicate with this emulator:
+
+1. Create a new minecraft datapack: https://minecraft.gamepedia.com/Data_pack.
+
+   Note: you'll want to make sure you create a new namespace for your component's functions. If you use the mips32r6 namespace or a namespace used by another datapack, you risk colliding with existing functions and something might break.
+
+
+2. If your hardware will handle read requests, create a new function to handle memory read requests.
+
+   1. This function should read the physical address from the `physical_address mem` scoreboard value. Your function should only respond to a range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
+   2. This function should write the data to the `value mem` scoreboard value.
+   3. Tag your read function in the mips32r6:read tag by including your read function in a file with this path: `data/mips32r6/tags/functions/read.json`.
+
+
+3. If your hardware will handle write requests, create a new function to handle memory write requests.
+
+  1. This function should read the physical address from the `physical_address mem` scoreboard value. Your function should only respond to a range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
+  2. This function should read the data to write from the `value mem` scoreboard value.
+  3. Tag your write function in the mips32r6:write tag by including your write function in a file with this path: `data/mips32r6/tags/functions/write.json`.
+
+
+Take a look at the ram, rom, and vga hardware components in this repo for an example.
+ 
+
 ## License
 #### MIT License
 

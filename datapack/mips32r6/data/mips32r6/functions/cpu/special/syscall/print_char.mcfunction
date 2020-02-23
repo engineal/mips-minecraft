@@ -1,8 +1,8 @@
 summon minecraft:armor_stand 5 11 -10 {CustomName:"\"char_pos\"",NoGravity:true}
 
-function mips32r6:vga/char/clear
+function vga:char/clear
 scoreboard players operation char vga = $a0 reg
-function mips32r6:vga/char
+function vga:char
 
 kill @e[name=char_pos]
 

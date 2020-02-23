@@ -1,0 +1,8 @@
+{
+    "values": [
+        "test:mips32r6/mem/util/read_nibble_test",
+        "test:mips32r6/mem/util/read_word_test",
+        "test:mips32r6/mem/util/write_nibble_test",
+        "test:mips32r6/mem/util/write_word_test"
+    ]
+}
