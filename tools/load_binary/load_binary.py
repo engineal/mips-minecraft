@@ -78,7 +78,7 @@ class CommandGenerator:
 
     @staticmethod
     def __generate_function(data):
-        """Create Minecraft commands to store this word using the hardware:mem/write function."""
+        """Create Minecraft commands to store this word using the mips32r6:mem/write function."""
         commands = list()
         for address, value in data.items():
             # Cast unsigned words to 32-bit signed ints
@@ -90,7 +90,7 @@ class CommandGenerator:
 
             commands.append(f"scoreboard players set address mem {address:d}")
             commands.append(f"scoreboard players set value mem {value:d}")
-            commands.append(f"function hardware:mem/write")
+            commands.append(f"function mips32r6:mem/write")
 
         return commands
 
@@ -108,7 +108,7 @@ def main():
                         help='Place the output into OFILE.')
     parser.add_argument('--oformat', choices=['function', 'setblock'], default='function',
                         help="Specify the format of the commands in the output file."
-                             "'function' will use the hardware:mem/write function to load the file."
+                             "'function' will use the mips32r6:mem/write function to load the file."
                              "'setblock' will use setblock commands to load the file."
                              "Defaults to function.")
     parser.add_argument('-a', '--offset', type=lambda x: int(x, 0), default=0,

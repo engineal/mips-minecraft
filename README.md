@@ -10,7 +10,7 @@ This is still a work in progress, and there is much left to finish.
 Minecraft 1.15.2 or newer
 
 ## Datapack Install
-Create a new world in creative mode (I prefer the void super-flat preset). Then copy `datapack/engineal` into the world's datapack directory. A world download may come eventually, along with a zip file release.
+Create a new world in creative mode (I prefer the void super-flat preset). Then copy `datapack/mips32r6` into the world's datapack directory. A world download may come eventually, along with a zip file release.
 
 **Caution: this datapack will replace blocks on load, so be careful if adding to an existing world!**
 
@@ -27,10 +27,10 @@ Example commands:
 ## Loading MIPS binaries
 MIPS binaries can be loaded into the emulator's memory through Minecraft commands. The included `tools/load_binary` Python script will convert MIPS binaries into a .mcfunction file, which you can then run in Minecraft to load the binary into memory.
 
-Currently, the processor starts executing code at address 0, so before loading any binaries, you might need to apply address offsets. The script allows you to specify the address that the binary will be loaded at, but will not relocate memory addresses yet.
+Currently, the processor starts executing code at ROM address 0, so before loading any binaries, you might need to apply address offsets. The script allows you to specify the address that the binary will be loaded at, but will not relocate memory addresses yet.
 
 ## Running the emulator
-The emulator can be stepped with the `function hardware:cpu` command. To run a program, set the tick score for player running to 1 using `scoreboard players set running tick 1`. The `reload` command will reset the emulator.
+The emulator can be stepped with the `function mips32r6:cpu` command. To run a program, set the tick score for player running to 1 using `scoreboard players set running tick 1`. The `reload` command will reset the emulator.
 
 To debug either the emulator or your binary, you can set emulator debug levels for each component through the scoreboard:
 * `scoreboard players set debug cpu <level>` (0-1)
@@ -40,7 +40,7 @@ To debug either the emulator or your binary, you can set emulator debug levels f
 
 ## Planned features
 #### Hardware
-* Virtual memory
+* Virtual memory (in-progress)
 * Permanent storage
 * Proper text mode display
 * IO (such as buttons)
@@ -49,14 +49,14 @@ To debug either the emulator or your binary, you can set emulator debug levels f
 * "Speakers"
 
 #### Software
-* Emulator firmware
+* Firmware
 * Bootloader
 * Basic OS
 
 ## License
 #### MIT License
 
-Copyright (c) 2018 Aaron Lucia
+Copyright (c) 2020 Aaron Lucia
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
