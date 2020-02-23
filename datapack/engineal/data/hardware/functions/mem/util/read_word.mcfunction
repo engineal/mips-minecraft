@@ -1,5 +1,8 @@
-function hardware:mem/select
-scoreboard players set value mem 0
+# Translate the 8 blocks starting at mem_address into a 32 bit value
+#
+# Outputs:
+# value mem
+
 scoreboard players set tmp_value mem 0
 
 function hardware:mem/util/read_nibble
@@ -41,6 +44,6 @@ function hardware:mem/util/read_nibble
 scoreboard players operation value mem += tmp_value mem
 
 scoreboard players reset tmp_value mem
-kill @e[name=mem_address]
+execute at @e[name=mem_address] run teleport @e[name=mem_address] ~ ~ ~-7
 
-execute if score debug mem matches 1.. run tellraw @p [{"text":"mem["},{"score":{"name":"address","objective":"mem"}},{"text":"]>"},{"score":{"name":"value","objective":"mem"}}]
+execute if score debug mem matches 2.. run tellraw @p [{"text":"read word: "},{"score":{"name":"value","objective":"mem"}}]

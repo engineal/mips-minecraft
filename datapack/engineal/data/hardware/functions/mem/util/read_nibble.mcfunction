@@ -1,3 +1,8 @@
+# Translate the block at mem_address into 4 bit value
+#
+# Outputs:
+# value mem
+
 scoreboard players set value mem 0
 
 execute at @e[name=mem_address] if block ~ ~ ~ minecraft:white_wool run scoreboard players add value mem 0

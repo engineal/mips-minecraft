@@ -1,0 +1,8 @@
+{
+    "values": [
+        "test:mem/util/read_nibble_test",
+        "test:mem/util/read_word_test",
+        "test:mem/util/write_nibble_test",
+        "test:mem/util/write_word_test"
+    ]
+}

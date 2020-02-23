@@ -1,5 +1,5 @@
 scoreboard objectives add cpu dummy
-scoreboard players set pc cpu 0
+scoreboard players set pc cpu -1077936128
 scoreboard players set instruction cpu 0
 scoreboard players set opcode cpu 0
 scoreboard players set rs cpu 0

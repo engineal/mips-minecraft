@@ -6,6 +6,7 @@
         "hardware:reg/init",
         "hardware:alu/init",
         "hardware:mem/init",
-        "hardware:vga/init"
+        "hardware:vga/init",
+        "test:init"
     ]
 }

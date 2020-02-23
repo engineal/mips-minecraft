@@ -1,3 +1,8 @@
+# Translate a 4 bit value into the block at mem_address
+#
+# Inputs:
+# value mem
+
 execute at @e[name=mem_address] if score value mem matches 0 run setblock ~ ~ ~ minecraft:white_wool
 execute at @e[name=mem_address] if score value mem matches 1 run setblock ~ ~ ~ minecraft:orange_wool
 execute at @e[name=mem_address] if score value mem matches 2 run setblock ~ ~ ~ minecraft:magenta_wool

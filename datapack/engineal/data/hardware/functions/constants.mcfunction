@@ -15,7 +15,7 @@ scoreboard players set 2^11 constants 2048
 scoreboard players set 2^12 constants 4096
 scoreboard players set 2^13 constants 8192
 scoreboard players set 2^14 constants 16384
-scoreboard players set 2^15 constants 32768 
+scoreboard players set 2^15 constants 32768
 scoreboard players set 2^16 constants 65536
 scoreboard players set 2^17 constants 131072
 scoreboard players set 2^18 constants 262144

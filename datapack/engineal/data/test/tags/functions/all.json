@@ -1,7 +1,7 @@
 {
     "values": [
-        "test"cpu_test",
+        "#test:alu",
         "#test:mem",
-        "#test:alu"
+        "test:cpu_test"
     ]
 }
