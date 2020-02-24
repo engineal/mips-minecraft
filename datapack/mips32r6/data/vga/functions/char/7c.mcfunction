@@ -14,4 +14,4 @@
 # 000000
 
 
-execute at @e[name=char_pos] run fill ~-2 ~-3 ~ ~-2 ~-9 ~ minecraft:white_wool
+fill ~-2 ~-3 ~ ~-2 ~-9 ~ minecraft:white_wool

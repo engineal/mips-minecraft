@@ -27,11 +27,11 @@ def create_commands(lines):
         x = -coords.x
         y = -coords.y
         if area(size) == 1:
-            commands.append(f"execute at @e[name=char_pos] run setblock ~{x} ~{y} ~ minecraft:white_wool")
+            commands.append(f"setblock ~{x} ~{y} ~ minecraft:white_wool")
         else:
             x2 = 1 - (coords.x + size.width)
             y2 = 1 - (coords.y + size.height)
-            commands.append(f"execute at @e[name=char_pos] run fill ~{x} ~{y} ~ ~{x2} ~{y2} ~ minecraft:white_wool")
+            commands.append(f"fill ~{x} ~{y} ~ ~{x2} ~{y2} ~ minecraft:white_wool")
 
     return commands
 
@@ -61,7 +61,7 @@ def max_size(mat, value=0):
         hist = [(1+h) if el == value else 0 for h, el in zip(hist, row)]
         new_size, new_x = max_rectangle_size(hist)
         if area(max_size) < area(new_size):
-            max_size = new_size 
+            max_size = new_size
             max_coordinates = Point(new_x, row_index - new_size.height + 2)
     return max_size, max_coordinates
 
@@ -92,7 +92,7 @@ def max_rectangle_size(histogram):
     for start, height in stack:
         new_size = Dimension((pos - start), height)
         if area(max_size) < area(new_size):
-            max_size = new_size    
+            max_size = new_size
             max_start = start
     return max_size, max_start
 
@@ -146,4 +146,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
