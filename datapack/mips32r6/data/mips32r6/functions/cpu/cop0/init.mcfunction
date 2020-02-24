@@ -1,10 +1,9 @@
-scoreboard objectives add mips32r6_cop0 dummy
-scoreboard players set index mips32r6_cop0 0
-scoreboard players set random mips32r6_cop0 0
-scoreboard players set entrylo mips32r6_cop0 0
-scoreboard players set context mips32r6_cop0 0
-scoreboard players set vaddr mips32r6_cop0 0
-scoreboard players set entryhi mips32r6_cop0 0
-scoreboard players set status mips32r6_cop0 0
-scoreboard players set cause mips32r6_cop0 0
-scoreboard players set epc mips32r6_cop0 0
+data modify storage mips32r6:reg cop0.index set value 0
+data modify storage mips32r6:reg cop0.random set value 0
+data modify storage mips32r6:reg cop0.entrylo set value 0
+data modify storage mips32r6:reg cop0.context set value 0
+data modify storage mips32r6:reg cop0.vaddr set value 0
+data modify storage mips32r6:reg cop0.entryhi set value 0
+data modify storage mips32r6:reg cop0.status set value 0
+data modify storage mips32r6:reg cop0.cause set value 0
+data modify storage mips32r6:reg cop0.epc set value 0
