@@ -25,8 +25,13 @@ execute if score opcode mips32r6_cpu matches 13 run function mips32r6:cpu/ori
 execute if score opcode mips32r6_cpu matches 14 run function mips32r6:cpu/xori
 execute if score opcode mips32r6_cpu matches 15 run function mips32r6:cpu/lui
 execute if score opcode mips32r6_cpu matches 16 run function mips32r6:cpu/cop0
-execute if score opcode mips32r6_cpu matches 17..34 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
+execute if score opcode mips32r6_cpu matches 17..30 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
+execute if score opcode mips32r6_cpu matches 31 run function mips32r6:cpu/special3
+execute if score opcode mips32r6_cpu matches 32..34 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
 execute if score opcode mips32r6_cpu matches 35 run function mips32r6:cpu/lw
 execute if score opcode mips32r6_cpu matches 36..42 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
 execute if score opcode mips32r6_cpu matches 43 run function mips32r6:cpu/sw
-execute if score opcode mips32r6_cpu matches 44.. run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
+execute if score opcode mips32r6_cpu matches 44..53 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
+execute if score opcode mips32r6_cpu matches 54 if score rs mips32r6_cpu matches 0 run tellraw @p [{"text":"jic not implemented!","color":"red"}]
+execute if score opcode mips32r6_cpu matches 54 unless score rs mips32r6_cpu matches 0 run function mips32r6:cpu/beqzc
+execute if score opcode mips32r6_cpu matches 55.. run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]

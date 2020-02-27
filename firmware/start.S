@@ -34,9 +34,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <mips/m32c0.h>
 
 # The first function, __reset_vector, just loads the address of the __cpu_init function
-# and jumps to it. This does 2 things; First it will jump to a KSEG1 address which is a
-# mirror of the BEV KSEG0 address but cacheable. Second it will do a mode switch to
-# enable micromips mode.
+# and jumps to it. This will jump to a KSEG1 address which is a
+# mirror of the BEV KSEG0 address but cacheable.
 
 LEAF(__reset_vector)
   la      a2,__cpu_init
@@ -55,9 +54,6 @@ LEAF(__reset_vector)
   nop
 
 END(__reset_vector)
-
-.set micromips              # This causes the code below to be compiled as micromips
-                            # This will reduce the code size and help the code fit into 1K of memory
 
 LEAF(__cpu_init)
 
@@ -128,8 +124,6 @@ END(__cpu_init)
 /* NOTE: the linker script must insure that this code starts at  */
 /* BEV (boot exception vector) + 0x300 so the exception */
 /* vectors will be addressed properly. All .org assume this! */
-
-.set nomicromips            # This causes the code below to be compiled as MIPS32
 
 .org 0x300                  # SRAM Parity Error exception. start + 0x300
 start_exceptions:

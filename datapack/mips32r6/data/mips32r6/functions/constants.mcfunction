@@ -1,4 +1,5 @@
 scoreboard objectives add constants dummy
+scoreboard players set -1 constants -1
 scoreboard players set 2^0 constants 1
 scoreboard players set 2^1 constants 2
 scoreboard players set 2^2 constants 4
