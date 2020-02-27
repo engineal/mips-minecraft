@@ -1,6 +1,6 @@
 # BEQZC rs, offset
 #
-# if condition(GPR[rs] and/or GPR[rt]) then compact branch (no delay slot)
+# if GPR[rs] = 0 then PC <- (PC + 4 + sign_extend(offset))
 
 # offset: apply 21 bit mask
 scoreboard players operation tmp_val mips32r6_cpu = instruction mips32r6_cpu
