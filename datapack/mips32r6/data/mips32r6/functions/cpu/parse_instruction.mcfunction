@@ -34,4 +34,3 @@ scoreboard players operation immediate mips32r6_cpu %= 2^16 constants
 # address: apply 26 bit mask
 scoreboard players operation address mips32r6_cpu = instruction mips32r6_cpu
 scoreboard players operation address mips32r6_cpu %= 2^26 constants
-

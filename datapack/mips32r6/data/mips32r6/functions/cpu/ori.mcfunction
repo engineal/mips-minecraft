@@ -7,7 +7,7 @@ function mips32r6:reg/read
 # add value of rs register to immediate
 scoreboard players operation value1 mips32r6_alu = value mips32r6_reg
 scoreboard players operation value2 mips32r6_alu = immediate mips32r6_cpu
-function mips32r6:alu/ori
+function mips32r6:alu/or
 
 # Save result to rt register
 scoreboard players operation address mips32r6_reg = rt mips32r6_cpu

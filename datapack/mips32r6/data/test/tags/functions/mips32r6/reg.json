@@ -1,0 +1,6 @@
+{
+    "values": [
+        "test:mips32r6/reg/read_test",
+        "test:mips32r6/reg/write_test"
+    ]
+}

@@ -14,6 +14,6 @@
 # 011000
 
 
-execute at @e[name=char_pos] run fill ~-3 ~-5 ~ ~-3 ~-10 ~ minecraft:white_wool
-execute at @e[name=char_pos] run fill ~-1 ~-11 ~ ~-2 ~-11 ~ minecraft:white_wool
-execute at @e[name=char_pos] run setblock ~-3 ~-3 ~ minecraft:white_wool
+fill ~-3 ~-5 ~ ~-3 ~-10 ~ minecraft:white_wool
+fill ~-1 ~-11 ~ ~-2 ~-11 ~ minecraft:white_wool
+setblock ~-3 ~-3 ~ minecraft:white_wool

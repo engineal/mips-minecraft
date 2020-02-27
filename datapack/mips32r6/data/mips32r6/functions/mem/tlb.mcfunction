@@ -6,7 +6,7 @@
 # Outputs:
 # physical_address mips32r6_mem
 
-execute if score address mips32r6_mem matches ..-1 run tellraw @p [{"text":"kernel mem access","color":"yellow"}]
+# TODO: An Address Error will occur if kernel read
 
 scoreboard players operation physical_address mips32r6_mem = address mips32r6_mem
 

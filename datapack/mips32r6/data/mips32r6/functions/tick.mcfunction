@@ -1,3 +1,9 @@
+# Increment cp0 count register (regardless if instructions are being executed)
+execute store result score tmp_value mips32r6_tick run data get storage mips32r6:reg cp0.count
+scoreboard players add tmp_value mips32r6_tick 1
+execute store result storage mips32r6:reg cp0.count int 1 run scoreboard players get tmp_value mips32r6_tick
+scoreboard players reset tmp_value
+
 # Detect potential errors caused by unfinished CPU cycles
 # Since the first command we run increments the cycle count and the last
 # command sets it back to 0, the last instruction never completed if the

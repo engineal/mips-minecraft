@@ -6,7 +6,7 @@ function mips32r6:reg/read
 
 # Calculate memory offset
 scoreboard players operation address mips32r6_mem = value mips32r6_reg
-scoreboard players operation address mips32r6_mem += immediate mips32r6_reg
+scoreboard players operation address mips32r6_mem += immediate mips32r6_cpu
 
 function mips32r6:mem/read
 

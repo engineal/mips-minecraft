@@ -2,6 +2,6 @@
     "values": [
         "#test:mips32r6/alu",
         "#test:mips32r6/mem",
-        "test:mips32r6/cpu_test"
+        "#test:mips32r6/reg"
     ]
 }
