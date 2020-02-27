@@ -25,7 +25,7 @@ Example commands:
 * Extract binary from object file: `objcopy -O binary exception.o exception.bin`
 
 ## Loading MIPS binaries
-MIPS binaries can be loaded into the emulator's memory through Minecraft commands. The included `flash_mc` Python app will convert MIPS binaries into a .mcfunction file, which you can then run in Minecraft to load the binary into memory.
+MIPS binaries can be loaded into the emulator's memory through Minecraft commands. The included `flash_mc` Python app will convert binary files into a .mcfunction file, which you can then run in Minecraft to load the binary into memory.
 
 Currently, the processor starts executing code at ROM address 0, so before loading any binaries, you might need to apply address offsets. The script allows you to specify the address that the binary will be loaded at, but will not relocate memory addresses yet.
 
