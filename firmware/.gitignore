@@ -1,0 +1,6 @@
+*.elf
+*dasm
+*map
+*.rec
+*.bin
+*.o

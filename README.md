@@ -15,7 +15,7 @@ Create a new world in creative mode (I prefer the void super-flat preset). Then 
 **Caution: this datapack will replace blocks on load, so be careful if adding to an existing world!**
 
 ## Compiling and assembling code
-This MIPS emulator should be able to run any binary created for the MIPS architecture, although keep in mind this project is very much still a WIP. I've used the following toolchains to cross-compile for the MIPS architecture: https://codescape.mips.com/components/toolchain/2019.09-01/index.html.
+This MIPS emulator should be able to run any binary created for the MIPS32 architecture, although keep in mind this project is very much still a WIP. I've used the following toolchain to cross-compile for the MIPS architecture: https://codescape.mips.com/components/toolchain/2019.09-01/index.html.
 
 Example commands:
 * Assemble code: `as exception.s -o exception.o -mips32r6`
@@ -25,7 +25,7 @@ Example commands:
 * Extract binary from object file: `objcopy -O binary exception.o exception.bin`
 
 ## Loading MIPS binaries
-MIPS binaries can be loaded into the emulator's memory through Minecraft commands. The included `tools/load_binary` Python script will convert MIPS binaries into a .mcfunction file, which you can then run in Minecraft to load the binary into memory.
+MIPS binaries can be loaded into the emulator's memory through Minecraft commands. The included `flash_mc` Python app will convert MIPS binaries into a .mcfunction file, which you can then run in Minecraft to load the binary into memory.
 
 Currently, the processor starts executing code at ROM address 0, so before loading any binaries, you might need to apply address offsets. The script allows you to specify the address that the binary will be loaded at, but will not relocate memory addresses yet.
 
