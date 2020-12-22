@@ -1,3 +1,5 @@
+# TODO: fix loading due to virtual memory changes
+
 scoreboard players set address mips32r6_mem 0
 scoreboard players set value mips32r6_mem 604241944
 function mips32r6:mem/write
