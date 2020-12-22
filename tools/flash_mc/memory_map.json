@@ -1,23 +1,23 @@
 {
     "devices": {
         "ram": {
-            "physical_address": 0x00000000,
+            "physical_address": "0x00000000",
             "size": 262144,
             "readonly": false,
             "coords": {
-                "x": "0",
-                "y": "0",
-                "z": "16"
+                "x": 0,
+                "y": 0,
+                "z": 16
             }
         },
         "rom": {
-            "physical_address": 0x1FC00000,
+            "physical_address": "0x1FC00000",
             "size": 262144,
             "readonly": true,
             "coords": {
-                "x": "0",
-                "y": "0",
-                "z": "0"
+                "x": 0,
+                "y": 0,
+                "z": 0
             }
         }
     }
