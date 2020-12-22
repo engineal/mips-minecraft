@@ -2,8 +2,8 @@ scoreboard players set passed test 0
 scoreboard players set failed test 0
 
 # Test writing -2147483648
-setblock 0 1 0 minecraft:light_gray_wool
-fill 0 1 1 0 1 7 minecraft:white_wool
+fill 0 1 0 0 1 6 minecraft:white_wool
+setblock 0 1 7 minecraft:light_gray_wool
 scoreboard players set value mips32r6_mem -2147483648
 execute positioned 0 0 0 run function mips32r6:mem/util/write_word
 execute if blocks 0 0 0 0 0 7 0 1 0 all run scoreboard players add passed test 1
@@ -27,8 +27,8 @@ execute unless blocks 0 0 0 0 0 7 0 1 0 all run scoreboard players add failed te
 execute unless blocks 0 0 0 0 0 7 0 1 0 all run tellraw @p [{"text":"Expected blocks: white_wool","color":"red"}]
 
 # Test writing 1
-fill 0 1 0 0 1 6 minecraft:white_wool
-setblock 0 1 7 minecraft:orange_wool
+setblock 0 1 0 minecraft:orange_wool
+fill 0 1 1 0 1 7 minecraft:white_wool
 scoreboard players set value mips32r6_mem 1
 execute positioned 0 0 0 run function mips32r6:mem/util/write_word
 execute if blocks 0 0 0 0 0 7 0 1 0 all run scoreboard players add passed test 1
@@ -36,8 +36,8 @@ execute unless blocks 0 0 0 0 0 7 0 1 0 all run scoreboard players add failed te
 execute unless blocks 0 0 0 0 0 7 0 1 0 all run tellraw @p [{"text":"Expected blocks: white_wool and orange_wool","color":"red"}]
 
 # Test writing 2147483647
-setblock 0 1 0 minecraft:gray_wool
-fill 0 1 1 0 1 7 minecraft:black_wool
+fill 0 1 0 0 1 6 minecraft:black_wool
+setblock 0 1 7 minecraft:gray_wool
 scoreboard players set value mips32r6_mem 2147483647
 execute positioned 0 0 0 run function mips32r6:mem/util/write_word
 execute if blocks 0 0 0 0 0 7 0 1 0 all run scoreboard players add passed test 1

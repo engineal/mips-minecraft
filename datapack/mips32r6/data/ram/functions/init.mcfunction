@@ -1,3 +1,6 @@
+scoreboard objectives add ram dummy
+scoreboard players set device_address ram 0
+
 # 256 KB RAM
 fill 0 0 16 15 255 23 minecraft:white_wool
 fill 16 0 16 31 255 23 minecraft:white_wool

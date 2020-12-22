@@ -1,0 +1,6 @@
+{
+    "values": [
+        "test:ram/read_test",
+        "test:ram/write_test"
+    ]
+}

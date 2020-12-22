@@ -1,3 +1,7 @@
+# MTC0 rt, rd
+#
+# CPR[0,rd,sel] <- GPR[rt]
+
 execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"mtc0 "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rd","objective":"mips32r6_cpu"}}]
 
 # Read rt register
