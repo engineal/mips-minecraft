@@ -1,6 +1,7 @@
 {
     "values": [
         "#test:mips32r6",
+        "#test:ram",
         "#test:rom"
     ]
 }
