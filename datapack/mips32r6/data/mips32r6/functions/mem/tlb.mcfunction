@@ -20,8 +20,10 @@ execute if score address mips32r6_mem matches -1610612736..-1073741825 run score
 
 # Mapped addresses in kseg2 0xC0000000-0xFFFFFFFF are not implemented
 execute if score address mips32r6_mem matches -1073741824..-1 run tellraw @p [{"text":"kseg2 memory not implemented!","color":"red"}]
+execute if score address mips32r6_mem matches -1073741824..-1 run scoreboard players set running mips32r6_tick 0
 
 # Mapped addresses in kuseg 0x00000000-0x7FFFFFFF are not implemented
 execute if score address mips32r6_mem matches 0.. run tellraw @p [{"text":"kuseg memory not implemented!","color":"red"}]
+execute if score address mips32r6_mem matches 0.. run scoreboard players set running mips32r6_tick 0
 
 execute if score debug mips32r6_mem matches 2.. run tellraw @p [{"text":"virtual address: "},{"score":{"name":"address","objective":"mips32r6_mem"}},{"text":" -> physical address: "},{"score":{"name":"physical_address","objective":"mips32r6_mem"}}]

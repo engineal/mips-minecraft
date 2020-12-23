@@ -1,4 +1,5 @@
 execute if score char vga matches 1..31 run tellraw @p [{"score":{"name":"value","objective":"mips32r6_mem"},"color":"red"},{"text":" is out of range!","color":"red"}]
+execute if score char vga matches 1..31 run scoreboard players set running mips32r6_tick 0
 execute if score char vga matches 32 run function vga:char/20
 execute if score char vga matches 33 run function vga:char/21
 execute if score char vga matches 34 run function vga:char/22

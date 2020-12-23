@@ -7,6 +7,7 @@
 # While the RAM responds to all physical addresses 0x00000000-0x003FFFFF,
 # only the first 256 KB is currently implemented (0x00000000-0x00040000)
 execute if score device_address ram matches 262144.. run tellraw @p [{"text":"RAM address ","color":"red"},{"score":{"name":"device_address","objective":"ram"},"color":"red"},{"text":" not implemented!","color":"red"}]
+execute if score device_address ram matches 262144.. run scoreboard players set running mips32r6_tick 0
 
 # Select coordinates
 # World coordinates 0 0 16 - 255 255 23
