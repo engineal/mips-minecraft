@@ -72,9 +72,9 @@ To create your own custom hardware that can communicate with this emulator:
 
 3. If your hardware will handle write requests, create a new function to handle memory write requests.
 
-  1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to a range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
-  2. This function should read the data to write from the `value mips32r6_mem` scoreboard value.
-  3. Tag your write function in the mips32r6:write tag by including your write function in a file with this path: `data/mips32r6/tags/functions/write.json`.
+   1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to a range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
+   2. This function should read the data to write from the `value mips32r6_mem` scoreboard value.
+   3. Tag your write function in the mips32r6:write tag by including your write function in a file with this path: `data/mips32r6/tags/functions/write.json`.
 
 
 Take a look at the ram, rom, and vga hardware components in this repo for an example.
