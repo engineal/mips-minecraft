@@ -1,6 +1,13 @@
-# BEQZC rs, offset
+# Format: BEQZC rs, offset
 #
-# if GPR[rs] = 0 then PC <- (PC + 4 + sign_extend(offset))
+# Purpose: Compact Compare-and-Branch Instructions
+#
+# Description: if GPR[rs] = 0 then PC <- (PC + 4 + sign_extend(offset))
+# The condition is evaluated. If the condition is true, the branch is taken.
+# An 18-bit signed offset (the 16-bit offset field shifted left 2 bits) is added
+# to the address of the instruction following the branch (not the branch itself),
+# to form a PC-relative effective target address. Compact branches have no delay
+# slot: the instruction after the branch is NOT executed if the branch is taken.
 
 # offset: apply 21 bit mask
 scoreboard players operation tmp_val mips32r6_cpu = instruction mips32r6_cpu

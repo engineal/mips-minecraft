@@ -1,6 +1,14 @@
-execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"addiu "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}}]
+# Format: ADDIU rt, rs, immediate
+#
+# Purpose: Add Immediate Unsigned Word
+# To add a constant to a 32-bit integer.
+#
+# Description: GPR[rt] <- GPR[rs] + immediate
+# The 16-bit signed immediate is added to the 32-bit value in GPR rs and the
+# 32-bit arithmetic result is placed into GPR rt.
+# No Integer Overflow exception occurs under any circumstances.
 
-# TODO: implement unsigned operations
+execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"addiu "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}}]
 
 # Read rs register
 scoreboard players operation address mips32r6_reg = rs mips32r6_cpu

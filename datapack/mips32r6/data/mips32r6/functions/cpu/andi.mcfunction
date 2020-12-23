@@ -1,3 +1,13 @@
+# Format: ANDI rt, rs, immediate
+#
+# Purpose: and immediate
+# To do a bitwise logical AND with a constant.
+#
+# Description: GPR[rt] <- GPR[rs] and zero_extend(immediate)
+# The 16-bit immediate is zero-extended to the left and combined with the
+# contents of GPR rs in a bitwise logical AND operation. The result is placed
+# into GPR rt.
+
 execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"andi "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}}]
 
 # Read rs register

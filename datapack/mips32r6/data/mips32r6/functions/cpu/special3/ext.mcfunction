@@ -1,8 +1,21 @@
-# EXT rt, rs, pos, size
+# Format: EXT rt, rs, pos, size
 #
-# NOTE: msbd = size - 1
+# Purpose: Extract Bit Field
+# To extract a bit field from GPR rs and store it right-justified into GPR rt.
 #
-# GPR[rt] <- ExtractField(GPR[rs], msbd, lsb)
+# Description: GPR[rt] <- ExtractField(GPR[rs], msbd, lsb)
+# The bit field starting at bit pos and extending for size bits is extracted
+# from GPR rs and stored zero-extended and right-justified in GPR rt. The
+# assembly language arguments pos and size are converted by the assembler to the
+# instruction fields msbd (the most significant bit of the destination field in
+# GPR rt), in instruction bits 15..11, and lsb (least significant bit of the
+# source field in GPR rs), in instruction bits 10..6, as follows:
+# msbd <- size-1
+# lsb <- pos
+# The values of pos and size must satisfy all of the following relations:
+# 0 <= pos < 32
+# 0 < size <= 32
+# 0 < pos+size <= 32
 
 execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"ext "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"shamt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rd","objective":"mips32r6_cpu"}}]
 

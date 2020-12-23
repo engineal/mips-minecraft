@@ -1,3 +1,13 @@
+# Format: SRL rd, rt, sa
+#
+# Purpose: Shift Word Right Logical
+# To execute a logical right-shift of a word by a fixed number of bits.
+#
+# Description: GPR[rd] <- GPR[rt] >> sa   (logical)
+# The contents of the low-order 32-bit word of GPR rt are shifted right,
+# inserting zeros into the emptied bits. The word result is placed in GPR rd.
+# The bit-shift amount is specified by sa.
+
 execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"srl "},{"score":{"name":"rd","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"shamt","objective":"mips32r6_cpu"}}]
 
 # Read rt register

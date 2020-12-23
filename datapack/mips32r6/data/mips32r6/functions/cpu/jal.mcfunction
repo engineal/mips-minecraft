@@ -1,12 +1,27 @@
-# JAL target
+# Format: JAL target
 #
-# GPR[31] <- PC + 8, PC <- PC[29..31] || instr_index || 0x00
+# Purpose: Jump and Link
+# To execute a procedure call within the current 256MB-aligned region.
+#
+# Description:
+# Place the return address link in GPR 31. The return link is the address of the
+# second instruction following the branch, at which location execution continues
+# after a procedure call.
+# This is a PC-region branch (not PC-relative); the effective target address is
+# in the “current” 256MB-aligned region. The low 28 bits of the target address
+# is the instr_index field shifted left 2bits. The remaining upper bits are the
+# corresponding bits of the address of the instruction in the delay slot (not
+# the branch itself).
+# Jump to the effective target address. Execute the instruction that follows the
+# jump, in the branch delay slot, before executing the jump itself.
 
 execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"jal "},{"score":{"name":"address","objective":"mips32r6_cpu"}}]
 
 # Link
 scoreboard players add pc mips32r6_cpu 4
 execute store result storage mips32r6:reg register[31] int 1 run scoreboard players get pc mips32r6_cpu
+
+# TODO: Execute the instruction following the jump, in the branch delay slot, before jumping.
 
 # Jump
 scoreboard players operation tmp_val mips32r6_cpu = address mips32r6_cpu

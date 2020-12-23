@@ -1,3 +1,12 @@
+# Format: XORI rt, rs, immediate
+#
+# Purpose: Exclusive OR Immediate
+# To do a bitwise logical Exclusive OR with a constant.
+#
+# Description: GPR[rt] <- GPR[rs] XOR immediate
+# Combine the contents of GPR rs and the 16-bit zero-extended immediate in a
+# bitwise logical Exclusive OR operation and place the result into GPR rt.
+
 execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"xori "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}}]
 
 # Read rs register

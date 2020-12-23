@@ -1,6 +1,12 @@
-# MTC0 rt, rd
+# Format: MTC0 rt, rd
 #
-# CPR[0,rd,sel] <- GPR[rt]
+# Purpose: Move to Coprocessor 0
+# To move the contents of a general register to a coprocessor 0 register.
+#
+# Description: CPR[0,rd,sel] <- GPR[rt]
+# The contents of general register rt are loaded into the coprocessor 0 register
+# specified by the combination of rd and sel. Not all coprocessor 0 registers
+# support the sel field. In those instances, the sel field must be set to zero.
 
 execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"mtc0 "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rd","objective":"mips32r6_cpu"}}]
 

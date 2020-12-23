@@ -1,3 +1,15 @@
+# Format: BNE rs, rt, offset
+#
+# Purpose: Branch on Not Equal
+# To compare GPRs then do a PC-relative conditional branch.
+#
+# Description: if GPR[rs] != GPR[rt] then branch
+# An 18-bit signed offset (the 16-bit offset field shifted left 2 bits) is added
+# to the address of the instruction following the branch (not the branch itself),
+# in the branch delay slot, to form a PC-relative effective target address.
+# If the contents of GPR rs and GPR rt are not equal, branch to the effective
+# target address after the instruction in the delay slot is executed.
+
 execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"bne "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}}]
 
 # Read registers
@@ -8,6 +20,8 @@ scoreboard players operation value1 mips32r6_alu = value mips32r6_reg
 scoreboard players operation address mips32r6_reg = rt mips32r6_cpu
 function mips32r6:reg/read
 scoreboard players operation value2 mips32r6_alu = value mips32r6_reg
+
+# TODO: Execute the instruction following the jump, in the branch delay slot, before jumping.
 
 # Branch
 scoreboard players operation tmp_val mips32r6_cpu = immediate mips32r6_cpu
