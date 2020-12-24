@@ -19,7 +19,7 @@ execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"jal "},
 
 # Link
 scoreboard players add pc mips32r6_cpu 4
-execute store result storage mips32r6:reg register[31] int 1 run scoreboard players get pc mips32r6_cpu
+execute store result storage mips32r6:reg GPR[31] int 1 run scoreboard players get pc mips32r6_cpu
 
 # TODO: Execute the instruction following the jump, in the branch delay slot, before jumping.
 
