@@ -1,10 +1,11 @@
 {
     "values": [
         "mips32r6:constants",
-        "mips32r6:init",
-        "ram:init",
-        "rom:init",
-        "vga:init",
-        "test:init"
+        "mips32r6:load",
+        "rom:load",
+        "firmware:firmware",
+        "ram:load",
+        "vga:load",
+        "test:load"
     ]
 }
