@@ -4,6 +4,7 @@ scoreboard players set 2^0 constants 1
 scoreboard players set 2^1 constants 2
 scoreboard players set 2^2 constants 4
 scoreboard players set 2^3 constants 8
+scoreboard players set 9 constants 9
 scoreboard players set 10 constants 10
 scoreboard players set 2^4 constants 16
 scoreboard players set 2^5 constants 32

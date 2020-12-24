@@ -1,7 +1,7 @@
 scoreboard objectives add rom dummy
 scoreboard players set device_address rom 0
 
-# 256 KB ROM
+# 256 KB
 fill 0 0 0 15 255 7 minecraft:white_wool
 fill 16 0 0 31 255 7 minecraft:white_wool
 fill 32 0 0 47 255 7 minecraft:white_wool
