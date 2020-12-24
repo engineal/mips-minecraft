@@ -24,78 +24,24 @@ execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"ins "},
 scoreboard players operation address mips32r6_reg = rt mips32r6_cpu
 function mips32r6:reg/read
 
-# Apply bitmask on upper 31..msb+1
-scoreboard players operation tmp_upper mips32r6_cpu = value mips32r6_reg
+# If not inserting into far left of rt, strip off all but upper 31..msb+1 of rt
+execute if score rd mips32r6_cpu matches ..30 run scoreboard players operation value1 mips32r6_alu = value mips32r6_reg
+execute if score rd mips32r6_cpu matches ..30 run scoreboard players operation value2 mips32r6_alu = rd mips32r6_cpu
+execute if score rd mips32r6_cpu matches ..30 run scoreboard players add value2 mips32r6_alu 1
+execute if score rd mips32r6_cpu matches ..30 run function mips32r6:alu/shift_right
 
-execute if score rd mips32r6_cpu matches 0 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^1 constants
-execute if score rd mips32r6_cpu matches 0 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^1 constants
-execute if score rd mips32r6_cpu matches 1 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^2 constants
-execute if score rd mips32r6_cpu matches 1 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^2 constants
-execute if score rd mips32r6_cpu matches 2 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^3 constants
-execute if score rd mips32r6_cpu matches 2 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^3 constants
-execute if score rd mips32r6_cpu matches 3 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^4 constants
-execute if score rd mips32r6_cpu matches 3 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^4 constants
-execute if score rd mips32r6_cpu matches 4 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^5 constants
-execute if score rd mips32r6_cpu matches 4 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^5 constants
-execute if score rd mips32r6_cpu matches 5 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^6 constants
-execute if score rd mips32r6_cpu matches 5 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^6 constants
-execute if score rd mips32r6_cpu matches 6 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^7 constants
-execute if score rd mips32r6_cpu matches 6 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^7 constants
-execute if score rd mips32r6_cpu matches 7 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^8 constants
-execute if score rd mips32r6_cpu matches 7 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^8 constants
-execute if score rd mips32r6_cpu matches 8 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^9 constants
-execute if score rd mips32r6_cpu matches 8 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^9 constants
-execute if score rd mips32r6_cpu matches 9 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^10 constants
-execute if score rd mips32r6_cpu matches 9 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^10 constants
-execute if score rd mips32r6_cpu matches 10 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^11 constants
-execute if score rd mips32r6_cpu matches 10 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^11 constants
-execute if score rd mips32r6_cpu matches 11 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^12 constants
-execute if score rd mips32r6_cpu matches 11 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^12 constants
-execute if score rd mips32r6_cpu matches 12 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^13 constants
-execute if score rd mips32r6_cpu matches 12 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^13 constants
-execute if score rd mips32r6_cpu matches 13 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^14 constants
-execute if score rd mips32r6_cpu matches 13 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^14 constants
-execute if score rd mips32r6_cpu matches 14 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^15 constants
-execute if score rd mips32r6_cpu matches 14 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^15 constants
-execute if score rd mips32r6_cpu matches 15 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^16 constants
-execute if score rd mips32r6_cpu matches 15 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^16 constants
-execute if score rd mips32r6_cpu matches 16 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^17 constants
-execute if score rd mips32r6_cpu matches 16 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^17 constants
-execute if score rd mips32r6_cpu matches 17 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^18 constants
-execute if score rd mips32r6_cpu matches 17 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^18 constants
-execute if score rd mips32r6_cpu matches 18 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^19 constants
-execute if score rd mips32r6_cpu matches 18 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^19 constants
-execute if score rd mips32r6_cpu matches 19 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^20 constants
-execute if score rd mips32r6_cpu matches 19 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^20 constants
-execute if score rd mips32r6_cpu matches 20 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^21 constants
-execute if score rd mips32r6_cpu matches 20 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^21 constants
-execute if score rd mips32r6_cpu matches 21 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^22 constants
-execute if score rd mips32r6_cpu matches 21 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^22 constants
-execute if score rd mips32r6_cpu matches 22 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^23 constants
-execute if score rd mips32r6_cpu matches 22 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^23 constants
-execute if score rd mips32r6_cpu matches 23 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^24 constants
-execute if score rd mips32r6_cpu matches 23 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^24 constants
-execute if score rd mips32r6_cpu matches 24 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^25 constants
-execute if score rd mips32r6_cpu matches 24 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^25 constants
-execute if score rd mips32r6_cpu matches 25 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^26 constants
-execute if score rd mips32r6_cpu matches 25 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^26 constants
-execute if score rd mips32r6_cpu matches 26 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^27 constants
-execute if score rd mips32r6_cpu matches 26 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^27 constants
-execute if score rd mips32r6_cpu matches 27 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^28 constants
-execute if score rd mips32r6_cpu matches 27 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^28 constants
-execute if score rd mips32r6_cpu matches 28 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^29 constants
-execute if score rd mips32r6_cpu matches 28 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^29 constants
-execute if score rd mips32r6_cpu matches 29 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^30 constants
-execute if score rd mips32r6_cpu matches 29 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^30 constants
-execute if score rd mips32r6_cpu matches 30 run scoreboard players operation tmp_upper mips32r6_cpu /= 2^31 constants
-execute if score rd mips32r6_cpu matches 30 run scoreboard players operation tmp_upper mips32r6_cpu *= 2^31 constants
-# If inserting far left, there is no upper value
+execute if score rd mips32r6_cpu matches ..30 run scoreboard players operation value1 mips32r6_alu = result mips32r6_alu
+execute if score rd mips32r6_cpu matches ..30 run function mips32r6:alu/shift_left
+
+execute if score rd mips32r6_cpu matches ..30 run scoreboard players operation tmp_upper mips32r6_cpu = result mips32r6_alu
+
+# If inserting into far left of rt, there is no upper value
 execute if score rd mips32r6_cpu matches 31 run scoreboard players set tmp_upper mips32r6_cpu 0
 
-# Apply bitmask on lower lsb-1..0
+# Strip off all but lower lsb-1..0 of rt
 scoreboard players operation tmp_lower mips32r6_cpu = value mips32r6_reg
 
-# If inserting far right, there is no lower value
+# If inserting into far right of rt, there is no lower value
 execute if score shamt mips32r6_cpu matches 0 run scoreboard players set tmp_lower mips32r6_cpu 0
 execute if score shamt mips32r6_cpu matches 1 run scoreboard players operation tmp_lower mips32r6_cpu %= 2^1 constants
 execute if score shamt mips32r6_cpu matches 2 run scoreboard players operation tmp_lower mips32r6_cpu %= 2^2 constants
@@ -133,71 +79,15 @@ execute if score shamt mips32r6_cpu matches 31 run scoreboard players operation 
 scoreboard players operation address mips32r6_reg = rs mips32r6_cpu
 function mips32r6:reg/read
 
-# Apply bitmask on middle msb..lsb
-scoreboard players operation tmp_middle mips32r6_cpu = value mips32r6_reg
+# Strip off all but msb..lsb of rs
+scoreboard players operation value1 mips32r6_alu = value mips32r6_reg
+scoreboard players operation value2 mips32r6_alu = shamt mips32r6_cpu
+function mips32r6:alu/shift_right
 
-execute if score shamt mips32r6_cpu matches 1 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^1 constants
-execute if score shamt mips32r6_cpu matches 1 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^1 constants
-execute if score shamt mips32r6_cpu matches 2 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^2 constants
-execute if score shamt mips32r6_cpu matches 2 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^2 constants
-execute if score shamt mips32r6_cpu matches 3 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^3 constants
-execute if score shamt mips32r6_cpu matches 3 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^3 constants
-execute if score shamt mips32r6_cpu matches 4 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^4 constants
-execute if score shamt mips32r6_cpu matches 4 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^4 constants
-execute if score shamt mips32r6_cpu matches 5 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^5 constants
-execute if score shamt mips32r6_cpu matches 5 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^5 constants
-execute if score shamt mips32r6_cpu matches 6 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^6 constants
-execute if score shamt mips32r6_cpu matches 6 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^6 constants
-execute if score shamt mips32r6_cpu matches 7 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^7 constants
-execute if score shamt mips32r6_cpu matches 7 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^7 constants
-execute if score shamt mips32r6_cpu matches 8 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^8 constants
-execute if score shamt mips32r6_cpu matches 8 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^8 constants
-execute if score shamt mips32r6_cpu matches 9 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^9 constants
-execute if score shamt mips32r6_cpu matches 9 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^9 constants
-execute if score shamt mips32r6_cpu matches 10 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^10 constants
-execute if score shamt mips32r6_cpu matches 10 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^10 constants
-execute if score shamt mips32r6_cpu matches 11 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^11 constants
-execute if score shamt mips32r6_cpu matches 11 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^11 constants
-execute if score shamt mips32r6_cpu matches 12 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^12 constants
-execute if score shamt mips32r6_cpu matches 12 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^12 constants
-execute if score shamt mips32r6_cpu matches 13 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^13 constants
-execute if score shamt mips32r6_cpu matches 13 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^13 constants
-execute if score shamt mips32r6_cpu matches 14 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^14 constants
-execute if score shamt mips32r6_cpu matches 14 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^14 constants
-execute if score shamt mips32r6_cpu matches 15 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^15 constants
-execute if score shamt mips32r6_cpu matches 15 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^15 constants
-execute if score shamt mips32r6_cpu matches 16 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^16 constants
-execute if score shamt mips32r6_cpu matches 16 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^16 constants
-execute if score shamt mips32r6_cpu matches 17 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^17 constants
-execute if score shamt mips32r6_cpu matches 17 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^17 constants
-execute if score shamt mips32r6_cpu matches 18 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^18 constants
-execute if score shamt mips32r6_cpu matches 18 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^18 constants
-execute if score shamt mips32r6_cpu matches 19 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^19 constants
-execute if score shamt mips32r6_cpu matches 19 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^19 constants
-execute if score shamt mips32r6_cpu matches 20 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^20 constants
-execute if score shamt mips32r6_cpu matches 20 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^20 constants
-execute if score shamt mips32r6_cpu matches 21 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^21 constants
-execute if score shamt mips32r6_cpu matches 21 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^21 constants
-execute if score shamt mips32r6_cpu matches 22 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^22 constants
-execute if score shamt mips32r6_cpu matches 22 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^22 constants
-execute if score shamt mips32r6_cpu matches 23 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^23 constants
-execute if score shamt mips32r6_cpu matches 23 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^23 constants
-execute if score shamt mips32r6_cpu matches 24 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^24 constants
-execute if score shamt mips32r6_cpu matches 24 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^24 constants
-execute if score shamt mips32r6_cpu matches 25 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^25 constants
-execute if score shamt mips32r6_cpu matches 25 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^25 constants
-execute if score shamt mips32r6_cpu matches 26 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^26 constants
-execute if score shamt mips32r6_cpu matches 26 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^26 constants
-execute if score shamt mips32r6_cpu matches 27 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^2constants
-execute if score shamt mips32r6_cpu matches 27 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^27 constants
-execute if score shamt mips32r6_cpu matches 28 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^28 constants
-execute if score shamt mips32r6_cpu matches 28 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^28 constants
-execute if score shamt mips32r6_cpu matches 29 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^29 constants
-execute if score shamt mips32r6_cpu matches 29 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^29 constants
-execute if score shamt mips32r6_cpu matches 30 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^30 constants
-execute if score shamt mips32r6_cpu matches 30 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^30 constants
-execute if score shamt mips32r6_cpu matches 31 run scoreboard players operation tmp_middle mips32r6_cpu /= 2^31 constants
-execute if score shamt mips32r6_cpu matches 31 run scoreboard players operation tmp_middle mips32r6_cpu *= 2^31 constants
+scoreboard players operation value1 mips32r6_alu = result mips32r6_alu
+function mips32r6:alu/shift_left
+
+scoreboard players operation tmp_middle mips32r6_cpu = result mips32r6_alu
 
 execute if score rd mips32r6_cpu matches 0 run scoreboard players operation tmp_middle mips32r6_cpu %= 2^1 constants
 execute if score rd mips32r6_cpu matches 1 run scoreboard players operation tmp_middle mips32r6_cpu %= 2^2 constants

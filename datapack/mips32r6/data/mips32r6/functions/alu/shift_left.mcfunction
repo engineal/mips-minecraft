@@ -1,0 +1,35 @@
+scoreboard players operation result mips32r6_alu = value1 mips32r6_alu
+
+execute if score value2 mips32r6_alu matches 1 run scoreboard players operation result mips32r6_alu *= 2^1 constants
+execute if score value2 mips32r6_alu matches 2 run scoreboard players operation result mips32r6_alu *= 2^2 constants
+execute if score value2 mips32r6_alu matches 3 run scoreboard players operation result mips32r6_alu *= 2^3 constants
+execute if score value2 mips32r6_alu matches 4 run scoreboard players operation result mips32r6_alu *= 2^4 constants
+execute if score value2 mips32r6_alu matches 5 run scoreboard players operation result mips32r6_alu *= 2^5 constants
+execute if score value2 mips32r6_alu matches 6 run scoreboard players operation result mips32r6_alu *= 2^6 constants
+execute if score value2 mips32r6_alu matches 7 run scoreboard players operation result mips32r6_alu *= 2^7 constants
+execute if score value2 mips32r6_alu matches 8 run scoreboard players operation result mips32r6_alu *= 2^8 constants
+execute if score value2 mips32r6_alu matches 9 run scoreboard players operation result mips32r6_alu *= 2^9 constants
+execute if score value2 mips32r6_alu matches 10 run scoreboard players operation result mips32r6_alu *= 2^10 constants
+execute if score value2 mips32r6_alu matches 11 run scoreboard players operation result mips32r6_alu *= 2^11 constants
+execute if score value2 mips32r6_alu matches 12 run scoreboard players operation result mips32r6_alu *= 2^12 constants
+execute if score value2 mips32r6_alu matches 13 run scoreboard players operation result mips32r6_alu *= 2^13 constants
+execute if score value2 mips32r6_alu matches 14 run scoreboard players operation result mips32r6_alu *= 2^14 constants
+execute if score value2 mips32r6_alu matches 15 run scoreboard players operation result mips32r6_alu *= 2^15 constants
+execute if score value2 mips32r6_alu matches 16 run scoreboard players operation result mips32r6_alu *= 2^16 constants
+execute if score value2 mips32r6_alu matches 17 run scoreboard players operation result mips32r6_alu *= 2^17 constants
+execute if score value2 mips32r6_alu matches 18 run scoreboard players operation result mips32r6_alu *= 2^18 constants
+execute if score value2 mips32r6_alu matches 19 run scoreboard players operation result mips32r6_alu *= 2^19 constants
+execute if score value2 mips32r6_alu matches 20 run scoreboard players operation result mips32r6_alu *= 2^20 constants
+execute if score value2 mips32r6_alu matches 21 run scoreboard players operation result mips32r6_alu *= 2^21 constants
+execute if score value2 mips32r6_alu matches 22 run scoreboard players operation result mips32r6_alu *= 2^22 constants
+execute if score value2 mips32r6_alu matches 23 run scoreboard players operation result mips32r6_alu *= 2^23 constants
+execute if score value2 mips32r6_alu matches 24 run scoreboard players operation result mips32r6_alu *= 2^24 constants
+execute if score value2 mips32r6_alu matches 25 run scoreboard players operation result mips32r6_alu *= 2^25 constants
+execute if score value2 mips32r6_alu matches 26 run scoreboard players operation result mips32r6_alu *= 2^26 constants
+execute if score value2 mips32r6_alu matches 27 run scoreboard players operation result mips32r6_alu *= 2^27 constants
+execute if score value2 mips32r6_alu matches 28 run scoreboard players operation result mips32r6_alu *= 2^28 constants
+execute if score value2 mips32r6_alu matches 29 run scoreboard players operation result mips32r6_alu *= 2^29 constants
+execute if score value2 mips32r6_alu matches 30 run scoreboard players operation result mips32r6_alu *= 2^30 constants
+execute if score value2 mips32r6_alu matches 31 run scoreboard players operation result mips32r6_alu *= 2^31 constants
+
+execute if score debug mips32r6_alu matches 1.. run tellraw @p [{"score":{"name":"value1","objective":"mips32r6_alu"}},{"text":" << "},{"score":{"name":"value2","objective":"mips32r6_alu"}},{"text":"="},{"score":{"name":"result","objective":"mips32r6_alu"}}]
