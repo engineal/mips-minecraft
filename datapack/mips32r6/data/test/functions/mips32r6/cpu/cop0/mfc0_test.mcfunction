@@ -6,7 +6,7 @@ data modify storage mips32r6:reg cp0.index set value 1234
 scoreboard players set rt mips32r6_cpu 1
 scoreboard players set rd mips32r6_cpu 0
 function mips32r6:cpu/cop0/mfc0
-execute store result score tmp_value test run data get storage mips32r6:reg register[1]
+execute store result score tmp_value test run data get storage mips32r6:reg GPR[1]
 execute if score tmp_value test matches 1234 run scoreboard players add passed test 1
 execute unless score tmp_value test matches 1234 run scoreboard players add failed test 1
 execute unless score tmp_value test matches 1234 run tellraw @p [{"text":"Actual value: ","color":"red"},{"score":{"name":"value","objective":"mips32r6_reg"},"color":"red"},{"text":", Expected value: 0","color":"red"}]
