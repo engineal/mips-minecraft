@@ -9,3 +9,4 @@ data modify storage mips32r6:reg cp0.compare set value 0
 data modify storage mips32r6:reg cp0.status set value 0
 data modify storage mips32r6:reg cp0.cause set value 0
 data modify storage mips32r6:reg cp0.epc set value 0
+data modify storage mips32r6:reg cp0.errorepc set value 0
