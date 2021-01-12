@@ -1,7 +1,4 @@
 /*
- * lcd.h
- */
-/*
 Copyright (c) 2007-2018, MIPS Tech, LLC and/or its affiliated group companies or licensors
 
 All rights reserved.

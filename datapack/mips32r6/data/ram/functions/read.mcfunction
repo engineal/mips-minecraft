@@ -12,3 +12,4 @@
 
 execute if score physical_address mips32r6_mem matches 0..4194303 run scoreboard players operation device_address ram = physical_address mips32r6_mem
 execute if score physical_address mips32r6_mem matches 0..4194303 run function ram:do_read
+execute if score physical_address mips32r6_mem matches 0..4194303 run scoreboard players add handled mips32r6_mem 1

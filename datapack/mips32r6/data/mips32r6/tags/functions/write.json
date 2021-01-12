@@ -1,5 +1,6 @@
 {
     "values": [
+        "rom:write",
         "ram:write",
         "vga:write"
     ]

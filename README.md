@@ -18,11 +18,11 @@ Create a new world in creative mode (I prefer the void super-flat preset). Then 
 This MIPS emulator should be able to run any binary created for the MIPS32 architecture, although keep in mind this project is very much still a WIP. I've used the following toolchain to cross-compile for the MIPS architecture: https://codescape.mips.com/components/toolchain/2020.06-01/index.html.
 
 Example commands:
-* Assemble code: `as exception.s -o exception.o -mips32r6`
-* Or: `mips-mti-elf-gcc exception.s -mips32r6 -c`
-* Link code: `ld exception.o -o exception.bin --oformat=binary`
-* Combined: `mips-mti-elf-gcc exception.s -o exception.bin -Xlinker --oformat=binary`
-* Extract binary from object file: `objcopy -O binary exception.o exception.bin`
+* Assemble code: `as example.s -o example.o -mips32r6`
+* Or: `mips-mti-elf-gcc example.s -mips32r6 -c`
+* Link code: `ld example.o -o example.bin --oformat=binary`
+* Combined: `mips-mti-elf-gcc example.s -o example.bin -Xlinker --oformat=binary`
+* Extract binary from object file: `objcopy -O binary example.o example.bin`
 
 ## Loading MIPS binaries
 MIPS binaries can be loaded into the emulator's memory through Minecraft commands. The included `flash_mc` Python app will convert binary files into a .mcfunction file, which you can then run in Minecraft to load the binary into memory.
@@ -66,15 +66,17 @@ To create your own custom hardware that can communicate with this emulator:
 2. If your hardware will handle read requests, create a new function to handle memory read requests.
 
    1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to a range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
-   2. This function should write the data to the `value mips32r6_mem` scoreboard value.
-   3. Tag your read function in the mips32r6:read tag by including your read function in a file with this path: `data/mips32r6/tags/functions/read.json`.
+   2. This function should return the read value in the `value mips32r6_mem` scoreboard value.
+   3. This function should increment the `handled mips32r6_mem` scoreboard value.
+   4. Tag your read function in the mips32r6:read tag by including your read function in a file with this path: `data/mips32r6/tags/functions/read.json`.
 
 
 3. If your hardware will handle write requests, create a new function to handle memory write requests.
 
    1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to a range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
-   2. This function should read the data to write from the `value mips32r6_mem` scoreboard value.
-   3. Tag your write function in the mips32r6:write tag by including your write function in a file with this path: `data/mips32r6/tags/functions/write.json`.
+   2. This function should write the value in the `value mips32r6_mem` scoreboard value.
+   3. This function should increment the `handled mips32r6_mem` scoreboard value.
+   4. Tag your write function in the mips32r6:write tag by including your write function in a file with this path: `data/mips32r6/tags/functions/write.json`.
 
 
 Take a look at the ram, rom, and vga hardware components in this repo for an example.

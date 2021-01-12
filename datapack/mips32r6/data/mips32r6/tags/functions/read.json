@@ -1,6 +1,6 @@
 {
     "values": [
-        "ram:read",
-        "rom:read"
+        "rom:read",
+        "ram:read"
     ]
 }

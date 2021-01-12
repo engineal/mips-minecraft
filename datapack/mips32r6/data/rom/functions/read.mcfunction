@@ -13,3 +13,4 @@
 execute if score physical_address mips32r6_mem matches 532676608..536870911 run scoreboard players operation device_address rom = physical_address mips32r6_mem
 execute if score physical_address mips32r6_mem matches 532676608..536870911 run scoreboard players remove device_address rom 532676608
 execute if score physical_address mips32r6_mem matches 532676608..536870911 run function rom:do_read
+execute if score physical_address mips32r6_mem matches 532676608..536870911 run scoreboard players add handled mips32r6_mem 1
