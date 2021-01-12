@@ -9,7 +9,7 @@
 # to form a PC-relative effective target address. Compact branches have no delay
 # slot: the instruction after the branch is NOT executed if the branch is taken.
 
-# sign extend
+# sign extend immediate
 scoreboard players operation tmp_val mips32r6_cpu = immediate mips32r6_cpu
 execute if score tmp_val mips32r6_cpu matches 32768.. run scoreboard players operation tmp_val mips32r6_cpu -= 2^16 constants
 
