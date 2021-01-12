@@ -15,7 +15,7 @@ Create a new world in creative mode (I prefer the void super-flat preset). Then 
 **Caution: this datapack will replace blocks on load, so be careful if adding to an existing world!**
 
 ## Compiling and assembling code
-This MIPS emulator should be able to run any binary created for the MIPS32 architecture, although keep in mind this project is very much still a WIP. I've used the following toolchain to cross-compile for the MIPS architecture: https://codescape.mips.com/components/toolchain/2019.09-01/index.html.
+This MIPS emulator should be able to run any binary created for the MIPS32 architecture, although keep in mind this project is very much still a WIP. I've used the following toolchain to cross-compile for the MIPS architecture: https://codescape.mips.com/components/toolchain/2020.06-01/index.html.
 
 Example commands:
 * Assemble code: `as exception.s -o exception.o -mips32r6`
