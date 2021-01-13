@@ -4,13 +4,13 @@ A Minecraft datapack that creates a MIPS emulator in a Minecraft world. The goal
 This is still a work in progress, and there is much left to finish.
 
 ### Author
-@engineal
+Aaron Lucia (@engineal)
 
 ### Requirements
 Minecraft 1.15.2 or newer
 
 ## Datapack Install
-Create a new world in creative mode (I prefer the void super-flat preset). Then copy `datapack/mips32r6` into the world's datapack directory. A world download may come eventually, along with a zip file release.
+Create a new world in creative mode (I prefer the void super-flat preset). Then copy `datapacks/mips32r6` into the world's datapack directory. A world download may come eventually, along with a zip file release.
 
 **Caution: this datapack will replace blocks on load, so be careful if adding to an existing world!**
 
