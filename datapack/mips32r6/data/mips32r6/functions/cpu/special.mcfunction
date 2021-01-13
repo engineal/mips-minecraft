@@ -1,6 +1,13 @@
 execute if score funct mips32r6_cpu matches ..-1 run tellraw @p [{"text":"special ","color":"red"},{"score":{"name":"funct","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
 execute if score funct mips32r6_cpu matches ..-1 run scoreboard players set running mips32r6_tick 0
-execute if score funct mips32r6_cpu matches 0 run function mips32r6:cpu/special/nop
+execute if score funct mips32r6_cpu matches 0 if score shamt mips32r6_cpu matches ..-1 run tellraw @p [{"text":"special ","color":"red"},{"score":{"name":"funct","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
+execute if score funct mips32r6_cpu matches 0 if score shamt mips32r6_cpu matches ..-1 run scoreboard players set running mips32r6_tick 0
+execute if score funct mips32r6_cpu matches 0 if score shamt mips32r6_cpu matches 0 run function mips32r6:cpu/special/nop
+execute if score funct mips32r6_cpu matches 0 if score shamt mips32r6_cpu matches 1..2 run tellraw @p [{"text":"special ","color":"red"},{"score":{"name":"funct","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
+execute if score funct mips32r6_cpu matches 0 if score shamt mips32r6_cpu matches 1..2 run scoreboard players set running mips32r6_tick 0
+execute if score funct mips32r6_cpu matches 0 if score shamt mips32r6_cpu matches 3 run function mips32r6:cpu/special/ehb
+execute if score funct mips32r6_cpu matches 0 if score shamt mips32r6_cpu matches 4.. run tellraw @p [{"text":"special ","color":"red"},{"score":{"name":"funct","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
+execute if score funct mips32r6_cpu matches 0 if score shamt mips32r6_cpu matches 4.. run scoreboard players set running mips32r6_tick 0
 execute if score funct mips32r6_cpu matches 1 run tellraw @p [{"text":"special ","color":"red"},{"score":{"name":"funct","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
 execute if score funct mips32r6_cpu matches 1 run scoreboard players set running mips32r6_tick 0
 execute if score funct mips32r6_cpu matches 2 run function mips32r6:cpu/special/srl
