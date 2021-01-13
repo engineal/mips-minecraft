@@ -2,7 +2,7 @@
     "pack": {
         "pack_format": 6,
         "description": {
-          "text":"A MIPS32 Release 6 emulator."
+          "text":"A VGA display for the MIPS32 Release 6 emulator."
         }
     }
 }

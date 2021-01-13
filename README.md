@@ -7,10 +7,15 @@ This is still a work in progress, and there is much left to finish.
 Aaron Lucia (@engineal)
 
 ### Requirements
-Minecraft 1.15.2 or newer
+Minecraft 1.16.2 or newer
 
 ## Datapack Install
-Create a new world in creative mode (I prefer the void super-flat preset). Then copy `datapacks/mips32r6` into the world's datapack directory. A world download may come eventually, along with a zip file release.
+
+1. Create a new world in creative mode (I prefer the void super-flat preset).
+2. Then copy the `datapacks/mips32r6` directory into the world's datapack directory.
+
+A world download may come eventually, along with a zip file release.
+To include the VGA display (currently inoperable), you can copy the `datapacks/vga` directory into the world's datapack directory as well.
 
 **Caution: this datapack will replace blocks on load, so be careful if adding to an existing world!**
 
@@ -79,7 +84,7 @@ To create your own custom hardware that can communicate with this emulator:
    4. Tag your write function in the mips32r6:write tag by including your write function in a file with this path: `data/mips32r6/tags/functions/write.json`.
 
 
-Take a look at the ram, rom, and vga hardware components in this repo for an example.
+Take a look at the RAM, ROM, and VGA hardware components in this repo for an example.
 
 
 ## License

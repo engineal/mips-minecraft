@@ -5,7 +5,6 @@
         "rom:load",
         "firmware:firmware",
         "ram:load",
-        "vga:load",
         "test:load"
     ]
 }
