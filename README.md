@@ -19,6 +19,10 @@ To include the VGA display (currently inoperable), you can copy the `datapacks/v
 
 **Caution: this datapack will replace blocks on load, so be careful if adding to an existing world!**
 
+There is a test suite that validates that the emulator is operating as expected.
+To run the test suite, copy the `datapacks/test` directory into the world's datapack directory and run the `function #test:all` Minecraft command.
+Individual or sub-groups of tests can be also be run by executing those tags/functions directly.
+
 ## Running the emulator
 To start the emulator, set the `running mips32r6_tick` score to 1 by running the `scoreboard players set running mips32r6_tick 1` Minecraft command.
 To halt the emulator, set the `running mips32r6_tick` score to 0 by running the `scoreboard players set running mips32r6_tick 0` Minecraft command.

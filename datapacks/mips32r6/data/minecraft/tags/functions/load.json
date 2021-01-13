@@ -4,7 +4,6 @@
         "mips32r6:load",
         "rom:load",
         "firmware:firmware",
-        "ram:load",
-        "test:load"
+        "ram:load"
     ]
 }
