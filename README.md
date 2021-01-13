@@ -1,5 +1,5 @@
 # mips-minecraft
-A Minecraft datapack that creates a MIPS emulator in a Minecraft world. The goal of this project is to emulate a MIPS32 Release 6 processor. It can execute at least 1 instruction every Minecraft tick, resulting in a base clock speed of 20Hz. It can now also be overclocked to execute more than 1 instruction per tick, but care has to be taken so that we don't exceed the maxCommandChainLength gamerule. Depending on what your computer can handle, with the default maxCommandChainLength of 65,536 it can probably be overclocked with a x64 multiplier, giving us a clock speed of 1.28 kHz.
+A Minecraft datapack that emulates a MIPS32 Release 6 processor in a Minecraft world.
 
 This is still a work in progress, and there is much left to finish.
 
@@ -19,8 +19,25 @@ To include the VGA display (currently inoperable), you can copy the `datapacks/v
 
 **Caution: this datapack will replace blocks on load, so be careful if adding to an existing world!**
 
+## Running the emulator
+To start the emulator, set the `running mips32r6_tick` score to 1 by running the `scoreboard players set running mips32r6_tick 1` Minecraft command.
+To halt the emulator, set the `running mips32r6_tick` score to 0 by running the `scoreboard players set running mips32r6_tick 0` Minecraft command.
+A single CPU cycle can executed by running the `function mips32r6:cpu` Minecraft command, which can be useful to debug a program.
+The `reload` Minecraft command will reset the emulator, clearing all registers and memory and placing the program counter at the reset vector.
+
+By default, a single Minecraft tick will execute a single CPU cycle while the emulator is running, resulting in a base clock speed of 20Hz.
+You can overclock the emulator by setting the `multiplier mips32r6_tick` score to the number of CPU cycles to execute per Minecraft tick.
+Care should be taken so that you don't exceed the maxCommandChainLength gamerule limit; if a multiplier causes the command limit to be reached, you will see an error in the chat and the CPU will halt.
+Depending on what the host computer can handle, with the default maxCommandChainLength of 65,536 an overclock with a x64 multiplier should be achievable, resulting in a clock speed of 1.28 kHz.
+
+To debug either the emulator or your binary, you can set emulator debug levels for each component through the scoreboard:
+* `scoreboard players set debug mips32r6_cpu <level>` (0-1)
+* `scoreboard players set debug mips32r6_alu <level>` (0-1)
+* `scoreboard players set debug mips32r6_mem <level>` (0-4)
+* `scoreboard players set debug mips32r6_reg <level>` (0-1)
+
 ## Compiling and assembling code
-This MIPS emulator should be able to run any binary created for the MIPS32 architecture, although keep in mind this project is very much still a WIP. I've used the following toolchain to cross-compile for the MIPS architecture: https://codescape.mips.com/components/toolchain/2020.06-01/index.html.
+This MIPS emulator will eventually be able to run any binary created for the MIPS32 architecture, although keep in mind this project is very much still a WIP. I've used the following toolchain to cross-compile for the MIPS architecture: https://codescape.mips.com/components/toolchain/2020.06-01/index.html.
 
 Example commands:
 * Assemble code: `as example.s -o example.o -mips32r6`
@@ -34,18 +51,10 @@ MIPS binaries can be loaded into the emulator's memory through Minecraft command
 
 Currently, the processor starts executing code at ROM address 0, so before loading any binaries, you might need to apply address offsets. The script allows you to specify the address that the binary will be loaded at, but will not relocate memory addresses yet.
 
-## Running the emulator
-The emulator can be stepped with the `function mips32r6:cpu` command. To run a program, set the mips32r6_tick score for player running to 1 using `scoreboard players set running mips32r6_tick 1`. The `reload` command will reset the emulator.
-
-To debug either the emulator or your binary, you can set emulator debug levels for each component through the scoreboard:
-* `scoreboard players set debug mips32r6_cpu <level>` (0-1)
-* `scoreboard players set debug mips32r6_alu <level>` (0-1)
-* `scoreboard players set debug mips32r6_mem <level>` (0-4)
-* `scoreboard players set debug mips32r6_reg <level>` (0-1)
-
 ## Planned features
 #### Hardware
 * Virtual memory (in-progress)
+* TLB
 * Permanent storage
 * Proper text mode display
 * IO (such as buttons)
@@ -70,7 +79,7 @@ To create your own custom hardware that can communicate with this emulator:
 
 2. If your hardware will handle read requests, create a new function to handle memory read requests.
 
-   1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to a range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
+   1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to the range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
    2. This function should return the read value in the `value mips32r6_mem` scoreboard value.
    3. This function should increment the `handled mips32r6_mem` scoreboard value.
    4. Tag your read function in the mips32r6:read tag by including your read function in a file with this path: `data/mips32r6/tags/functions/read.json`.
@@ -78,7 +87,7 @@ To create your own custom hardware that can communicate with this emulator:
 
 3. If your hardware will handle write requests, create a new function to handle memory write requests.
 
-   1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to a range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
+   1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to the range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
    2. This function should write the value in the `value mips32r6_mem` scoreboard value.
    3. This function should increment the `handled mips32r6_mem` scoreboard value.
    4. Tag your write function in the mips32r6:write tag by including your write function in a file with this path: `data/mips32r6/tags/functions/write.json`.
