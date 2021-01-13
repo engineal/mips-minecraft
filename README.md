@@ -4,7 +4,7 @@ A Minecraft datapack that emulates a MIPS32 Release 6 processor in a Minecraft w
 This is still a work in progress, and there is much left to finish.
 
 ### Author
-Aaron Lucia (@engineal)
+Aaron Lucia ([@engineal](https://github.com/engineal))
 
 ### Requirements
 Minecraft 1.16.2 or newer
