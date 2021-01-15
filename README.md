@@ -58,7 +58,7 @@ The MIPS32 Release 6 emulator, a 256 KB ROM, and a 2 MB RAM.
 #### Dependencies
 This is the main datapack and it should be ordered before any of the others.
 
-#### Usage <a name="mips32r6-usage"></a>
+#### Usage
 To start the emulator, set the `running mips32r6_tick` score to 1 by running the `scoreboard players set running mips32r6_tick 1` Minecraft command.
 To halt the emulator, set the `running mips32r6_tick` score to 0 by running the `scoreboard players set running mips32r6_tick 0` Minecraft command.
 A single CPU cycle can executed by running the `function mips32r6:cpu` Minecraft command, which can be useful to debug a program.
@@ -83,7 +83,7 @@ The Boot-MIPS bootloader for the MIPS32 Release 6 emulator.
 
 #### Usage
 This datapack will load the Boot-MIPS bootloader into the ROM at the reset vector when the world is loaded or with the `reload` Minecraft command.
-See [mips32r6-usage](#mips32r6-usage) for how to start the emulator.
+See [mips32r6-usage](#usage) for how to start the emulator.
 
 ### test
 A test suite for the MIPS32 Release 6 emulator.
