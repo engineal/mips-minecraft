@@ -46,19 +46,19 @@ You can reorder datapacks by enabling the datapacks in the order you want them l
 
 ## Datapacks
 
-* [mips32r6][]
-* [boot][]
-* [test][]
-* [vga][]
-* [software][]
+* [mips32r6](#mips32r6)
+* [boot](#boot)
+* [test](#test)
+* [vga](#vga)
+* [software](#software)
 
 ### mips32r6
 The MIPS32 Release 6 emulator, a 256 KB ROM, and a 2 MB RAM.
 
-#### Dependencies [mips32r6-dependencies]
+#### Dependencies
 This is the main datapack and it should be ordered before any of the others.
 
-#### Usage [mips32r6-usage]
+#### Usage <a name="mips32r6-usage"></a>
 To start the emulator, set the `running mips32r6_tick` score to 1 by running the `scoreboard players set running mips32r6_tick 1` Minecraft command.
 To halt the emulator, set the `running mips32r6_tick` score to 0 by running the `scoreboard players set running mips32r6_tick 0` Minecraft command.
 A single CPU cycle can executed by running the `function mips32r6:cpu` Minecraft command, which can be useful to debug a program.
@@ -78,40 +78,40 @@ To debug the emulator, you can set emulator debug levels for each component usin
 ### boot
 The Boot-MIPS bootloader for the MIPS32 Release 6 emulator.
 
-#### Dependencies [boot-dependencies]
+#### Dependencies
 * mips32r6
 
-#### Usage [boot-usage]
+#### Usage
 This datapack will load the Boot-MIPS bootloader into the ROM at the reset vector when the world is loaded or with the `reload` Minecraft command.
-See [mips32r6-usage][] for how to start the emulator.
+See [mips32r6-usage](#mips32r6-usage) for how to start the emulator.
 
 ### test
 A test suite for the MIPS32 Release 6 emulator.
 
-#### Dependencies [test-dependencies]
+#### Dependencies
 * mips32r6
 
-#### Usage [test-usage]
+#### Usage
 Run the `function #test:all` Minecraft command to run every test. The test results will be reported in the Minecraft chat.
 Individual tests or groups of tests may be also be run by executing those tags/functions directly.
 
 ### vga
 A VGA display for the MIPS32 Release 6 emulator. (currently non-functional)
 
-#### Dependencies [vga-dependencies]
+#### Dependencies
 * mips32r6
 
-#### Usage [vga-usage]
+#### Usage
 This datapack will create a black screen in the world when the world is loaded or with the `reload` Minecraft command.
 It currently does nothing else.
 
 ### software
 Example software for the MIPS32 Release 6 emulator. (currently broken)
 
-#### Dependencies [software-dependencies]
+#### Dependencies
 * mips32r6
 
-#### Usage [software-usage]
+#### Usage
 Please don't use.
 
 ## Compiling and assembling code
