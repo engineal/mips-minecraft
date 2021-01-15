@@ -7,23 +7,58 @@ This is still a work in progress, and there is much left to finish.
 Aaron Lucia ([@engineal](https://github.com/engineal))
 
 ### Requirements
-Minecraft 1.16.2 or newer
+Minecraft Java 1.16.2 or newer
 
-## Datapack Install
+## Installation
 
-1. Create a new world in creative mode (I prefer the void super-flat preset).
-2. Then copy the `datapacks/mips32r6` directory into the world's datapack directory.
+This project provides several datapacks in the `datapacks` directory, detailed below.
 
-A world download may come eventually, along with a zip file release.
-To include the VGA display (currently inoperable), you can copy the `datapacks/vga` directory into the world's datapack directory as well.
+To play around with this emulator, it is currently suggested to load the mips32r6 and boot datapacks.
+The other datapacks either are non-functional, broken, or used for development of this project.
 
-**Caution: this datapack will replace blocks on load, so be careful if adding to an existing world!**
+### New Java World
+1. Go to the `Create New World` menu and enter a name for your world.
+2. Choose `Game Mode: Creative` and ensure that `Allow Cheats: ON` is selected.
+3. Select `Data Packs` and then `Open Pack Folder`.
+4. Copy the datapacks you want to install into the folder that was opened.
+5. Select the datapacks you want to enable.
+Note that the ordering of the datapacks in the selected pane matters. The mips32r6 datapack should always be loaded first.
+If a datapack specifies any dependencies they must be loaded before it.
+You can reorder datapacks by using the up and down arrows when hovering over a datapack.
 
-There is a test suite that validates that the emulator is operating as expected.
-To run the test suite, copy the `datapacks/test` directory into the world's datapack directory and run the `function #test:all` Minecraft command.
-Individual or sub-groups of tests can be also be run by executing those tags/functions directly.
+I prefer using The Void Superflat world type preset to initialize the world with no blocks:
+1. Select `More World Options...` and choose `Generate Structures: OFF`.
+2. Choose `World Type: Superflat`, then select `Customize`.
+3. Select `Presets` and use `The Void` preset.
 
-## Running the emulator
+A world download may come eventually so that you can skip these steps, along with a zip file release of the datapacks.
+
+### Existing Java World
+
+**Caution: this datapack will replace blocks in your world on load, so be careful if adding to an existing world!**
+You may want to take a backup first!
+
+1. Copy the datapacks you want to install into the datapacks folder in your world's save file.
+2. Use the `datapack` Minecraft command to list the available datapacks and to enable and disable them.
+Note that the ordering of the datapacks in the list matters. The mips32r6 datapack should always be loaded first.
+If a datapack specifies any dependencies they must be loaded before it.
+You can reorder datapacks by enabling the datapacks in the order you want them loaded.
+
+## Datapacks
+
+* [mips32r6][]
+* [boot][]
+* [test][]
+* [vga][]
+* [software][]
+
+### mips32r6
+The MIPS32 Release 6 emulator, a 256 KB ROM, and a 2 MB RAM.
+
+#### Dependencies [mips32r6-dependencies]
+This is the main datapack and it should be ordered before any of the others.
+
+#### Usage [mips32r6-usage]
 To start the emulator, set the `running mips32r6_tick` score to 1 by running the `scoreboard players set running mips32r6_tick 1` Minecraft command.
 To halt the emulator, set the `running mips32r6_tick` score to 0 by running the `scoreboard players set running mips32r6_tick 0` Minecraft command.
 A single CPU cycle can executed by running the `function mips32r6:cpu` Minecraft command, which can be useful to debug a program.
@@ -34,11 +69,50 @@ You can overclock the emulator by setting the `multiplier mips32r6_tick` score t
 Care should be taken so that you don't exceed the maxCommandChainLength gamerule limit; if a multiplier causes the command limit to be reached, you will see an error in the chat and the CPU will halt.
 Depending on what the host computer can handle, with the default maxCommandChainLength of 65,536 an overclock with a x64 multiplier should be achievable, resulting in a clock speed of 1.28 kHz.
 
-To debug either the emulator or your binary, you can set emulator debug levels for each component through the scoreboard:
+To debug the emulator, you can set emulator debug levels for each component using the following Minecraft commands:
 * `scoreboard players set debug mips32r6_cpu <level>` (0-1)
 * `scoreboard players set debug mips32r6_alu <level>` (0-1)
 * `scoreboard players set debug mips32r6_mem <level>` (0-4)
 * `scoreboard players set debug mips32r6_reg <level>` (0-1)
+
+### boot
+The Boot-MIPS bootloader for the MIPS32 Release 6 emulator.
+
+#### Dependencies [boot-dependencies]
+* mips32r6
+
+#### Usage [boot-usage]
+This datapack will load the Boot-MIPS bootloader into the ROM at the reset vector when the world is loaded or with the `reload` Minecraft command.
+See [mips32r6-usage][] for how to start the emulator.
+
+### test
+A test suite for the MIPS32 Release 6 emulator.
+
+#### Dependencies [test-dependencies]
+* mips32r6
+
+#### Usage [test-usage]
+Run the `function #test:all` Minecraft command to run every test. The test results will be reported in the Minecraft chat.
+Individual tests or groups of tests may be also be run by executing those tags/functions directly.
+
+### vga
+A VGA display for the MIPS32 Release 6 emulator. (currently non-functional)
+
+#### Dependencies [vga-dependencies]
+* mips32r6
+
+#### Usage [vga-usage]
+This datapack will create a black screen in the world when the world is loaded or with the `reload` Minecraft command.
+It currently does nothing else.
+
+### software
+Example software for the MIPS32 Release 6 emulator. (currently broken)
+
+#### Dependencies [software-dependencies]
+* mips32r6
+
+#### Usage [software-usage]
+Please don't use.
 
 ## Compiling and assembling code
 This MIPS emulator will eventually be able to run any binary created for the MIPS32 architecture, although keep in mind this project is very much still a WIP. I've used the following toolchain to cross-compile for the MIPS architecture: https://codescape.mips.com/components/toolchain/2020.06-01/index.html.

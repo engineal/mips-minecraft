@@ -2,7 +2,7 @@
     "pack": {
         "pack_format": 6,
         "description": {
-          "text":"The MIPS32 Release 6 emulator, a 256 KB ROM, and a 2 MB RAM."
+          "text":"Example software for the MIPS32 Release 6 emulator."
         }
     }
 }
