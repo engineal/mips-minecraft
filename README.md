@@ -69,11 +69,13 @@ You can overclock the emulator by setting the `multiplier mips32r6_tick` score t
 Care should be taken so that you don't exceed the maxCommandChainLength gamerule limit; if a multiplier causes the command limit to be reached, you will see an error in the chat and the CPU will halt.
 Depending on what the host computer can handle, with the default maxCommandChainLength of 65,536 an overclock with a x64 multiplier should be achievable, resulting in a clock speed of 1.28 kHz.
 
-To debug the emulator, you can set emulator debug levels for each component using the following Minecraft commands:
-* `scoreboard players set debug mips32r6_cpu <level>` (0-1)
-* `scoreboard players set debug mips32r6_alu <level>` (0-1)
-* `scoreboard players set debug mips32r6_mem <level>` (0-4)
-* `scoreboard players set debug mips32r6_reg <level>` (0-1)
+To debug the emulator, you can set emulator logging levels for each component using the following Minecraft commands:
+* `scoreboard players set cpu_level logging <level>` (0-1)
+* `scoreboard players set alu_level logging <level>` (0-1)
+* `scoreboard players set reg_level logging <level>` (0-1)
+* `scoreboard players set mem_level logging <level>` (0-4)
+* `scoreboard players set rom_level logging <level>` (0-1)
+* `scoreboard players set ram_level logging <level>` (0-1)
 
 ### boot
 The Boot-MIPS bootloader for the MIPS32 Release 6 emulator.

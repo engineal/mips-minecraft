@@ -10,7 +10,7 @@
 # If the contents of GPR rs and GPR rt are not equal, branch to the effective
 # target address after the instruction in the delay slot is executed.
 
-execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"bne "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}}]
+execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"bne "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}}]
 
 # Read registers
 scoreboard players operation address mips32r6_reg = rs mips32r6_cpu

@@ -14,6 +14,6 @@
 # of a branch or jump. The EHB instruction does not clear instruction hazards;
 # such hazards are cleared by the JALR.HB, JR.HB, and ERET instructions.
 
-execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"ehb"}]
+execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"ehb"}]
 
 # TODO: clear applicable hazards

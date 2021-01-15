@@ -47,4 +47,4 @@ execute positioned ~ ~ ~7 run function mips32r6:mem/util/write_nibble
 scoreboard players operation value mips32r6_mem = tmp_value mips32r6_mem
 scoreboard players reset tmp_value mips32r6_mem
 
-execute if score debug mips32r6_mem matches 3.. run tellraw @p [{"text":"write word: "},{"score":{"name":"value","objective":"mips32r6_mem"}}]
+execute if score mem_level logging matches 3.. run tellraw @p [{"text":"write word: "},{"score":{"name":"value","objective":"mips32r6_mem"}}]

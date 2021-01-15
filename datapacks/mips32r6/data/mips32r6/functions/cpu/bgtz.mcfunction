@@ -11,7 +11,7 @@
 # zero), branch to the effective target address after the instruction in the
 # delay slot is executed.
 
-execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"bgtz "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}}]
+execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"bgtz "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}}]
 
 # Read rs register
 scoreboard players operation address mips32r6_reg = rs mips32r6_cpu

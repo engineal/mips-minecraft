@@ -2,7 +2,7 @@
     "values": [
         "#test:mips32r6/mem/util",
         "test:mips32r6/mem/read_test",
-        "test:mips32r6/mem/tlb_test",
+        "test:mips32r6/mem/translate_address_test",
         "test:mips32r6/mem/write_test"
     ]
 }

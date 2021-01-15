@@ -8,7 +8,7 @@
 # specified by the combination of rd and sel. Not all coprocessor 0 registers
 # support the sel field. In those instances, the sel field must be set to zero.
 
-execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"mtc0 "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rd","objective":"mips32r6_cpu"}}]
+execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"mtc0 "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rd","objective":"mips32r6_cpu"}}]
 
 # Read rt register
 scoreboard players operation address mips32r6_reg = rt mips32r6_cpu

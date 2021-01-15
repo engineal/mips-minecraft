@@ -32,4 +32,4 @@ execute if score value2 mips32r6_alu matches 29 run scoreboard players operation
 execute if score value2 mips32r6_alu matches 30 run scoreboard players operation result mips32r6_alu *= 2^30 constants
 execute if score value2 mips32r6_alu matches 31 run scoreboard players operation result mips32r6_alu *= 2^31 constants
 
-execute if score debug mips32r6_alu matches 1.. run tellraw @p [{"score":{"name":"value1","objective":"mips32r6_alu"}},{"text":" << "},{"score":{"name":"value2","objective":"mips32r6_alu"}},{"text":"="},{"score":{"name":"result","objective":"mips32r6_alu"}}]
+execute if score alu_level logging matches 1.. run tellraw @p [{"score":{"name":"value1","objective":"mips32r6_alu"}},{"text":" << "},{"score":{"name":"value2","objective":"mips32r6_alu"}},{"text":"="},{"score":{"name":"result","objective":"mips32r6_alu"}}]

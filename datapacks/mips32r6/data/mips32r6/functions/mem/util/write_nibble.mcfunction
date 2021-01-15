@@ -20,4 +20,4 @@ execute if score value mips32r6_mem matches 13 run setblock ~ ~ ~ minecraft:gree
 execute if score value mips32r6_mem matches 14 run setblock ~ ~ ~ minecraft:red_wool
 execute if score value mips32r6_mem matches 15 run setblock ~ ~ ~ minecraft:black_wool
 
-execute if score debug mips32r6_mem matches 4.. run tellraw @p [{"text":"write nibble: "},{"score":{"name":"value","objective":"mips32r6_mem"}}]
+execute if score mem_level logging matches 4.. run tellraw @p [{"text":"write nibble: "},{"score":{"name":"value","objective":"mips32r6_mem"}}]

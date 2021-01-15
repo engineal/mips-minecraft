@@ -8,7 +8,7 @@
 # location specified by the aligned effective address. The 16-bit signed offset
 # is added to the contents of GPR base to form the effective address.
 
-execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"sw "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}},{"text":"("},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":")"}]
+execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"sw "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}},{"text":"("},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":")"}]
 
 # Read registers
 scoreboard players operation address mips32r6_reg = rs mips32r6_cpu

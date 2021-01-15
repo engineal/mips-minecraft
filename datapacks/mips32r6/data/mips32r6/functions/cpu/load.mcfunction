@@ -11,5 +11,3 @@ scoreboard players set immediate mips32r6_cpu 0
 scoreboard players set address mips32r6_cpu 0
 
 function mips32r6:cpu/cop0/load
-
-scoreboard players set debug mips32r6_cpu 1

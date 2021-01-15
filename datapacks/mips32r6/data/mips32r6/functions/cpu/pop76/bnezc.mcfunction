@@ -16,7 +16,7 @@ scoreboard players operation tmp_val mips32r6_cpu %= 2^21 constants
 # sign extend
 execute if score tmp_val mips32r6_cpu matches 1048576.. run scoreboard players operation tmp_val mips32r6_cpu -= 2^21 constants
 
-execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"bnezc "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"tmp_val","objective":"mips32r6_cpu"}}]
+execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"bnezc "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"tmp_val","objective":"mips32r6_cpu"}}]
 
 # Read rs register
 scoreboard players operation address mips32r6_reg = rs mips32r6_cpu

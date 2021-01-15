@@ -15,7 +15,7 @@
 # Jump to the effective target address. Execute the instruction that follows the
 # jump, in the branch delay slot, before executing the jump itself.
 
-execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"jal "},{"score":{"name":"address","objective":"mips32r6_cpu"}}]
+execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"jal "},{"score":{"name":"address","objective":"mips32r6_cpu"}}]
 
 # Link
 scoreboard players add pc mips32r6_cpu 4

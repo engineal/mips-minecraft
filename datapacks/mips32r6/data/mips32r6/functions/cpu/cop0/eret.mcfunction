@@ -8,7 +8,7 @@
 # instruction at the completion of interrupt, exception, or error process-ing.
 # ERET does not execute the next instruction (that is, it has no delay slot).
 
-execute if score debug mips32r6_cpu matches 1.. run tellraw @p [{"text":"eret"}]
+execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"eret"}]
 
 # TODO: clear execution and instruction hazards
 

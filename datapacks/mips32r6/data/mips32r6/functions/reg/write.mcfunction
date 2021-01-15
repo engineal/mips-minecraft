@@ -36,4 +36,4 @@ execute if score address mips32r6_reg matches 29 store result storage mips32r6:r
 execute if score address mips32r6_reg matches 30 store result storage mips32r6:reg GPR[30] int 1 run scoreboard players get value mips32r6_reg
 execute if score address mips32r6_reg matches 31 store result storage mips32r6:reg GPR[31] int 1 run scoreboard players get value mips32r6_reg
 
-execute if score debug mips32r6_reg matches 1.. run tellraw @p [{"text":"GPR["},{"score":{"name":"address","objective":"mips32r6_reg"}},{"text":"]<-"},{"score":{"name":"value","objective":"mips32r6_reg"}}]
+execute if score reg_level logging matches 1.. run tellraw @p [{"text":"GPR["},{"score":{"name":"address","objective":"mips32r6_reg"}},{"text":"]<-"},{"score":{"name":"value","objective":"mips32r6_reg"}}]

@@ -32,4 +32,4 @@ kill @e[name=rom_address]
 scoreboard players reset tmp_x rom
 scoreboard players reset tmp_y rom
 
-execute if score debug mips32r6_mem matches 2.. run tellraw @p [{"text":"ROM["},{"score":{"name":"device_address","objective":"rom"}},{"text":"]>"},{"score":{"name":"value","objective":"mips32r6_mem"}}]
+execute if score rom_level logging matches 2.. run tellraw @p [{"text":"ROM["},{"score":{"name":"device_address","objective":"rom"}},{"text":"]->"},{"score":{"name":"value","objective":"mips32r6_mem"}}]

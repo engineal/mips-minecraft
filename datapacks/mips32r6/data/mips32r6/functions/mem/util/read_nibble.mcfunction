@@ -22,4 +22,4 @@ execute if block ~ ~ ~ minecraft:green_wool run scoreboard players add value mip
 execute if block ~ ~ ~ minecraft:red_wool run scoreboard players add value mips32r6_mem 14
 execute if block ~ ~ ~ minecraft:black_wool run scoreboard players add value mips32r6_mem 15
 
-execute if score debug mips32r6_mem matches 4.. run tellraw @p [{"text":"read nibble: "},{"score":{"name":"value","objective":"mips32r6_mem"}}]
+execute if score mem_level logging matches 4.. run tellraw @p [{"text":"read nibble: "},{"score":{"name":"value","objective":"mips32r6_mem"}}]
