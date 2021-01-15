@@ -1,0 +1,8 @@
+{
+    "pack": {
+        "pack_format": 6,
+        "description": {
+          "text":"The Boot-MIPS bootloader for the MIPS32 Release 6 emulator."
+        }
+    }
+}

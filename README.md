@@ -67,9 +67,8 @@ Currently, the processor starts executing code at ROM address 0, so before loadi
 * "Speakers"
 
 #### Software
-* Firmware
-* Bootloader
-* Basic OS
+* Linux
+* Minecraft
 
 ## Custom Hardware
 The MIPS processor uses memory mapped I/O to communicate with other hardware components.

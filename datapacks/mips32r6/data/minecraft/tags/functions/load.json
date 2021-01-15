@@ -3,7 +3,6 @@
         "mips32r6:constants",
         "mips32r6:load",
         "rom:load",
-        "firmware:firmware",
         "ram:load"
     ]
 }
