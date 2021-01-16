@@ -3,7 +3,8 @@
 
 # Fetch instruction from memory
 scoreboard players operation address mips32r6_mem = pc mips32r6_cpu
-function mips32r6:mem/read
+scoreboard players set write mips32r6_mem 0
+function mips32r6:mem
 scoreboard players operation instruction mips32r6_cpu = value mips32r6_mem
 
 # Increment program counter

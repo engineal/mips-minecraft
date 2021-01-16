@@ -14,7 +14,7 @@ def main():
                         help='The output file.')
     parser.add_argument('-O', '--output-target', choices=['function', 'setblock'], default='function',
                         help="Create an output file in format. "
-                             "'function' will use the mips32r6:mem/write function to load the file. "
+                             "'function' will use the mips32r6:mem function to load the file. "
                              "'setblock' will use setblock commands to load the file. "
                              "Defaults to function.")
     parser.add_argument('--set-start', metavar='<addr>', type=lambda x: int(x, 0), default=0, dest='start',

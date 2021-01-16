@@ -1,12 +1,14 @@
 scoreboard players set passed test 0
 scoreboard players set failed test 0
 
+scoreboard players set write mips32r6_mem 1
+
 # Write address 0 of RAM (0x00000000)
 setblock 0 0 0 minecraft:orange_wool
 fill 0 0 1 0 0 7 minecraft:white_wool
 scoreboard players set physical_address mips32r6_mem 0
 scoreboard players set value mips32r6_mem 1
-function ram:write
+function ram:mem
 execute if blocks 0 0 0 0 0 7 0 0 16 all run scoreboard players add passed test 1
 execute unless blocks 0 0 0 0 0 7 0 0 16 all run scoreboard players add failed test 1
 execute unless blocks 0 0 0 0 0 7 0 0 16 all run tellraw @p [{"text":"Expected blocks: orange_wool and white_wool","color":"red"}]
@@ -16,7 +18,7 @@ setblock 0 0 0 minecraft:magenta_wool
 fill 0 0 1 0 0 7 minecraft:white_wool
 scoreboard players set physical_address mips32r6_mem 4
 scoreboard players set value mips32r6_mem 2
-function ram:write
+function ram:mem
 execute if blocks 0 0 0 0 0 7 0 1 16 all run scoreboard players add passed test 1
 execute unless blocks 0 0 0 0 0 7 0 1 16 all run scoreboard players add failed test 1
 execute unless blocks 0 0 0 0 0 7 0 1 16 all run tellraw @p [{"text":"Expected blocks: magenta_wool and white_wool","color":"red"}]
@@ -26,7 +28,7 @@ setblock 0 0 0 minecraft:light_blue_wool
 fill 0 0 1 0 0 7 minecraft:white_wool
 scoreboard players set physical_address mips32r6_mem 1020
 scoreboard players set value mips32r6_mem 3
-function ram:write
+function ram:mem
 execute if blocks 0 0 0 0 0 7 0 255 16 all run scoreboard players add passed test 1
 execute unless blocks 0 0 0 0 0 7 0 255 16 all run scoreboard players add failed test 1
 execute unless blocks 0 0 0 0 0 7 0 255 16 all run tellraw @p [{"text":"Expected blocks: light_blue_wool and white_wool","color":"red"}]
@@ -36,7 +38,7 @@ setblock 0 0 0 minecraft:yellow_wool
 fill 0 0 1 0 0 7 minecraft:white_wool
 scoreboard players set physical_address mips32r6_mem 1024
 scoreboard players set value mips32r6_mem 4
-function ram:write
+function ram:mem
 execute if blocks 0 0 0 0 0 7 1 0 16 all run scoreboard players add passed test 1
 execute unless blocks 0 0 0 0 0 7 1 0 16 all run scoreboard players add failed test 1
 execute unless blocks 0 0 0 0 0 7 1 0 16 all run tellraw @p [{"text":"Expected blocks: yellow_wool and white_wool","color":"red"}]
@@ -46,7 +48,7 @@ setblock 0 0 0 minecraft:lime_wool
 fill 0 0 1 0 0 7 minecraft:white_wool
 scoreboard players set physical_address mips32r6_mem 1028
 scoreboard players set value mips32r6_mem 5
-function ram:write
+function ram:mem
 execute if blocks 0 0 0 0 0 7 1 1 16 all run scoreboard players add passed test 1
 execute unless blocks 0 0 0 0 0 7 1 1 16 all run scoreboard players add failed test 1
 execute unless blocks 0 0 0 0 0 7 1 1 16 all run tellraw @p [{"text":"Expected blocks: lime_wool and white_wool","color":"red"}]
@@ -56,7 +58,7 @@ setblock 0 0 0 minecraft:pink_wool
 fill 0 0 1 0 0 7 minecraft:white_wool
 scoreboard players set physical_address mips32r6_mem 2044
 scoreboard players set value mips32r6_mem 6
-function ram:write
+function ram:mem
 execute if blocks 0 0 0 0 0 7 1 255 16 all run scoreboard players add passed test 1
 execute unless blocks 0 0 0 0 0 7 1 255 16 all run scoreboard players add failed test 1
 execute unless blocks 0 0 0 0 0 7 1 255 16 all run tellraw @p [{"text":"Expected blocks: pink_wool and white_wool","color":"red"}]
