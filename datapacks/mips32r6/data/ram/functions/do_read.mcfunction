@@ -40,4 +40,4 @@ scoreboard players reset tmp_x ram
 scoreboard players reset tmp_y ram
 scoreboard players reset tmp_z ram
 
-execute if score ram_level logging matches 2.. run tellraw @p [{"text":"RAM["},{"score":{"name":"device_address","objective":"ram"}},{"text":"]->"},{"score":{"name":"value","objective":"mips32r6_mem"}}]
+execute if score ram_level logging matches 1.. run tellraw @p [{"text":"RAM["},{"score":{"name":"device_address","objective":"ram"}},{"text":"] -> "},{"score":{"name":"value","objective":"mips32r6_mem"}}]
