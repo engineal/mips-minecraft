@@ -9,11 +9,7 @@
 # to form a PC-relative effective target address. Compact branches have no delay
 # slot: the instruction after the branch is NOT executed if the branch is taken.
 
-# sign extend immediate
-scoreboard players operation tmp_val mips32r6_cpu = immediate mips32r6_cpu
-execute if score tmp_val mips32r6_cpu matches 32768.. run scoreboard players operation tmp_val mips32r6_cpu -= 2^16 constants
-
-execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"beqc "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"tmp_val","objective":"mips32r6_cpu"}}]
+execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"beqc "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}}]
 
 # Read registers
 scoreboard players operation index mips32r6_gpr = rs mips32r6_cpu
@@ -25,6 +21,7 @@ function mips32r6:gpr/read
 scoreboard players operation value2 mips32r6_alu = value mips32r6_gpr
 
 # Branch
+scoreboard players operation tmp_val mips32r6_cpu = immediate mips32r6_cpu
 scoreboard players operation tmp_val mips32r6_cpu *= 2^2 constants
 execute if score value1 mips32r6_alu = value2 mips32r6_alu run scoreboard players operation pc mips32r6_cpu += tmp_val mips32r6_cpu
 scoreboard players reset tmp_val mips32r6_cpu

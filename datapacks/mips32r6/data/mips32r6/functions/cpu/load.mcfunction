@@ -7,5 +7,6 @@ scoreboard players set rt mips32r6_cpu 0
 scoreboard players set rd mips32r6_cpu 0
 scoreboard players set shamt mips32r6_cpu 0
 scoreboard players set funct mips32r6_cpu 0
+scoreboard players set unsigned_immediate mips32r6_cpu 0
 scoreboard players set immediate mips32r6_cpu 0
 scoreboard players set address mips32r6_cpu 0

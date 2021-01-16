@@ -8,11 +8,7 @@
 # 32-bit arithmetic result is placed into GPR rt.
 # No Integer Overflow exception occurs under any circumstances.
 
-# sign extend immediate
-scoreboard players operation tmp_val mips32r6_cpu = immediate mips32r6_cpu
-execute if score tmp_val mips32r6_cpu matches 32768.. run scoreboard players operation tmp_val mips32r6_cpu -= 2^16 constants
-
-execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"addiu "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"tmp_val","objective":"mips32r6_cpu"}}]
+execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"addiu "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}}]
 
 # Read rs register
 scoreboard players operation index mips32r6_gpr = rs mips32r6_cpu
@@ -20,11 +16,10 @@ function mips32r6:gpr/read
 
 # add value of rs register to immediate
 scoreboard players operation value1 mips32r6_alu = value mips32r6_gpr
-scoreboard players operation value2 mips32r6_alu = tmp_val mips32r6_cpu
+scoreboard players operation value2 mips32r6_alu = immediate mips32r6_cpu
 function mips32r6:alu/add
 
 # Save result to rt register
 scoreboard players operation index mips32r6_gpr = rt mips32r6_cpu
 scoreboard players operation value mips32r6_gpr = result mips32r6_alu
 function mips32r6:gpr/write
-scoreboard players reset tmp_val mips32r6_cpu

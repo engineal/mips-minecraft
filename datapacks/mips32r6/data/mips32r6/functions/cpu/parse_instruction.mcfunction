@@ -27,9 +27,13 @@ scoreboard players operation shamt mips32r6_cpu %= 2^5 constants
 scoreboard players operation funct mips32r6_cpu = instruction mips32r6_cpu
 scoreboard players operation funct mips32r6_cpu %= 2^6 constants
 
-# immediate: apply 16 bit mask
-scoreboard players operation immediate mips32r6_cpu = instruction mips32r6_cpu
-scoreboard players operation immediate mips32r6_cpu %= 2^16 constants
+# unsigned_immediate: apply 16 bit mask
+scoreboard players operation unsigned_immediate mips32r6_cpu = instruction mips32r6_cpu
+scoreboard players operation unsigned_immediate mips32r6_cpu %= 2^16 constants
+
+# immediate: sign extend unsigned_immediate
+scoreboard players operation immediate mips32r6_cpu = unsigned_immediate mips32r6_cpu
+execute if score immediate mips32r6_cpu matches 32768.. run scoreboard players operation immediate mips32r6_cpu -= 2^16 constants
 
 # address: apply 26 bit mask
 scoreboard players operation address mips32r6_cpu = instruction mips32r6_cpu

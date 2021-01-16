@@ -25,8 +25,6 @@ execute store result storage mips32r6:reg GPR[31] int 1 run scoreboard players g
 scoreboard players operation index mips32r6_gpr = rt mips32r6_cpu
 function mips32r6:gpr/read
 
-# TODO: sign extend offset
-
 # Jump
 scoreboard players operation pc mips32r6_cpu = immediate mips32r6_cpu
 scoreboard players operation pc mips32r6_cpu += value mips32r6_gpr
