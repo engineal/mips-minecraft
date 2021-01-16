@@ -10,6 +10,17 @@
 
 execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"eret"}]
 
+# Lookup Status ERL
+execute store result score tmp_status_erl mips32r6_cpu run data get storage mips32r6:reg cp0.status
+
+# ERL: shift right 2 bits, apply 1 bit mask
+scoreboard players operation tmp_status_erl mips32r6_cpu /= 2^2 constants
+scoreboard players operation tmp_status_erl mips32r6_cpu %= 2^1 constants
+
 # TODO: clear execution and instruction hazards
 
-execute store result score pc mips32r6_cpu run data get storage mips32r6:reg cp0.epc
+execute if score tmp_status_erl mips32r6_cpu matches 1 store result score pc mips32r6_cpu run data get storage mips32r6:reg cp0.errorepc
+
+execute unless score tmp_status_erl mips32r6_cpu matches 1 store result score pc mips32r6_cpu run data get storage mips32r6:reg cp0.epc
+
+scoreboard players reset tmp_status_erl mips32r6_cpu
