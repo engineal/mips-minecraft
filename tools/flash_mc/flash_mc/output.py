@@ -9,11 +9,15 @@ def get_generator(output_target):
 
 
 class FunctionGenerator:
-    """Create Minecraft commands to store this word using the mips32r6:mem/write function."""
+    """Create Minecraft commands to store this word using the mips32r6:mem function."""
 
     @staticmethod
     def generate(reader, offset=0):
         """Create Minecraft commands to store this word."""
+
+        # Place memory in write mode
+        yield "scoreboard players set write mips32r6_mem 1"
+
         address = offset
         for value in reader.read(4):
             # Cast unsigned address to 32-bit signed address
@@ -25,7 +29,7 @@ class FunctionGenerator:
 
             yield f"scoreboard players set address mips32r6_mem {signed_address:d}"
             yield f"scoreboard players set value mips32r6_mem {value:d}"
-            yield f"function mips32r6:mem/write"
+            yield "function mips32r6:mem"
 
             address += 4
 

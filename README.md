@@ -75,8 +75,8 @@ To debug the emulator, you can set emulator logging levels for each component us
 * `scoreboard players set cpu_level logging <level>` (0-1)
 * `scoreboard players set gpr_level logging <level>` (0-1)
 * `scoreboard players set mem_level logging <level>` (0-4)
-* `scoreboard players set rom_level logging <level>` (0-1)
-* `scoreboard players set ram_level logging <level>` (0-1)
+* `scoreboard players set rom_level logging <level>` (0-2)
+* `scoreboard players set ram_level logging <level>` (0-2)
 
 ### boot
 The Boot-MIPS bootloader for the MIPS32 Release 6 emulator.
@@ -134,7 +134,6 @@ Currently, the processor starts executing code at ROM address 0, so before loadi
 
 ## Planned features
 #### Hardware
-* Virtual memory (in-progress)
 * TLB
 * Permanent storage
 * Proper text mode display
@@ -157,23 +156,17 @@ To create your own custom hardware that can communicate with this emulator:
    Note: you'll want to make sure you create a new namespace for your component's functions. If you use the mips32r6 namespace or a namespace used by another datapack, you risk colliding with existing functions and something might break.
 
 
-2. If your hardware will handle read requests, create a new function to handle memory read requests.
+2. Create a new function to handle memory requests.
 
-   1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to the range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
-   2. This function should return the read value in the `value mips32r6_mem` scoreboard value.
+   1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to the range of physical addresses this device listens to, the function should not do anything if the physical address is outside this range. You'll have to make sure this range doesn't collide with any other hardware components.
+   2. This function should read the read/write mode from the `write mips32r6_mem` scoreboard value. If the value of `write mips32r6_mem` is 0, the memory request is a read request. If the value of `write mips32r6_mem` is 1, the memory request is a write request.
+      1. If the memory request is a read request, this function should return the result in the `value mips32r6_mem` scoreboard value.
+      2. If the memory request is a write request, this function should read the value to write from the `value mips32r6_mem` scoreboard value.
    3. This function should increment the `handled mips32r6_mem` scoreboard value.
-   4. Tag your read function in the mips32r6:read tag by including your read function in a file with this path: `data/mips32r6/tags/functions/read.json`.
 
+3. Tag this function in the mips32r6:mem tag by including your function in a file in your datapack with this path: `data/mips32r6/tags/functions/mem.json`.
 
-3. If your hardware will handle write requests, create a new function to handle memory write requests.
-
-   1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to the range of physical address that you'll need. You'll have to make sure this range doesn't collide with any other hardware components.
-   2. This function should write the value in the `value mips32r6_mem` scoreboard value.
-   3. This function should increment the `handled mips32r6_mem` scoreboard value.
-   4. Tag your write function in the mips32r6:write tag by including your write function in a file with this path: `data/mips32r6/tags/functions/write.json`.
-
-
-Take a look at the RAM, ROM, and VGA hardware components in this repo for an example.
+Reference the RAM, ROM, and VGA hardware components in this repo for examples.
 
 
 ## License
