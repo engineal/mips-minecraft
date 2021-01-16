@@ -21,11 +21,11 @@
 execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"ins "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rd","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"shamt","objective":"mips32r6_cpu"}}]
 
 # Read rt register
-scoreboard players operation address mips32r6_reg = rt mips32r6_cpu
-function mips32r6:reg/read
+scoreboard players operation index mips32r6_gpr = rt mips32r6_cpu
+function mips32r6:gpr/read
 
 # If not inserting into far left of rt, strip off all but upper 31..msb+1 of rt
-execute if score rd mips32r6_cpu matches ..30 run scoreboard players operation value1 mips32r6_alu = value mips32r6_reg
+execute if score rd mips32r6_cpu matches ..30 run scoreboard players operation value1 mips32r6_alu = value mips32r6_gpr
 execute if score rd mips32r6_cpu matches ..30 run scoreboard players operation value2 mips32r6_alu = rd mips32r6_cpu
 execute if score rd mips32r6_cpu matches ..30 run scoreboard players add value2 mips32r6_alu 1
 execute if score rd mips32r6_cpu matches ..30 run function mips32r6:alu/shift_right
@@ -39,7 +39,7 @@ execute if score rd mips32r6_cpu matches ..30 run scoreboard players operation t
 execute if score rd mips32r6_cpu matches 31 run scoreboard players set tmp_upper mips32r6_cpu 0
 
 # Strip off all but lower lsb-1..0 of rt
-scoreboard players operation tmp_lower mips32r6_cpu = value mips32r6_reg
+scoreboard players operation tmp_lower mips32r6_cpu = value mips32r6_gpr
 
 # If inserting into far right of rt, there is no lower value
 execute if score shamt mips32r6_cpu matches 0 run scoreboard players set tmp_lower mips32r6_cpu 0
@@ -76,11 +76,11 @@ execute if score shamt mips32r6_cpu matches 30 run scoreboard players operation 
 execute if score shamt mips32r6_cpu matches 31 run scoreboard players operation tmp_lower mips32r6_cpu %= 2^31 constants
 
 # Read rs
-scoreboard players operation address mips32r6_reg = rs mips32r6_cpu
-function mips32r6:reg/read
+scoreboard players operation index mips32r6_gpr = rs mips32r6_cpu
+function mips32r6:gpr/read
 
 # Strip off all but msb..lsb of rs
-scoreboard players operation value1 mips32r6_alu = value mips32r6_reg
+scoreboard players operation value1 mips32r6_alu = value mips32r6_gpr
 scoreboard players operation value2 mips32r6_alu = shamt mips32r6_cpu
 function mips32r6:alu/shift_right
 
@@ -124,13 +124,13 @@ execute if score rd mips32r6_cpu matches 30 run scoreboard players operation tmp
 # TODO: negative numbers not tested!
 
 # Combine sections
-scoreboard players operation value mips32r6_reg = tmp_upper mips32r6_cpu
-scoreboard players operation value mips32r6_reg += tmp_middle mips32r6_cpu
-scoreboard players operation value mips32r6_reg += tmp_lower mips32r6_cpu
+scoreboard players operation value mips32r6_gpr = tmp_upper mips32r6_cpu
+scoreboard players operation value mips32r6_gpr += tmp_middle mips32r6_cpu
+scoreboard players operation value mips32r6_gpr += tmp_lower mips32r6_cpu
 
 # Write result to rt register
-scoreboard players operation address mips32r6_reg = rt mips32r6_cpu
-function mips32r6:reg/write
+scoreboard players operation index mips32r6_gpr = rt mips32r6_cpu
+function mips32r6:gpr/write
 
 scoreboard players reset tmp_upper mips32r6_cpu
 scoreboard players reset tmp_middle mips32r6_cpu

@@ -14,13 +14,13 @@
 execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"bgtz "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}}]
 
 # Read rs register
-scoreboard players operation address mips32r6_reg = rs mips32r6_cpu
-function mips32r6:reg/read
+scoreboard players operation index mips32r6_gpr = rs mips32r6_cpu
+function mips32r6:gpr/read
 
 # TODO: Execute the instruction following the jump, in the branch delay slot, before jumping.
 
 # Branch
 scoreboard players operation tmp_val mips32r6_cpu = immediate mips32r6_cpu
 scoreboard players operation tmp_val mips32r6_cpu *= 2^2 constants
-execute if score value mips32r6_reg matches 1.. run scoreboard players operation pc mips32r6_cpu += tmp_val mips32r6_cpu
+execute if score value mips32r6_gpr matches 1.. run scoreboard players operation pc mips32r6_cpu += tmp_val mips32r6_cpu
 scoreboard players reset tmp_val mips32r6_cpu

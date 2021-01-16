@@ -17,15 +17,15 @@ execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"jalr "},
 
 # Link
 scoreboard players add pc mips32r6_cpu 4
-scoreboard players operation address mips32r6_reg = rd mips32r6_cpu
-scoreboard players operation value mips32r6_reg = pc mips32r6_cpu
-function mips32r6:reg/write
+scoreboard players operation index mips32r6_gpr = rd mips32r6_cpu
+scoreboard players operation value mips32r6_gpr = pc mips32r6_cpu
+function mips32r6:gpr/write
 
 # Read rs register
-scoreboard players operation address mips32r6_reg = rs mips32r6_cpu
-function mips32r6:reg/read
+scoreboard players operation index mips32r6_gpr = rs mips32r6_cpu
+function mips32r6:gpr/read
 
 # TODO: Execute the instruction following the jump, in the branch delay slot, before jumping.
 
 # Jump
-scoreboard players operation pc mips32r6_cpu = value mips32r6_reg
+scoreboard players operation pc mips32r6_cpu = value mips32r6_gpr

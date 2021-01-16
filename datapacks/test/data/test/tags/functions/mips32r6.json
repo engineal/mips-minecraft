@@ -2,7 +2,7 @@
     "values": [
         "#test:mips32r6/alu",
         "#test:mips32r6/cpu",
-        "#test:mips32r6/mem",
-        "#test:mips32r6/reg"
+        "#test:mips32r6/gpr",
+        "#test:mips32r6/mem"
     ]
 }

@@ -11,17 +11,17 @@
 execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"sw "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}},{"text":"("},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":")"}]
 
 # Read registers
-scoreboard players operation address mips32r6_reg = rs mips32r6_cpu
-function mips32r6:reg/read
+scoreboard players operation index mips32r6_gpr = rs mips32r6_cpu
+function mips32r6:gpr/read
 
 # Calculate memory offset
-scoreboard players operation address mips32r6_mem = value mips32r6_reg
+scoreboard players operation address mips32r6_mem = value mips32r6_gpr
 scoreboard players operation address mips32r6_mem += immediate mips32r6_cpu
 
 # Read registers
-scoreboard players operation address mips32r6_reg = rt mips32r6_cpu
-function mips32r6:reg/read
+scoreboard players operation index mips32r6_gpr = rt mips32r6_cpu
+function mips32r6:gpr/read
 
 # Memory operation
-scoreboard players operation value mips32r6_mem = value mips32r6_reg
+scoreboard players operation value mips32r6_mem = value mips32r6_gpr
 function mips32r6:mem/write

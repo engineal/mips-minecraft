@@ -9,7 +9,7 @@ function mips32r6:cpu/instructions/cop0/mfc0
 execute store result score tmp_value test run data get storage mips32r6:reg GPR[1]
 execute if score tmp_value test matches 1234 run scoreboard players add passed test 1
 execute unless score tmp_value test matches 1234 run scoreboard players add failed test 1
-execute unless score tmp_value test matches 1234 run tellraw @p [{"text":"Actual value: ","color":"red"},{"score":{"name":"value","objective":"mips32r6_reg"},"color":"red"},{"text":", Expected value: 0","color":"red"}]
+execute unless score tmp_value test matches 1234 run tellraw @p [{"text":"Actual value: ","color":"red"},{"score":{"name":"value","objective":"mips32r6_gpr"},"color":"red"},{"text":", Expected value: 0","color":"red"}]
 
 # Read cp0 random
 # Read cp0 entrylo
