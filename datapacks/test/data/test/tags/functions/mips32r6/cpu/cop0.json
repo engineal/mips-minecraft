@@ -1,6 +1,0 @@
-{
-    "values": [
-        "test:mips32r6/cpu/cop0/mfc0_test",
-        "test:mips32r6/cpu/cop0/mtc0_test"
-    ]
-}
