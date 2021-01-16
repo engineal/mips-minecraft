@@ -14,26 +14,7 @@ execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"mtc0 "},
 scoreboard players operation index mips32r6_gpr = rt mips32r6_cpu
 function mips32r6:gpr/read
 
-# Write register to cop0
-execute if score rd mips32r6_cpu matches ..-1 run tellraw @p [{"text":"cp0 ","color":"red"},{"score":{"name":"rd","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
-execute if score rd mips32r6_cpu matches ..-1 run scoreboard players set running mips32r6_tick 0
-execute if score rd mips32r6_cpu matches 0 store result storage mips32r6:reg cp0.index int 1 run scoreboard players get value mips32r6_gpr
-execute if score rd mips32r6_cpu matches 1 store result storage mips32r6:reg cp0.random int 1 run scoreboard players get value mips32r6_gpr
-execute if score rd mips32r6_cpu matches 2 store result storage mips32r6:reg cp0.entrylo int 1 run scoreboard players get value mips32r6_gpr
-execute if score rd mips32r6_cpu matches 3 run tellraw @p [{"text":"cp0 ","color":"red"},{"score":{"name":"rd","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
-execute if score rd mips32r6_cpu matches 3 run scoreboard players set running mips32r6_tick 0
-execute if score rd mips32r6_cpu matches 4 store result storage mips32r6:reg cp0.context int 1 run scoreboard players get value mips32r6_gpr
-execute if score rd mips32r6_cpu matches 5..7 run tellraw @p [{"text":"cp0 ","color":"red"},{"score":{"name":"rd","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
-execute if score rd mips32r6_cpu matches 5..7 run scoreboard players set running mips32r6_tick 0
-execute if score rd mips32r6_cpu matches 8 store result storage mips32r6:reg cp0.vaddr int 1 run scoreboard players get value mips32r6_gpr
-execute if score rd mips32r6_cpu matches 9 store result storage mips32r6:reg cp0.count int 1 run scoreboard players get value mips32r6_gpr
-execute if score rd mips32r6_cpu matches 10 store result storage mips32r6:reg cp0.entryhi int 1 run scoreboard players get value mips32r6_gpr
-execute if score rd mips32r6_cpu matches 11 store result storage mips32r6:reg cp0.compare int 1 run scoreboard players get value mips32r6_gpr
-execute if score rd mips32r6_cpu matches 12 store result storage mips32r6:reg cp0.status int 1 run scoreboard players get value mips32r6_gpr
-execute if score rd mips32r6_cpu matches 13 store result storage mips32r6:reg cp0.cause int 1 run scoreboard players get value mips32r6_gpr
-execute if score rd mips32r6_cpu matches 14 store result storage mips32r6:reg cp0.epc int 1 run scoreboard players get value mips32r6_gpr
-execute if score rd mips32r6_cpu matches 15..29 run tellraw @p [{"text":"cp0 ","color":"red"},{"score":{"name":"rd","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
-execute if score rd mips32r6_cpu matches 15..29 run scoreboard players set running mips32r6_tick 0
-execute if score rd mips32r6_cpu matches 30 store result storage mips32r6:reg cp0.errorepc int 1 run scoreboard players get value mips32r6_gpr
-execute if score rd mips32r6_cpu matches 31.. run tellraw @p [{"text":"cp0 ","color":"red"},{"score":{"name":"rd","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
-execute if score rd mips32r6_cpu matches 31.. run scoreboard players set running mips32r6_tick 0
+# Write value to CP0
+scoreboard players operation index mips32r6_cop0 = rd mips32r6_cpu
+scoreboard players operation value mips32r6_cop0 = value mips32r6_gpr
+function mips32r6:cop0/write

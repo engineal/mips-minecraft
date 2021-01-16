@@ -14,7 +14,7 @@ scoreboard players operation physical_address mips32r6_mem = address mips32r6_me
 # TODO: implement TLB
 
 # Mapped addresses in kuseg 0x00000000-0x7FFFFFFF
-execute if score address mips32r6_mem matches 0.. run function mips32r6:mem/translate/kuseg_address
+execute if score address mips32r6_mem matches 0.. run function mips32r6:mem/translate/kuseg
 
 # Unmapped addresses in kseg0 0x80000000-0x9FFFFFFF
 # Strip off leading 3 bits to map to physical addresses 0x00000000-0x1FFFFFFF
