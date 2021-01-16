@@ -16,13 +16,13 @@ execute if score tmp_val mips32r6_cpu matches 32768.. run scoreboard players ope
 execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"beqc "},{"score":{"name":"rs","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"tmp_val","objective":"mips32r6_cpu"}}]
 
 # Read registers
-scoreboard players operation address mips32r6_reg = rs mips32r6_cpu
-function mips32r6:reg/read
-scoreboard players operation value1 mips32r6_alu = value mips32r6_reg
+scoreboard players operation index mips32r6_gpr = rs mips32r6_cpu
+function mips32r6:gpr/read
+scoreboard players operation value1 mips32r6_alu = value mips32r6_gpr
 
-scoreboard players operation address mips32r6_reg = rt mips32r6_cpu
-function mips32r6:reg/read
-scoreboard players operation value2 mips32r6_alu = value mips32r6_reg
+scoreboard players operation index mips32r6_gpr = rt mips32r6_cpu
+function mips32r6:gpr/read
+scoreboard players operation value2 mips32r6_alu = value mips32r6_gpr
 
 # Branch
 scoreboard players operation tmp_val mips32r6_cpu *= 2^2 constants

@@ -16,11 +16,11 @@
 execute if score cpu_level logging matches 1.. run tellraw @p [{"text":"jic "},{"score":{"name":"rt","objective":"mips32r6_cpu"}},{"text":", "},{"score":{"name":"immediate","objective":"mips32r6_cpu"}}]
 
 # Read rt register
-scoreboard players operation address mips32r6_reg = rt mips32r6_cpu
-function mips32r6:reg/read
+scoreboard players operation index mips32r6_gpr = rt mips32r6_cpu
+function mips32r6:gpr/read
 
 # TODO: sign extend offset
 
 # Jump
 scoreboard players operation pc mips32r6_cpu = immediate mips32r6_cpu
-scoreboard players operation pc mips32r6_cpu += value mips32r6_reg
+scoreboard players operation pc mips32r6_cpu += value mips32r6_gpr

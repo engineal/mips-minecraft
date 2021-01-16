@@ -70,9 +70,10 @@ Care should be taken so that you don't exceed the maxCommandChainLength gamerule
 Depending on what the host computer can handle, with the default maxCommandChainLength of 65,536 an overclock with a x64 multiplier should be achievable, resulting in a clock speed of 1.28 kHz.
 
 To debug the emulator, you can set emulator logging levels for each component using the following Minecraft commands:
-* `scoreboard players set cpu_level logging <level>` (0-1)
 * `scoreboard players set alu_level logging <level>` (0-1)
-* `scoreboard players set reg_level logging <level>` (0-1)
+* `scoreboard players set cop0_level logging <level>` (0-1)
+* `scoreboard players set cpu_level logging <level>` (0-1)
+* `scoreboard players set gpr_level logging <level>` (0-1)
 * `scoreboard players set mem_level logging <level>` (0-4)
 * `scoreboard players set rom_level logging <level>` (0-1)
 * `scoreboard players set ram_level logging <level>` (0-1)
