@@ -2,6 +2,7 @@
 #
 # Inputs:
 # physical_address mips32r6_mem
+# length mips32r6_mem
 # write mips32r6_mem
 # value mips32r6_mem
 #
@@ -43,8 +44,20 @@ scoreboard players reset tmp_y ram
 scoreboard players reset tmp_z ram
 
 # Read or write value at armor stand position
-execute unless score write mips32r6_mem matches 1 at @e[name=ram_address] run function mips32r6:mem/util/read_word
-execute if score write mips32r6_mem matches 1 at @e[name=ram_address] run function mips32r6:mem/util/write_word
+execute if score length mips32r6_mem matches ..3 run tellraw @p [{"text":"RAM does not support accessing ","color":"red"},{"score":{"name":"length","objective":"mips32r6_mem"},"color":"red"},{"text":" bit values!","color":"red"}]
+execute if score length mips32r6_mem matches ..3 run scoreboard players set running mips32r6_tick 0
+execute if score length mips32r6_mem matches 4 unless score write mips32r6_mem matches 1 at @e[name=ram_address] run function mips32r6:mem/util/read_nibble
+execute if score length mips32r6_mem matches 4 if score write mips32r6_mem matches 1 at @e[name=ram_address] run function mips32r6:mem/util/write_nibble
+execute if score length mips32r6_mem matches 5..7 run tellraw @p [{"text":"RAM does not support accessing ","color":"red"},{"score":{"name":"length","objective":"mips32r6_mem"},"color":"red"},{"text":" bit values!","color":"red"}]
+execute if score length mips32r6_mem matches 5..7 run scoreboard players set running mips32r6_tick 0
+execute if score length mips32r6_mem matches 8 unless score write mips32r6_mem matches 1 at @e[name=ram_address] run function mips32r6:mem/util/read_byte
+execute if score length mips32r6_mem matches 8 if score write mips32r6_mem matches 1 at @e[name=ram_address] run function mips32r6:mem/util/write_byte
+execute if score length mips32r6_mem matches 9..31 run tellraw @p [{"text":"RAM does not support accessing ","color":"red"},{"score":{"name":"length","objective":"mips32r6_mem"},"color":"red"},{"text":" bit values!","color":"red"}]
+execute if score length mips32r6_mem matches 9..31 run scoreboard players set running mips32r6_tick 0
+execute if score length mips32r6_mem matches 32 unless score write mips32r6_mem matches 1 at @e[name=ram_address] run function mips32r6:mem/util/read_word
+execute if score length mips32r6_mem matches 32 if score write mips32r6_mem matches 1 at @e[name=ram_address] run function mips32r6:mem/util/write_word
+execute if score length mips32r6_mem matches 33.. run tellraw @p [{"text":"RAM does not support accessing ","color":"red"},{"score":{"name":"length","objective":"mips32r6_mem"},"color":"red"},{"text":" bit values!","color":"red"}]
+execute if score length mips32r6_mem matches 33.. run scoreboard players set running mips32r6_tick 0
 
 kill @e[name=ram_address]
 

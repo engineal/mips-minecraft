@@ -27,8 +27,9 @@ execute if score opcode mips32r6_cpu matches 31 run function mips32r6:cpu/instru
 execute if score opcode mips32r6_cpu matches 32..34 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
 execute if score opcode mips32r6_cpu matches 32..34 run scoreboard players set running mips32r6_tick 0
 execute if score opcode mips32r6_cpu matches 35 run function mips32r6:cpu/instructions/lw
-execute if score opcode mips32r6_cpu matches 36..42 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
-execute if score opcode mips32r6_cpu matches 36..42 run scoreboard players set running mips32r6_tick 0
+execute if score opcode mips32r6_cpu matches 36 run function mips32r6:cpu/instructions/lbu
+execute if score opcode mips32r6_cpu matches 37..42 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
+execute if score opcode mips32r6_cpu matches 37..42 run scoreboard players set running mips32r6_tick 0
 execute if score opcode mips32r6_cpu matches 43 run function mips32r6:cpu/instructions/sw
 execute if score opcode mips32r6_cpu matches 44..53 run tellraw @p [{"text":"opcode ","color":"red"},{"score":{"name":"opcode","objective":"mips32r6_cpu"},"color":"red"},{"text":" not implemented!","color":"red"}]
 execute if score opcode mips32r6_cpu matches 44..53 run scoreboard players set running mips32r6_tick 0

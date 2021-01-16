@@ -15,6 +15,8 @@ class FunctionGenerator:
     def generate(reader, offset=0):
         """Create Minecraft commands to store this word."""
 
+        # Access length is a WORD
+        yield "scoreboard players set length mips32r6_mem 32"
         # Place memory in write mode
         yield "scoreboard players set write mips32r6_mem 1"
 

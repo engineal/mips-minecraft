@@ -6,6 +6,7 @@
 #
 # Inputs:
 # physical_address mips32r6_mem
+# length mips32r6_mem
 # write mips32r6_mem
 # value mips32r6_mem
 #

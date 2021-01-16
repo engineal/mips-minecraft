@@ -1,6 +1,7 @@
 scoreboard players set passed test 0
 scoreboard players set failed test 0
 
+scoreboard players set length mips32r6_mem 32
 scoreboard players set write mips32r6_mem 1
 
 # Write address 0 of RAM (0xA0000000)

@@ -19,6 +19,10 @@ function mips32r6:gpr/read
 scoreboard players operation address mips32r6_mem = value mips32r6_gpr
 scoreboard players operation address mips32r6_mem += immediate mips32r6_cpu
 
+# TODO: If either of the 2 least-significant bits of the address is non-zero,
+# an Address Error exception occurs.
+
+scoreboard players set length mips32r6_mem 32
 scoreboard players set write mips32r6_mem 0
 function mips32r6:mem
 

@@ -1,5 +1,6 @@
 # TODO: fix loading due to virtual memory changes
 
+scoreboard players set length mips32r6_mem 32
 scoreboard players set write mips32r6_mem 1
 scoreboard players set address mips32r6_mem 0
 scoreboard players set value mips32r6_mem 537460736
