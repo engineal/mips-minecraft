@@ -1,7 +1,7 @@
 scoreboard objectives add ram dummy
 scoreboard players set device_address ram 0
 
-# 1 MB
+# 512 KB
 fill 0 0 16 15 255 23 minecraft:white_wool
 fill 16 0 16 31 255 23 minecraft:white_wool
 fill 32 0 16 47 255 23 minecraft:white_wool
@@ -34,40 +34,8 @@ fill 448 0 16 463 255 23 minecraft:white_wool
 fill 464 0 16 479 255 23 minecraft:white_wool
 fill 480 0 16 495 255 23 minecraft:white_wool
 fill 496 0 16 511 255 23 minecraft:white_wool
-fill 512 0 16 527 255 23 minecraft:white_wool
-fill 528 0 16 543 255 23 minecraft:white_wool
-fill 544 0 16 559 255 23 minecraft:white_wool
-fill 560 0 16 575 255 23 minecraft:white_wool
-fill 576 0 16 591 255 23 minecraft:white_wool
-fill 592 0 16 607 255 23 minecraft:white_wool
-fill 608 0 16 623 255 23 minecraft:white_wool
-fill 624 0 16 639 255 23 minecraft:white_wool
-fill 640 0 16 655 255 23 minecraft:white_wool
-fill 656 0 16 671 255 23 minecraft:white_wool
-fill 672 0 16 687 255 23 minecraft:white_wool
-fill 688 0 16 703 255 23 minecraft:white_wool
-fill 704 0 16 719 255 23 minecraft:white_wool
-fill 720 0 16 735 255 23 minecraft:white_wool
-fill 736 0 16 751 255 23 minecraft:white_wool
-fill 752 0 16 767 255 23 minecraft:white_wool
-fill 768 0 16 783 255 23 minecraft:white_wool
-fill 784 0 16 799 255 23 minecraft:white_wool
-fill 800 0 16 815 255 23 minecraft:white_wool
-fill 816 0 16 831 255 23 minecraft:white_wool
-fill 832 0 16 847 255 23 minecraft:white_wool
-fill 848 0 16 863 255 23 minecraft:white_wool
-fill 864 0 16 879 255 23 minecraft:white_wool
-fill 880 0 16 895 255 23 minecraft:white_wool
-fill 896 0 16 911 255 23 minecraft:white_wool
-fill 912 0 16 927 255 23 minecraft:white_wool
-fill 928 0 16 943 255 23 minecraft:white_wool
-fill 944 0 16 959 255 23 minecraft:white_wool
-fill 960 0 16 975 255 23 minecraft:white_wool
-fill 976 0 16 991 255 23 minecraft:white_wool
-fill 992 0 16 1007 255 23 minecraft:white_wool
-fill 1008 0 16 1023 255 23 minecraft:white_wool
 
-# 1 MB
+# 512 KB
 fill 0 0 25 15 255 32 minecraft:white_wool
 fill 16 0 25 31 255 32 minecraft:white_wool
 fill 32 0 25 47 255 32 minecraft:white_wool
@@ -100,37 +68,73 @@ fill 448 0 25 463 255 32 minecraft:white_wool
 fill 464 0 25 479 255 32 minecraft:white_wool
 fill 480 0 25 495 255 32 minecraft:white_wool
 fill 496 0 25 511 255 32 minecraft:white_wool
-fill 512 0 25 527 255 32 minecraft:white_wool
-fill 528 0 25 543 255 32 minecraft:white_wool
-fill 544 0 25 559 255 32 minecraft:white_wool
-fill 560 0 25 575 255 32 minecraft:white_wool
-fill 576 0 25 591 255 32 minecraft:white_wool
-fill 592 0 25 607 255 32 minecraft:white_wool
-fill 608 0 25 623 255 32 minecraft:white_wool
-fill 624 0 25 639 255 32 minecraft:white_wool
-fill 640 0 25 655 255 32 minecraft:white_wool
-fill 656 0 25 671 255 32 minecraft:white_wool
-fill 672 0 25 687 255 32 minecraft:white_wool
-fill 688 0 25 703 255 32 minecraft:white_wool
-fill 704 0 25 719 255 32 minecraft:white_wool
-fill 720 0 25 735 255 32 minecraft:white_wool
-fill 736 0 25 751 255 32 minecraft:white_wool
-fill 752 0 25 767 255 32 minecraft:white_wool
-fill 768 0 25 783 255 32 minecraft:white_wool
-fill 784 0 25 799 255 32 minecraft:white_wool
-fill 800 0 25 815 255 32 minecraft:white_wool
-fill 816 0 25 831 255 32 minecraft:white_wool
-fill 832 0 25 847 255 32 minecraft:white_wool
-fill 848 0 25 863 255 32 minecraft:white_wool
-fill 864 0 25 879 255 32 minecraft:white_wool
-fill 880 0 25 895 255 32 minecraft:white_wool
-fill 896 0 25 911 255 32 minecraft:white_wool
-fill 912 0 25 927 255 32 minecraft:white_wool
-fill 928 0 25 943 255 32 minecraft:white_wool
-fill 944 0 25 959 255 32 minecraft:white_wool
-fill 960 0 25 975 255 32 minecraft:white_wool
-fill 976 0 25 991 255 32 minecraft:white_wool
-fill 992 0 25 1007 255 32 minecraft:white_wool
-fill 1008 0 25 1023 255 32 minecraft:white_wool
+
+# 512 KB
+fill 0 0 34 15 255 41 minecraft:white_wool
+fill 16 0 34 31 255 41 minecraft:white_wool
+fill 32 0 34 47 255 41 minecraft:white_wool
+fill 48 0 34 63 255 41 minecraft:white_wool
+fill 64 0 34 79 255 41 minecraft:white_wool
+fill 80 0 34 95 255 41 minecraft:white_wool
+fill 96 0 34 111 255 41 minecraft:white_wool
+fill 112 0 34 127 255 41 minecraft:white_wool
+fill 128 0 34 143 255 41 minecraft:white_wool
+fill 144 0 34 159 255 41 minecraft:white_wool
+fill 160 0 34 175 255 41 minecraft:white_wool
+fill 176 0 34 191 255 41 minecraft:white_wool
+fill 192 0 34 207 255 41 minecraft:white_wool
+fill 208 0 34 223 255 41 minecraft:white_wool
+fill 224 0 34 239 255 41 minecraft:white_wool
+fill 240 0 34 255 255 41 minecraft:white_wool
+fill 256 0 34 271 255 41 minecraft:white_wool
+fill 272 0 34 287 255 41 minecraft:white_wool
+fill 288 0 34 303 255 41 minecraft:white_wool
+fill 304 0 34 319 255 41 minecraft:white_wool
+fill 320 0 34 335 255 41 minecraft:white_wool
+fill 336 0 34 351 255 41 minecraft:white_wool
+fill 352 0 34 367 255 41 minecraft:white_wool
+fill 368 0 34 383 255 41 minecraft:white_wool
+fill 384 0 34 399 255 41 minecraft:white_wool
+fill 400 0 34 415 255 41 minecraft:white_wool
+fill 416 0 34 431 255 41 minecraft:white_wool
+fill 432 0 34 447 255 41 minecraft:white_wool
+fill 448 0 34 463 255 41 minecraft:white_wool
+fill 464 0 34 479 255 41 minecraft:white_wool
+fill 480 0 34 495 255 41 minecraft:white_wool
+fill 496 0 34 511 255 41 minecraft:white_wool
+
+# 512 KB
+fill 0 0 43 15 255 50 minecraft:white_wool
+fill 16 0 43 31 255 50 minecraft:white_wool
+fill 32 0 43 47 255 50 minecraft:white_wool
+fill 48 0 43 63 255 50 minecraft:white_wool
+fill 64 0 43 79 255 50 minecraft:white_wool
+fill 80 0 43 95 255 50 minecraft:white_wool
+fill 96 0 43 111 255 50 minecraft:white_wool
+fill 112 0 43 127 255 50 minecraft:white_wool
+fill 128 0 43 143 255 50 minecraft:white_wool
+fill 144 0 43 159 255 50 minecraft:white_wool
+fill 160 0 43 175 255 50 minecraft:white_wool
+fill 176 0 43 191 255 50 minecraft:white_wool
+fill 192 0 43 207 255 50 minecraft:white_wool
+fill 208 0 43 223 255 50 minecraft:white_wool
+fill 224 0 43 239 255 50 minecraft:white_wool
+fill 240 0 43 255 255 50 minecraft:white_wool
+fill 256 0 43 271 255 50 minecraft:white_wool
+fill 272 0 43 287 255 50 minecraft:white_wool
+fill 288 0 43 303 255 50 minecraft:white_wool
+fill 304 0 43 319 255 50 minecraft:white_wool
+fill 320 0 43 335 255 50 minecraft:white_wool
+fill 336 0 43 351 255 50 minecraft:white_wool
+fill 352 0 43 367 255 50 minecraft:white_wool
+fill 368 0 43 383 255 50 minecraft:white_wool
+fill 384 0 43 399 255 50 minecraft:white_wool
+fill 400 0 43 415 255 50 minecraft:white_wool
+fill 416 0 43 431 255 50 minecraft:white_wool
+fill 432 0 43 447 255 50 minecraft:white_wool
+fill 448 0 43 463 255 50 minecraft:white_wool
+fill 464 0 43 479 255 50 minecraft:white_wool
+fill 480 0 43 495 255 50 minecraft:white_wool
+fill 496 0 43 511 255 50 minecraft:white_wool
 
 say ram initialized

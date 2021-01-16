@@ -15,18 +15,18 @@ scoreboard players operation device_address ram = physical_address mips32r6_mem
 execute if score device_address ram matches 2097152.. run tellraw @p [{"text":"RAM address ","color":"red"},{"score":{"name":"device_address","objective":"ram"},"color":"red"},{"text":" not implemented!","color":"red"}]
 execute if score device_address ram matches 2097152.. run scoreboard players set running mips32r6_tick 0
 
-# World coordinates 0 0 16 - 1023 255 32
+# World coordinates 0 0 16 - 511 255 50
 scoreboard players operation tmp_x ram = device_address ram
 scoreboard players operation tmp_x ram /= 2^10 constants
-scoreboard players operation tmp_x ram %= 2^10 constants
+scoreboard players operation tmp_x ram %= 2^9 constants
 
 scoreboard players operation tmp_y ram = device_address ram
 scoreboard players operation tmp_y ram /= 2^2 constants
 scoreboard players operation tmp_y ram %= 2^8 constants
 
 scoreboard players operation tmp_z ram = device_address ram
-scoreboard players operation tmp_z ram /= 2^20 constants
-scoreboard players operation tmp_z ram %= 2^1 constants
+scoreboard players operation tmp_z ram /= 2^19 constants
+scoreboard players operation tmp_z ram %= 2^2 constants
 scoreboard players operation tmp_z ram *= 9 constants
 scoreboard players add tmp_z ram 16
 
