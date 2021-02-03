@@ -88,6 +88,15 @@ The Boot-MIPS bootloader for the MIPS32 Release 6 emulator.
 This datapack will load the Boot-MIPS bootloader into the ROM at the reset vector when the world is loaded or with the `reload` Minecraft command.
 See [mips32r6-usage](#usage) for how to start the emulator.
 
+### lcd
+A LCD display for the MIPS32 Release 6 emulator.
+
+#### Dependencies
+* mips32r6
+
+#### Usage
+Development in progress.
+
 ### test
 A test suite for the MIPS32 Release 6 emulator.
 
@@ -158,7 +167,7 @@ To create your own custom hardware that can communicate with this emulator:
 2. Create a new function to handle memory requests.
 
    1. This function should read the physical address from the `physical_address mips32r6_mem` scoreboard value. Your function should only respond to the range of physical addresses this device listens to, the function should not do anything if the physical address is outside this range. You'll have to make sure this range doesn't collide with any other hardware components.
-   2. This function should read the access length from the `length mips32r6_mem` scoreboard value.
+   2. This function should read the access length in bits from the `length mips32r6_mem` scoreboard value.
    3. This function should read the read/write mode from the `write mips32r6_mem` scoreboard value. If the value of `write mips32r6_mem` is 0, the memory request is a read request. If the value of `write mips32r6_mem` is 1, the memory request is a write request.
       1. If the memory request is a read request, this function should return the result in the `value mips32r6_mem` scoreboard value.
       2. If the memory request is a write request, this function should read the value to write from the `value mips32r6_mem` scoreboard value.
@@ -166,7 +175,7 @@ To create your own custom hardware that can communicate with this emulator:
 
 3. Tag this function in the mips32r6:mem tag by including your function in a file in your datapack with this path: `data/mips32r6/tags/functions/mem.json`.
 
-Reference the RAM, ROM, and VGA hardware components in this repo for examples.
+Reference the RAM, ROM, LCD, and VGA hardware components in this repo for examples.
 
 
 ## License

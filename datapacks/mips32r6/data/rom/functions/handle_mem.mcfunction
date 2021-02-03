@@ -12,11 +12,6 @@
 scoreboard players operation device_address rom = physical_address mips32r6_mem
 scoreboard players remove device_address rom 532676608
 
-# While the ROM responds to all physical addresses 0x1FC00000-0x1FFFFFFF,
-# only the first 256 KB is currently implemented (0x1FC00000-0x1FC40000)
-execute if score device_address rom matches 262144.. run tellraw @p [{"text":"ROM address ","color":"red"},{"score":{"name":"device_address","objective":"rom"},"color":"red"},{"text":" not implemented!","color":"red"}]
-execute if score device_address rom matches 262144.. run scoreboard players set running mips32r6_tick 0
-
 # World coordinates 0 0 0 - 255 255 7
 scoreboard players operation tmp_x rom = device_address rom
 scoreboard players operation tmp_x rom /= 2^10 constants
